@@ -1,132 +1,122 @@
 ---
-import "../styles/global.css";
 import LogoAnimation from "../components/LogoAnimation.astro";
+import BaseLayout from "../layouts/BaseLayout.astro";
 ---
+<LogoAnimation />
 
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Stony Brook Motorsports</title>
-    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet" />
-  </head>
+<BaseLayout title="Stony Brook Motorsports">
+  <!-- 🔧 Animation (landing page only) -->
 
-  <body>
-    <!-- 🔧 Intro Animation Overlay -->
-    <LogoAnimation />
+  <!-- Hero section -->
+  <section class="hero">
+    <h2>A Racing Team with History</h2>
+  </section>
 
-    <!-- 🧭 Main Navigation -->
-    <header class="navbar">
-      <div class="nav-left">
-        <a href="#">Past Cars</a>
-        <a href="#">Subsystems</a>
-        <a href="#">Team</a>
-      </div>
+  <!-- Sponsors -->
+  <section id="sponsors" class="sponsors">
+	<h3>Our Sponsors</h3>
+	<div class="sponsor-grid">
+	  <a href="https://www.stonybrook.edu/ceas/" target="_blank" rel="noopener noreferrer">
+		<img src="public/images/sponsors/ceas.png" alt="Stony Brook College of Engineering & Applied Sciences" />
+	  </a>
+	  <a href="https://www.stonybrook.edu/ceas/connect" target="_blank" rel="noopener noreferrer">
+		<img src="public/images/sponsors/usg.png" alt="Stony Brook USG" />
+	  </a>
+	  <a href="https://www.stonybrook.edu/ceas/mechanical" target="_blank" rel="noopener noreferrer">
+		<img src="public/images/sponsors/mecheng.png" alt="Stony Brook Mechanical Engineering" />
+	  </a>
+	  <a href="https://www.solidworks.com/" target="_blank" rel="noopener noreferrer">
+		<img src="public/images/sponsors/solidworks.svg" alt="Solidworks" />
+	  </a>
+	  <a href="https://www.ansys.com/" target="_blank" rel="noopener noreferrer">
+		<img src="public/images/sponsors/ansys.svg" alt="Ansys" />
+	  </a>
+	  <a href="https://www.kisssoft.com/en/" target="_blank" rel="noopener noreferrer">
+		<img src="public/images/sponsors/kisssoft.svg" alt="KISSsoft" />
+	  </a>
+	  <a href="https://hexagon.com/" target="_blank" rel="noopener noreferrer">
+		<img src="public/images/sponsors/hexagon.svg" alt="Hexagon" />
+	  </a>
+	  <a href="https://www.mastercam.com/" target="_blank" rel="noopener noreferrer">
+		<img src="public/images/sponsors/mastercam.svg" alt="Mastercam" />
+	  </a>
+	  <a href="https://www.kenesto.com/" target="_blank" rel="noopener noreferrer">
+		<img src="public/images/sponsors/kenesto.png" alt="Kenesto" />
+	  </a>
+	  <a href="http://www.flagpolesinc.com/" target="_blank" rel="noopener noreferrer">
+		<img src="public/images/sponsors/flagpoles.gif" alt="Flagpoles Inc" />
+	  </a>
+	  <a href="https://www.4xpro.com/" target="_blank" rel="noopener noreferrer">
+		<img src="public/images/sponsors/4xpro.avif" alt="4XPro" />
+	  </a>
+	  <a href="https://www.ghaasfoundation.org/" target="_blank" rel="noopener noreferrer">
+		<img src="public/images/sponsors/ghaas.png" alt="Gene Haas Foundation" />
+	  </a>
+	  <a href="http://basebrooklyn.net/online/" target="_blank" rel="noopener noreferrer">
+		<img src="public/images/sponsors/basebrooklyn.png" alt="Base Brooklyn" />
+	  </a>
+	  <a href="https://burtonind.com/" target="_blank" rel="noopener noreferrer">
+		<img src="public/images/sponsors/burton.png" alt="Burton Industries Inc" />
+	  </a>
+	  <a href="https://maloyalaser.com/" target="_blank" rel="noopener noreferrer">
+		<img src="public/images/sponsors/maloya.webp" alt="Maloya" />
+	  </a>
+	  <a href="#" target="_blank" rel="noopener noreferrer">
+		<img src="public/images/sponsors/di_finishing.png" alt="D&I Finishing Inc" />
+	  </a>
+	  <a href="http://www.kkfinishingco.com/" target="_blank" rel="noopener noreferrer">
+		<img src="public/images/sponsors/kkfinishing.png" alt="KK Finishing Inc" />
+	  </a>
+	</div>
+  </section>
+  
 
-      <img src="/images/sbmlogo.webp" class="navbar-logo" id="navbar-logo" />
+  <!-- Contact -->
+  <section id="contact" class="section">
+    <h3>Contact Us</h3>
+    <p>
+      Email: stonybrookbmotorsports@gmail.com<br />
+      Instagram: <a href="https://instagram.com/stonybrookbmotorsports" target="_blank">@stonybrookbmotorsports</a>
+    </p>
+  </section>
 
-      <div class="nav-right">
-        <a href="#">Sponsors</a>
-        <a href="#">Photos</a>
-        <a href="#">Join</a>
-        <a href="#">Contact Us</a>
-      </div>
-    </header>
+  <!-- 🔄 Animation JS -->
+  <script>
+	window.addEventListener('DOMContentLoaded', () => {
+		const overlay = document.querySelector('.animation-overlay');
+		const logo = document.getElementById('navbar-logo');
 
-    <!-- 📄 Page Content -->
-    <main>
-      <section class="hero">
-        <h2>A Racing Team with History</h2>
-      </section>
+		// Check if animation has already played this session
+		const hasPlayed = sessionStorage.getItem('animationPlayed');
 
-      <section id="sponsors" class="sponsors">
-		<h3>Our Sponsors</h3>
-		<div class="sponsor-grid">
-		  <a href="https://www.stonybrook.edu/ceas/" target="_blank" rel="noopener noreferrer">
-			<img src="public/images/sponsors/ceas.png" alt="Stony Brook College of Engineering & Applied Sciences" />
-		  </a>
-		  <a href="https://www.stonybrook.edu/ceas/connect" target="_blank" rel="noopener noreferrer">
-			<img src="public/images/sponsors/usg.png" alt="Stony Brook USG" />
-		  </a>
-		  <a href="https://www.stonybrook.edu/ceas/mechanical" target="_blank" rel="noopener noreferrer">
-			<img src="public/images/sponsors/mecheng.png" alt="Stony Brook Mechanical Engineering" />
-		  </a>
-		  <a href="https://www.solidworks.com/" target="_blank" rel="noopener noreferrer">
-			<img src="public/images/sponsors/solidworks.svg" alt="Solidworks" />
-		  </a>
-		  <a href="https://www.ansys.com/" target="_blank" rel="noopener noreferrer">
-			<img src="public/images/sponsors/ansys.svg" alt="Ansys" />
-		  </a>
-		  <a href="https://www.kisssoft.com/en/" target="_blank" rel="noopener noreferrer">
-			<img src="public/images/sponsors/kisssoft.svg" alt="KISSsoft" />
-		  </a>
-		  <a href="https://hexagon.com/" target="_blank" rel="noopener noreferrer">
-			<img src="public/images/sponsors/hexagon.svg" alt="Hexagon" />
-		  </a>
-		  <a href="https://www.mastercam.com/" target="_blank" rel="noopener noreferrer">
-			<img src="public/images/sponsors/mastercam.svg" alt="Mastercam" />
-		  </a>
-		  <a href="https://www.kenesto.com/" target="_blank" rel="noopener noreferrer">
-			<img src="public/images/sponsors/kenesto.png" alt="Kenesto" />
-		  </a>
-		  <a href="http://www.flagpolesinc.com/" target="_blank" rel="noopener noreferrer">
-			<img src="public/images/sponsors/flagpoles.gif" alt="Flagpoles Inc" />
-		  </a>
-		  <a href="https://www.4xpro.com/" target="_blank" rel="noopener noreferrer">
-			<img src="public/images/sponsors/4xpro.avif" alt="4XPro" />
-		  </a>
-		  <a href="https://www.ghaasfoundation.org/" target="_blank" rel="noopener noreferrer">
-			<img src="public/images/sponsors/ghaas.png" alt="Gene Haas Foundation" />
-		  </a>
-		  <a href="http://basebrooklyn.net/online/" target="_blank" rel="noopener noreferrer">
-			<img src="public/images/sponsors/basebrooklyn.png" alt="Base Brooklyn" />
-		  </a>
-		  <a href="https://burtonind.com/" target="_blank" rel="noopener noreferrer">
-			<img src="public/images/sponsors/burton.png" alt="Burton Industries Inc" />
-		  </a>
-		  <a href="https://maloyalaser.com/" target="_blank" rel="noopener noreferrer">
-			<img src="public/images/sponsors/maloya.webp" alt="Maloya" />
-		  </a>
-		  <a href="#" target="_blank" rel="noopener noreferrer">
-			<img src="public/images/sponsors/di_finishing.png" alt="D&I Finishing Inc" />
-		  </a>
-		  <a href="http://www.kkfinishingco.com/" target="_blank" rel="noopener noreferrer">
-			<img src="public/images/sponsors/kkfinishing.png" alt="KK Finishing Inc" />
-		  </a>
-		</div>
-	  </section>
-	  
+		if (!hasPlayed) {
+			// Disable scrolling
+			document.body.style.overflow = 'hidden';
 
-      <section id="contact" class="section">
-        <h3>Contact Us</h3>
-        <p>
-          Email: stonybrookbmotorsports@gmail.com<br />
-          Instagram: <a href="https://instagram.com/stonybrookbmotorsports" target="_blank" rel="noopener noreferrer">@stonybrookbmotorsports</a>
-        </p>
-      </section>
-    </main>
+			setTimeout(() => {
+				// Remove overlay and re-enable scroll
+				if (overlay instanceof HTMLElement) {
+					overlay.style.display = 'none';
+					document.body.style.overflow = 'auto';
+				}
+				if (logo instanceof HTMLElement) {
+					logo.style.opacity = '1';
+				}
+				// Mark animation as played
+				sessionStorage.setItem('animationPlayed', 'true');
+			}, 4000); // Match animation duration
+		} else {
+			// Skip animation entirely
+			if (overlay instanceof HTMLElement) {
+				overlay.style.display = 'none';
+			}
+			if (logo instanceof HTMLElement) {
+				logo.style.opacity = '1';
+			}
+		}
+	});
+	</script>
 
-    <!-- 🔻 Footer -->
-    <footer>
-      &copy; 2025 Stony Brook Motorsports. All rights reserved.
-    </footer>
-
-    <!-- 🎬 Animation Trigger Script -->
-    <script>
-      window.addEventListener('DOMContentLoaded', () => {
-        setTimeout(() => {
-          const overlay = document.querySelector('.animation-overlay');
-          const logo = document.getElementById('navbar-logo');
-
-          if (overlay instanceof HTMLElement) {
-            overlay.style.display = 'none';
-          }
-
-          if (logo instanceof HTMLElement) {
-            logo.style.opacity = '1';
-          }
-        }, 4000); // Match animation duration
-      });
-    </script>
-  </body>
-</html>
+  
+  
+</BaseLayout>

@@ -1,0 +1,71 @@
+---
+// src/layouts/BaseLayout.astro
+import "../styles/global.css";
+---
+
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Stony Brook Motorsports</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet" />
+  </head>
+
+  <body>
+    <div id="page-transition-wrapper">
+      <header class="navbar">
+        <div class="nav-left">
+          <a href="/">Home</a>
+          <a href="/past-cars">Past Cars</a>
+          <a href="/subsystems">Subsystems</a>
+          <a href="/team">Team</a>
+        </div>
+
+        <a href="/" class="logo-link">
+            <img src="/images/sbmlogo.webp" class="navbar-logo" id="navbar-logo" />
+        </a>
+        
+        <div class="nav-right">
+          <a href="/sponsors">Sponsors</a>
+          <a href="/photos">Photos</a>
+          <a href="/join">Join</a>
+          <a href="/contact">Contact Us</a>
+        </div>
+      </header>
+
+      <main id="fade-wrapper">
+        <slot />
+      </main>
+
+      <footer>
+        &copy; 2025 Stony Brook Motorsports. All rights reserved.
+      </footer>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+          const wrapper = document.getElementById('fade-wrapper');
+      
+          if (wrapper) {
+            wrapper.classList.add('fade-in');
+      
+            const links = document.querySelectorAll('a[href]');
+            links.forEach(link => {
+              const href = link.getAttribute('href');
+              if (href && !href.startsWith('#') && !link.hasAttribute('target')) {
+                link.addEventListener('click', (e) => {
+                  e.preventDefault();
+                  wrapper.classList.remove('fade-in');
+                  wrapper.classList.add('fade-out');
+                  setTimeout(() => {
+                    window.location.href = href;
+                  }, 250);
+                });
+              }
+            });
+          }
+        });
+      </script>
+      
+  </body>
+</html>

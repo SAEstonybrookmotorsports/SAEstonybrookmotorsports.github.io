@@ -9,6 +9,8 @@
     display: flex;
     align-items: center;
     justify-content: center;
+    backdrop-filter: blur(8px); /* This blurs the background */
+    -webkit-backdrop-filter: blur(8px);
   }
   
   /* Main logo animation section */

@@ -136,6 +136,44 @@
   .sponsor-grid img:hover {
     transform: scale(1.05);
   }
+
+  .join-button {
+    display: inline-block;
+    margin-top: 2rem;
+    padding: 0.75rem 1.5rem;
+    background-color: #ff4d4d;
+    color: white;
+    text-decoration: none;
+    font-weight: 600;
+    border-radius: 6px;
+    transition: background-color 0.3s ease;
+  }
+  .join-button:hover {
+    background-color: #e04040;
+  }
+  
+  ul {
+    margin-top: 1rem;
+    margin-left: 1.5rem;
+    text-align: left;
+    line-height: 1.8;
+  }
+  #fade-wrapper {
+    opacity: 0;
+    transition: opacity 0.25s ease-in-out;
+  }
+  
+  #fade-wrapper.fade-in {
+    opacity: 1;
+  }
+  
+  #fade-wrapper.fade-out {
+    opacity: 0;
+  }
+  .hero.join-hero {
+    background: url('/images/join-hero.JPG') center/cover no-repeat;
+  }  
+  
   
   footer {
     text-align: center;
