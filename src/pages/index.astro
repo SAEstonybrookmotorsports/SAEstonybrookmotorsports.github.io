@@ -1,11 +1,88 @@
 ---
-import Welcome from '../components/Welcome.astro';
-import Layout from '../layouts/Layout.astro';
-
-// Welcome to Astro! Wondering what to do next? Check out the Astro documentation at https://docs.astro.build
-// Don't want to use any of this? Delete everything in this file, the `assets`, `components`, and `layouts` directories, and start fresh.
+import "../styles/global.css";
+import LogoAnimation from "../components/LogoAnimation.astro";
 ---
 
-<Layout>
-	<Welcome />
-</Layout>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Stony Brook Motorsports</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet" />
+  </head>
+
+  <body>
+    <!-- 🔧 Intro Animation Overlay -->
+    <LogoAnimation />
+
+    <!-- 🧭 Main Navigation -->
+    <header class="navbar">
+      <div class="nav-left">
+        <a href="#">Past Cars</a>
+        <a href="#">Subsystems</a>
+        <a href="#">Team</a>
+      </div>
+
+      <img src="/images/sbmlogo.webp" class="final-logo" id="navbar-logo" />
+
+      <div class="nav-right">
+        <a href="#">Sponsors</a>
+        <a href="#">Photos</a>
+        <a href="#">Join</a>
+        <a href="#">Contact Us</a>
+      </div>
+    </header>
+
+    <!-- 📄 Page Content -->
+    <main>
+      <section class="hero">
+        <h2>A Racing Team with History</h2>
+      </section>
+
+      <section id="about" class="section">
+        <h3>About Us</h3>
+        <p>
+          We are Stony Brook Motorsports — a student-run team of engineers, designers, and business leads building electric and combustion racecars to compete in BAJA SAE.
+        </p>
+      </section>
+
+      <section id="team" class="section">
+        <h3>Meet the Team</h3>
+        <p>
+          Our interdisciplinary team brings together mechanical, electrical, computer, and business minds to push the limits of student-built motorsports.
+        </p>
+      </section>
+
+      <section id="contact" class="section">
+        <h3>Contact Us</h3>
+        <p>
+          Email: stonybrookbmotorsports@gmail.com<br />
+          Instagram: <a href="https://instagram.com/stonybrookbmotorsports" target="_blank" rel="noopener noreferrer">@stonybrookbmotorsports</a>
+        </p>
+      </section>
+    </main>
+
+    <!-- 🔻 Footer -->
+    <footer>
+      &copy; 2025 Stony Brook Motorsports. All rights reserved.
+    </footer>
+
+    <!-- 🎬 Animation Trigger Script -->
+    <script>
+      window.addEventListener('DOMContentLoaded', () => {
+        setTimeout(() => {
+          const overlay = document.querySelector('.animation-overlay');
+          const logo = document.getElementById('navbar-logo');
+
+          if (overlay instanceof HTMLElement) {
+            overlay.style.display = 'none';
+          }
+
+          if (logo instanceof HTMLElement) {
+            logo.style.opacity = '1';
+          }
+        }, 4000); // Match animation duration
+      });
+    </script>
+  </body>
+</html>
