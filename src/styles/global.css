@@ -18,7 +18,7 @@
     align-items: center;
     padding: 1rem 2rem;
     background-color: #2a0000;
-    position: sticky;
+    position:relative;
     top: 0;
     z-index: 999;
   }
@@ -59,6 +59,12 @@
   .nav-links a:hover {
     color: #ff5252; /* accent color on hover */
   }
+  .navbar-logo {
+    height: 80px;       /* Adjust height as needed */
+    width: auto;
+    filter: drop-shadow(0 0 2px rgb(180, 177, 177));
+    transition: transform 0.3s ease;
+  }
   
   .hero {
     height: 80vh;
@@ -91,6 +97,44 @@
   
   .section p {
     font-size: 1.1rem;
+  }
+  .sponsors {
+    padding: 4rem 2rem;
+    background-color: #000;
+    text-align: center;
+  }
+  
+  .sponsors h3 {
+    font-size: 2rem;
+    margin-bottom: 2.5rem;
+    color: white;
+  }
+  
+  .sponsor-grid {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 2rem; /* space between logos */
+    padding: 0 1rem;
+  }
+  
+  .sponsor-grid a {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .sponsor-grid img[alt="Solidworks"],.sponsor-grid img[alt="KK Finishing Inc"] {
+    height: 80px;
+  }
+  .sponsor-grid img {
+    max-height: 80px;
+    width: auto;
+    filter: drop-shadow(0 0 1px white);
+    transition: transform 0.3s ease;
+  }
+  
+  .sponsor-grid img:hover {
+    transform: scale(1.05);
   }
   
   footer {
