@@ -1,0 +1,32 @@
+.subsystem {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 2rem;
+    margin: 3rem 0;
+    flex-wrap: wrap;
+  }
+  
+  .subsystem-text {
+    flex: 1 1 55%;
+  }
+  
+  .subsystem-image {
+    flex: 1 1 40%;
+    min-height: 200px;
+    background-color: #111;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(255, 255, 255, 0.05);
+  }
+  
+  .subsystem-image img {
+    width: 100%;
+    height: auto;
+    border-radius: 8px;
+    object-fit: cover;
+  }
+  
+  .center-text {
+    text-align: center;
+  }
+  
