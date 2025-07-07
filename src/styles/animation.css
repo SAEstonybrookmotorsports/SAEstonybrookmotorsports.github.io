@@ -1,0 +1,147 @@
+/* Full-page animation overlay */
+.animation-overlay {
+    position: fixed;
+    z-index: 9999;
+    background: rgba(0, 0, 0, 0.9);
+    width: 100vw;
+    height: 100vh;
+    backdrop-filter: blur(5px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  /* Main logo animation section */
+  .logo-animation {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+  }
+  
+  /* Initial tools */
+  .tool {
+    position: absolute;
+    width: 120px;
+    opacity: 0;
+    animation-duration: 1.5s;
+    animation-fill-mode: forwards;
+    filter: drop-shadow(0 0 10px #ffffff);
+  }
+  
+  .screwdriver {
+    transform-origin: top right;
+    animation-name: rotate-screwdriver;
+    animation-delay: 0.2s;
+  }
+  
+  .wrench {
+    transform-origin: top left;
+    animation-name: rotate-wrench;
+    animation-delay: 0.2s;
+  }
+  
+  /* Text fade in */
+  .text-container {
+    position: relative;
+    width: 80%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 20; /* pushes it below tools */
+    gap: 10px;
+  }
+  
+  .text {
+    max-width: 300px;
+    opacity: 0;
+    filter: drop-shadow(0 0 10px #000000);
+  }
+  
+ 
+  .text:first-child {
+    animation: fadeInTop 1s ease forwards;
+    animation-delay: 1.5s;
+  }
+  
+  .text:last-child {
+    animation: fadeInBottom 1s ease forwards;
+    animation-delay: 2.5s;
+  }  
+  .text-container img:first-child {
+    max-width: 300px; /* StonyBrook logo */
+  }
+  
+  .text-container img:last-child {
+    max-width: 250px; /* Motorsports logo */
+  }
+  .delay {
+    animation-delay: 2s;
+    margin-top: 10px;
+  }
+  
+  @keyframes rotate-screwdriver {
+    from {
+      transform: rotate(-120deg) translateX(-100px);
+      opacity: 0;
+    }
+    to {
+      transform: rotate(0deg) translateX(0);
+      opacity: 1;
+    }
+  }
+  
+  @keyframes rotate-wrench {
+    from {
+      transform: rotate(120deg) translateX(100px);
+      opacity: 0;
+    }
+    to {
+      transform: rotate(0deg) translateX(0);
+      opacity: 1;
+    }
+  }
+  @keyframes fadeInTop {
+    from {
+      opacity: 0;
+      transform: translateY(-30px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+  
+  @keyframes fadeInBottom {
+    from {
+      opacity: 0;
+      transform: translateY(30px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+  
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+      transform: translateY(20px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+  
+  /* Final logo in navbar (initially hidden) */
+  .final-logo {
+    height: 60px;
+    width: auto;
+    opacity: 0;
+    transition: opacity 0.6s ease;
+  }
+
