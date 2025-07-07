@@ -1,0 +1,38 @@
+.hero {
+    text-align: center;
+    padding: 2rem;
+    background: linear-gradient(to bottom, #fff7f7, #fff);
+  }
+  
+  .hero h1, .hero h2 {
+    margin: 0;
+    font-size: 2.5rem;
+    color: #333;
+  }
+  .gallery-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 1.5rem;
+    padding: 2rem;
+    max-width: 1300px; /* Restrict grid container width */
+    margin: 0 auto;     /* Center it */
+  }
+  
+  .gallery-item {
+    width: 100%;
+    max-width: 300px;
+  }
+  .gallery-media {
+    width: 100%;
+    height: auto;
+    border-radius: 8px;
+    object-fit: cover;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+    transition: transform 0.3s ease;
+  }
+  
+  .gallery-media:hover {
+    transform: scale(1.03);
+    box-shadow: 0 4px 15px rgba(255, 255, 255, 0.2);
+  }
+  

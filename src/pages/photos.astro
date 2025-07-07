@@ -1,0 +1,98 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { fetchCloudinaryImages } from '../lib/server/cloudinary';
+import '../styles/global.css';
+
+interface ImageData {
+  url: string;
+  name: string;
+}
+
+const images: ImageData[] = await fetchCloudinaryImages();
+---
+
+<BaseLayout>
+  <section class="hero" style="background-image: url('/images/gallery-hero.jpg'); background-size: cover; background-position: center;">
+    <h2 style="text-align: center; background-color: rgba(0, 0, 0, 0.6); padding: 1rem; border-radius: 8px;">
+      Team Gallery
+    </h2>
+  </section>
+
+  <section class="gallery">
+    {images.length === 0 ? (
+      <p style="text-align: center;">No images found. Please check Cloudinary configuration and terminal logs.</p>
+    ) : (
+      <div class="gallery-grid">
+        {images.map((item) => (
+          <div class="gallery-item">
+            {item.url.endsWith('.mp4') ? (
+              <video
+                src={item.url}
+                muted
+                loop
+                playsinline
+                class="gallery-media"
+              ></video>
+            ) : (
+              <img
+                src={item.url}
+                alt={item.name}
+                class="gallery-media"
+                loading="lazy"
+              />
+            )}
+          </div>
+        ))}
+      </div>
+    )}
+  </section>
+</BaseLayout>
+
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    const videos = document.querySelectorAll('video.gallery-media');
+    videos.forEach((video) => {
+      const vid = video as HTMLVideoElement;
+      vid.addEventListener('mouseenter', () => vid.play());
+      vid.addEventListener('mouseleave', () => {
+        vid.pause();
+        vid.currentTime = 0;
+      });
+    });
+  });
+</script>
+
+<style>
+.gallery {
+  padding: 2rem 0;
+  width: 100%;
+  max-width: 100%;
+  margin: 0;
+}
+
+.gallery-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: 1.5rem;
+  padding: 0 2rem;
+  box-sizing: border-box;
+}
+
+.gallery-item {
+  overflow: hidden;
+}
+
+.gallery-media {
+  width: 100%;
+  height: auto;
+  border-radius: 8px;
+  object-fit: cover;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.gallery-media:hover {
+  transform: scale(1.03);
+  box-shadow: 0 4px 15px rgba(255, 255, 255, 0.2);
+}
+</style>
