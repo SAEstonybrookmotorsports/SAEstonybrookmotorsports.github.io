@@ -1,0 +1,50 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import '../styles/global.css';
+---
+
+<BaseLayout>
+  <section class="hero" style="background-image: url('/images/sponsors-hero.JPG'); background-size: cover; background-position: center;">
+    <h2 style="text-align: center; background-color: rgba(0, 0, 0, 0.6); padding: 1rem; border-radius: 8px;">
+      Our Sponsors
+    </h2>
+  </section>
+
+  <section id="sponsors" class="sponsor-section">
+    <h2 style="text-align: center;">Thank You to Our Sponsors</h2>
+    <h4 style="text-align: center; max-width: 700px; margin: 1rem auto;">
+      We’re incredibly grateful to all of our sponsors for their continued support. Your contributions help us innovate, compete, and inspire the next generation of engineers. If you or your company are interested in partnering with us, please <a href="/contact" style="color: #ff4d4d;">reach out</a> — we’d love to work with you.
+    </h4>
+
+    <div class="sponsor-logos">
+      <div class="sponsor-grid">
+        <a href="https://www.stonybrook.edu/ceas/" target="_blank"><img src="/images/sponsors/ceas.png" alt="CEAS" /></a>
+        <a href="https://www.stonybrook.edu/ceas/connect" target="_blank"><img src="/images/sponsors/usg.png" alt="USG" /></a>
+        <a href="https://www.stonybrook.edu/ceas/mechanical" target="_blank"><img src="/images/sponsors/mecheng.png" alt="Mechanical Engineering" /></a>
+        <a href="https://www.solidworks.com/" target="_blank"><img src="/images/sponsors/solidworks.svg" alt="Solidworks" /></a>
+        <a href="https://www.ansys.com/" target="_blank"><img src="/images/sponsors/ansys.svg" alt="Ansys" /></a>
+        <a href="https://www.kisssoft.com/en/" target="_blank"><img src="/images/sponsors/kisssoft.svg" alt="KISSsoft" /></a>
+        <a href="https://hexagon.com/" target="_blank"><img src="/images/sponsors/hexagon.svg" alt="Hexagon" /></a>
+        <a href="https://www.mastercam.com/" target="_blank" rel="noopener noreferrer">
+            <img src="public/images/sponsors/mastercam.svg" alt="Mastercam" />
+          </a>
+        <a href="https://www.kenesto.com/" target="_blank"><img src="/images/sponsors/kenesto.png" alt="Kenesto" /></a>
+        <a href="http://www.flagpolesinc.com/" target="_blank"><img src="/images/sponsors/flagpoles.gif" alt="Flagpoles Inc" /></a>
+        <a href="https://www.4xpro.com/" target="_blank"><img src="/images/sponsors/4xpro.avif" alt="4XPro" /></a>
+        <a href="https://www.ghaasfoundation.org/" target="_blank"><img src="/images/sponsors/ghaas.png" alt="Gene Haas Foundation" /></a>
+        <a href="http://basebrooklyn.net/online/" target="_blank"><img src="/images/sponsors/basebrooklyn.png" alt="Base Brooklyn" /></a>
+        <a href="https://burtonind.com/" target="_blank"><img src="/images/sponsors/burton.png" alt="Burton Industries Inc" /></a>
+        <a href="https://maloyalaser.com/" target="_blank"><img src="/images/sponsors/maloya.webp" alt="Maloya" /></a>
+        <a href="#"><img src="/images/sponsors/di_finishing.png" alt="D&I Finishing Inc" /></a>
+        <a href="http://www.kkfinishingco.com/" target="_blank"><img src="/images/sponsors/kkfinishing.png" alt="KK Finishing Inc" /></a>
+      </div>
+    </div>
+  </section>
+
+  <script>
+    window.addEventListener("load", () => {
+      const logos = document.querySelector(".sponsor-logos");
+      if (logos) logos.classList.add("fade-to-white");
+    });
+  </script>
+</BaseLayout>

@@ -201,6 +201,48 @@
   .gallery img:hover {
     transform: scale(1.05);
   }
+ /* The thank-you section stays dark */
+.sponsor-section {
+    background-color: black;
+    color: white;
+    padding: 4rem 2rem;
+  }
+  
+  /* Only the logo grid area will fade to white */
+  .sponsor-logos {
+    background-color: black;
+    color: white;
+    transition: background-color 1.5s ease, color 1.5s ease;
+    padding: 3rem 2rem;
+  }
+  
+  .sponsor-logos.fade-to-white {
+    background-color: white;
+    color: black;
+  }
+  
+  .sponsor-logos.fade-to-white a {
+    color: black;
+  }
+  
+  .sponsor-grid {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 2rem;
+    margin-top: 2rem;
+  }
+  
+  .sponsor-grid img {
+    max-height: 80px;
+    width: auto;
+    filter: drop-shadow(0 0 1px black);
+    transition: transform 0.3s ease;
+  }
+  
+  .sponsor-grid img:hover {
+    transform: scale(1.05);
+  }
   
   
   footer {
