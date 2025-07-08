@@ -1,0 +1,155 @@
+.past-cars-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    gap: 2rem;
+    padding: 2rem;
+  }
+  
+  .past-car-card {
+    position: relative;
+    overflow: hidden;
+    border-radius: 10px;
+    background: #000; /* or #111 depending on theme */
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    text-decoration: none;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+  }
+  
+  .past-car-card img {
+    display: block;
+    width: 100%;
+    height: auto;
+    object-fit: contain;
+    transition: transform 0.4s ease;
+  }
+  
+  .past-car-card:hover img {
+    transform: scale(1.03);
+  }
+  
+  /* Hover box – not visible by default */
+  .past-car-hover-box {
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: white;
+    color: #222;
+    font-weight: 600;
+    font-size: 1.1rem;
+    padding: 0.5rem;
+    border-top: 1px solid #ddd;
+    text-align: center;
+  
+    transform: translateY(100%);
+    opacity: 0;
+    transition: transform 0.3s ease, opacity 0.3s ease;
+    pointer-events: none;
+  }
+  
+  /* Show on hover */
+  .past-car-card:hover .past-car-hover-box {
+    transform: translateY(0);
+    opacity: 1;
+  }
+  .hero {
+    position: relative;
+    height: 60vh;
+    display: flex;
+    align-items: flex-end;
+    color: white;
+  }
+  .hero-overlay {
+    background: rgba(0, 0, 0, 0.6);
+    padding: 1rem 2rem;
+    width: 100%;
+  }
+  .hero h1 {
+    margin: 0;
+    font-size: 2.5rem;
+  }
+  .hero h2 {
+    margin: 0.5rem 0;
+    font-size: 1.75rem;
+  }
+  .standing {
+    font-style: italic;
+  }
+  
+  .photo-links {
+    list-style: none;
+    padding: 0;
+  }
+  .photo-links li + li {
+    margin-top: 0.5rem;
+  }
+  .photo-links a {
+    color: #ff4d4d;
+    text-decoration: none;
+  }
+  .photo-links a:hover {
+    text-decoration: underline;
+  }
+  
+  .specs {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 1rem;
+  }
+  .specs th,
+  .specs td {
+    border: 1px solid #444;
+    padding: 0.5rem 1rem;
+    text-align: left;
+  }
+  .back-button {
+    display: inline-block;
+    margin-top: 2rem;
+    color: #ff4d4d;
+    text-decoration: none;
+  }
+  .back-button:hover {
+    text-decoration: underline;
+  }
+  /* spacing under each photo link */
+.photo-links {
+  list-style: none;
+  padding: 0;
+  margin: 0.5rem 0;
+}
+.photo-links li {
+  margin-bottom: 0.5rem;
+}
+.photo-links a {
+  color: #ff4d4d;
+  text-decoration: none;
+}
+.photo-links a:hover {
+  text-decoration: underline;
+}
+
+/* awards styling */
+.awards-list {
+  list-style: disc inside;
+  margin: 0.5rem 0;
+  padding-left: 1rem;
+}
+.awards-list li {
+  margin-bottom: 0.4rem;
+}
+
+/* back button */
+.back-button {
+  display: inline-block;
+  margin-top: 1rem;
+  color: #2a0000;
+  font-weight: bold;
+  text-decoration: none;
+}
+.back-button:hover {
+  text-decoration: underline;
+}
+
+  

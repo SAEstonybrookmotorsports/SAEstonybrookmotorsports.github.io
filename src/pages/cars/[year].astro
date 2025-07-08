@@ -1,0 +1,108 @@
+---
+// src/pages/cars/[year].astro
+
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import type { CarData, PhotoLink } from '../../lib/carData';
+import { carData } from '../../lib/carData';
+import '../../styles/global.css';
+import '../../styles/pastcars.css';
+
+export const prerender = true;
+
+export async function getStaticPaths() {
+  return carData.map((car) => ({
+    params: { year: car.year },
+  }));
+}
+
+const { year } = Astro.params as { year: string };
+const car = carData.find((c) => c.year === year);
+
+if (!car) {
+  return new Response(`Car for year ${year} not found.`, { status: 404 });
+}
+
+// build specs list from either specs[] or specNames/specValues
+let specList: { name: string; value: string }[] = [];
+if (Array.isArray((car as any).specs)) {
+  specList = (car as any).specs;
+} else if (
+  Array.isArray((car as any).specNames) &&
+  Array.isArray((car as any).specValues) &&
+  (car as any).specNames.length === (car as any).specValues.length
+) {
+  specList = (car as any).specNames.map((name: string, i: number) => ({
+    name,
+    value: (car as any).specValues[i],
+  }));
+}
+---
+
+<BaseLayout title={`Car ${car.year} — #${car.carNumber}`}>
+  <!-- Hero -->
+  <section
+    class="hero"
+    style={`background-image: url('${car.photoUrl}'); background-size: cover; background-position: center;`}
+  >
+    <div class="hero-overlay">
+      <h1>Car {car.carNumber}</h1>
+      <h2>{car.year}</h2>
+      <p class="standing">{car.standing}</p>
+    </div>
+  </section>
+
+  <!-- Photos Links -->
+  <section class="section">
+    <h3>Competition Photos</h3>
+    {car.photosLink.length > 0 ? (
+      <ul class="photo-links">
+        {car.photosLink.map(({ label, url }: PhotoLink) => (
+          <li>
+            <a href={url} target="_blank" rel="noopener">
+              {label}
+            </a>
+          </li>
+        ))}
+      </ul>
+    ) : (
+      <p>No photos available.</p>
+    )}
+  </section>
+
+  <!-- Specifications -->
+  {specList.length > 0 && (
+    <section class="section">
+      <h3>Specifications</h3>
+      <table class="specs">
+        <thead>
+          <tr><th>Parameter</th><th>Value</th></tr>
+        </thead>
+        <tbody>
+          {specList.map(({ name, value }) => (
+            <tr>
+              <td>{name}</td>
+              <td>{value}</td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
+    </section>
+  )}
+
+  <!-- Awards -->
+  {car.awards && car.awards.length > 0 && (
+    <section class="section">
+      <h3>Awards</h3>
+      <ul class="awards-list">
+        {car.awards.map((award) => (
+          <li>{award}</li>
+        ))}
+      </ul>
+    </section>
+  )}
+
+  <!-- Back link -->
+  <section class="section">
+    <a href="/past-cars" class="back-button">← Back to All Cars</a>
+  </section>
+</BaseLayout>

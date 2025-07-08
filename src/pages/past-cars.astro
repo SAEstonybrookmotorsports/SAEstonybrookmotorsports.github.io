@@ -1,0 +1,54 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { carData } from '../lib/carData';
+import '../styles/global.css';
+import '../styles/pastcars.css';
+
+---
+
+<BaseLayout title="Past Cars">
+  <section class="hero" style="background-image: url('/images/pastcars/1988.jpg'); background-size: cover; background-position: center;">
+    <h2 style="text-align: center; background-color: rgba(0, 0, 0, 0.6); padding: 1rem; border-radius: 8px;">
+      Past Cars
+    </h2>
+  </section>
+
+  <section class="past-cars-grid">
+    {[...carData]
+      .sort((a, b) => parseInt(b.year) - parseInt(a.year))
+      .map((car) => (
+        <a href={car.detailPageUrl} class="past-car-card">
+          <img src={car.photoUrl} alt={`Car ${car.carNumber} - ${car.year}`} />
+          <div class="past-car-hover-box">
+            <span>{car.year}</span>
+          </div>
+        </a>
+    ))}
+  </section>
+  
+
+  <script>
+    document.addEventListener("DOMContentLoaded", () => {
+      const rows = document.querySelectorAll(".fade-row");
+
+      const observer = new IntersectionObserver(
+        entries => {
+          entries.forEach(entry => {
+            if (entry.isIntersecting) {
+              entry.target.classList.add("visible");
+              entry.target.classList.remove("fade-out");
+            } else {
+              entry.target.classList.remove("visible");
+              entry.target.classList.add("fade-out");
+            }
+          });
+        },
+        {
+          threshold: 0.3,
+        }
+      );
+
+      rows.forEach(row => observer.observe(row));
+    });
+  </script>
+</BaseLayout>
