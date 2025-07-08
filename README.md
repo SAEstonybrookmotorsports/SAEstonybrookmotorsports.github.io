@@ -1,11 +1,8 @@
-Here’s a detailed **Markdown file** documenting the key features and functionality of your **Stony Brook Motorsports website**, based on the code you provided:
-
 ---
 
 # Stony Brook Motorsports Website Documentation
 
 ## Overview
-
 This website represents the official online presence of the **Stony Brook Motorsports Team**, showcasing the team's history, sponsors, and contact information. Built with **Astro**, it includes a dynamic landing animation, a structured layout system, responsive design, and sponsor integrations.
 
 ---
