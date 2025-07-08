@@ -58,8 +58,10 @@
     position: relative;
     height: 60vh;
     display: flex;
-    align-items: flex-end;
+    align-items: center;  /* center vertically */
+    justify-content: center;  /* center horizontally */
     color: white;
+    text-align: center;
   }
   .hero-overlay {
     background: rgba(0, 0, 0, 0.6);
@@ -71,8 +73,11 @@
     font-size: 2.5rem;
   }
   .hero h2 {
-    margin: 0.5rem 0;
-    font-size: 1.75rem;
+    font-size: 3rem;
+    color: white;
+    background-color: rgba(0, 0, 0, 0.6);
+    padding: 1rem 2rem;
+    border-radius: 10px;
   }
   .standing {
     font-style: italic;
