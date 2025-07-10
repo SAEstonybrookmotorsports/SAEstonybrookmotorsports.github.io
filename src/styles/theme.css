@@ -22,7 +22,7 @@
 .hero-title, .hero-sub {
   font-family: 'Montserrat', sans-serif;
   color: #fff;
-  text-shadow: 0 2px 6px rgba(0,0,0,0.6);
+  text-shadow: 0 2px 6px rgba(0,0,0,0.9);
 }
 .hero-title {
   font-size: clamp(2.5rem,6vw,5rem);
@@ -35,7 +35,6 @@
   margin-bottom: 1.5rem;
 }
 
-/*───────────────── Custom Arrow Button ─────────────────*/
 .btn-cta {
   display: inline-flex;
   align-items: center;
@@ -49,6 +48,7 @@
   transition: background .2s, transform .2s;
   text-decoration: none;
 }
+/*───────────────── Custom Arrow Button ─────────────────*/
 .btn-cta .arrow-circle {
   display: inline-block;
   margin-left: .5rem;
@@ -225,7 +225,22 @@
     filter: grayscale(0);
     transform: scale(1.05);
   } 
-
+  .hero.join-hero {
+    --hero-img: url('/images/join-hero.JPG');
+  }
+  .contact-block {
+    margin-bottom: 2rem;
+  }
+  .contact-block h3 {
+    font-size: 1.5rem;
+    color: #cc0033;
+    margin-bottom: .5rem;
+  }
+  .contact-block p {
+    font-size: 1rem;
+    color: #fff;
+    line-height: 1.5;
+  }
 /*───────────────── Footer─────────────────*/
 footer {
   text-align: center;

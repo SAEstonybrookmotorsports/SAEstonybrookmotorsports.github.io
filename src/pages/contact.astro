@@ -1,47 +1,63 @@
 ---
-import BaseLayout from '../layouts/BaseLayout.astro';
-import '../styles/global.css';
+import "../styles/global.css";
+import "../styles/theme.css";
+import BaseLayout from "../layouts/BaseLayout.astro";
 ---
-
 <BaseLayout>
-  <section class="hero" style="background-image: url('/images/contact-hero.jpg'); background-size: cover; background-position: center;">
-    <h2 style="text-align: center; background-color: rgba(0, 0, 0, 0.6); padding: 1rem; border-radius: 8px;">
-      Contact Us
-    </h2>
+  <!-- HERO -->
+  <section class="hero" style="--hero-img: url('/images/contact-hero.jpg')">
+    <div class="hero-content">
+      <h1 class="hero-title">Contact Us</h1>
+      <p class="hero-sub">We'd Love to Hear From You</p>
+    </div>
   </section>
 
-  <section class="section" style="max-width: 800px; margin: 0 auto;">
-    <h3>We'd love to hear from you!</h3>
+  <!-- CONTACT INFO -->
+  <section class="section about" style="max-width:800px; margin:0 auto;">
+    <h2>Get in Touch</h2>
     <p>
-      Whether you're a prospective sponsor, student looking to join, or just want to learn more about what we do, Please feel free to reach out!
+      Whether you're a prospective sponsor, a student interested in joining, or simply curious about our work, drop us a line!
     </p>
+    <div class="contact-block">
+      <h3>A Little More About Us ...</h3>
+      <p>
+        Stony Brook Motorsports is a student-run team in the Baja SAE series. We design, build, and race open-wheel off-road vehicles from the ground up, mastering mechanical, electrical, and software engineering—plus business, logistics, and teamwork.
+      </p>
+    </div>
 
-    <h4>Email</h4>
-    <p>
-      <a href="mailto:stonybrookmotorsports@gmail.com" style="color: #ff4d4d; font-weight: 500;">stonybrookmotorsports@gmail.com</a>
-    </p>
+    <div class="contact-block">
+      <h3>Email</h3>
+      <p>
+        <a href="mailto:stonybrookmotorsports@gmail.com" class="btn-secondary">
+          stonybrookmotorsports@gmail.com
+        </a>
+      </p>
+    </div>
 
-    <h4>Location</h4>
-    <p>
-      Stony Brook Motorsports<br />
-      Heavy Engineering Basement<br />
-      Stony Brook University<br />
-      Stony Brook, NY 11794
-    </p>
-    <h4>Office Hours</h4>
+    <div class="contact-block">
+      <h3>Location</h3>
+      <p>
+        Heavy Engineering Basement<br/>
+        Stony Brook University<br/>
+        Stony Brook, NY 11794
+      </p>
+    </div>
 
-    <p>
-        TBD
-    </p>
+    <div class="contact-block">
+      <h3>Office Hours</h3>
+      <p>TBD (email us to schedule a visit!)</p>
+    </div>
 
-    <h4>Follow Us</h4>
-    <p>
-      Instagram: <a href="https://instagram.com/stonybrookmotorsports" target="_blank">@stonybrookmotorsports</a><br />
-    </p>
+    <div class="contact-block">
+      <h3>Follow Us</h3>
+      <p>
+        Instagram: 
+        <a href="https://instagram.com/stonybrookmotorsports" target="_blank" class="btn-secondary">
+          @stonybrookmotorsports
+        </a>
+      </p>
+    </div>
 
-    <h4>About Us</h4>
-    <p>
-      Stony Brook Motorsports is a student-run team competing in the international BAJA SAE series. We design, manufacture, and race open-wheel cars from the ground up, gaining hands-on experience in mechanical, electrical, and software engineering — as well as business, logistics, and teamwork.
-    </p>
+   
   </section>
 </BaseLayout>
