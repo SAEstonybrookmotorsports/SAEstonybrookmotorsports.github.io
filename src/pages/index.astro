@@ -5,130 +5,203 @@ import BaseLayout from "../layouts/BaseLayout.astro";
 <LogoAnimation />
 
 <BaseLayout>
-  <!-- 🔧 Animation (landing page only) -->
+  <!-- HERO -->
+  <header class="hero">
+    <div class="hero-content">
+      <h1 class="hero-title">Stony Brook Motorsports</h1>
+      <p class="hero-sub">A Racing Team with History</p>
+      <a href="/past-cars" class="btn-cta">
+        See how we placed at Baja 2025
+        <span class="arrow-circle"></span>
+      </a>
+    </div>
+  </header>
 
-  <!-- Hero section -->
-  <section class="hero">
-    <h2>A Racing Team with History</h2>
+  <!-- JOIN + RECAP buttons in navbar slot (in BaseLayout, under .nav-right) -->
+  <!-- Example: -->
+  <!-- <a href="/join" class="btn-secondary">Join the Team</a> -->
+  <!-- <a href="/last-baja" class="btn-secondary">Baja 2026 Recap</a> -->
+
+  <!-- STATS BAR -->
+  <section class="stat-bar">
+    <div class="stat-item" data-target="75">
+      <h3>0</h3><p>Active Members</p>
+    </div>
+    <div class="stat-item" data-target="20">
+      <h3>0</h3><p>Competitions</p>
+    </div>
+    <div class="stat-item" data-target="120">
+      <h3>0</h3><p>Projects</p>
+    </div>
   </section>
 
-  <!-- Sponsors -->
+  <!-- ABOUT THE TEAM -->
+  <section class="about">
+    <h2>Get to Know Us</h2>
+    <p>
+      We're a multidisciplinary student team passionate about building off-road race cars from scratch.<br>
+      We push the limits of engineering and teamwork  all while forging lifelong friendships.
+    </p>
+    <!-- moved into navbar -->
+  </section>
+
   <section id="sponsors" class="sponsors">
 	<h3>Our Sponsors</h3>
-	<div class="sponsor-logos">
-
-	<div class="sponsor-grid">
-	  <a href="https://www.stonybrook.edu/ceas/" target="_blank" rel="noopener noreferrer">
-		<img src="/images/sponsors/ceas.png" alt="Stony Brook College of Engineering & Applied Sciences" />
-	  </a>
-	  <a href="https://www.stonybrook.edu/ceas/connect" target="_blank" rel="noopener noreferrer">
-		<img src="/images/sponsors/usg.png" alt="Stony Brook USG" />
-	  </a>
-	  <a href="https://www.stonybrook.edu/ceas/mechanical" target="_blank" rel="noopener noreferrer">
-		<img src="/images/sponsors/mecheng.png" alt="Stony Brook Mechanical Engineering" />
-	  </a>
-	  <a href="https://www.solidworks.com/" target="_blank" rel="noopener noreferrer">
-		<img src="/images/sponsors/solidworks.svg" alt="Solidworks" />
-	  </a>
-	  <a href="https://www.ansys.com/" target="_blank" rel="noopener noreferrer">
-		<img src="/images/sponsors/ansys.svg" alt="Ansys" />
-	  </a>
-	  <a href="https://www.kisssoft.com/en/" target="_blank" rel="noopener noreferrer">
-		<img src="/images/sponsors/kisssoft.svg" alt="KISSsoft" />
-	  </a>
-	  <a href="https://hexagon.com/" target="_blank" rel="noopener noreferrer">
-		<img src="/images/sponsors/hexagon.svg" alt="Hexagon" />
-	  </a>
-	  <a href="https://www.mastercam.com/" target="_blank" rel="noopener noreferrer">
-		<img src="/images/sponsors/Mastercam.svg" alt="Mastercam" />
-	  </a>
-	  <a href="https://www.kenesto.com/" target="_blank" rel="noopener noreferrer">
-		<img src="/images/sponsors/kenesto.png" alt="Kenesto" />
-	  </a>
-	  <a href="http://www.flagpolesinc.com/" target="_blank" rel="noopener noreferrer">
-		<img src="/images/sponsors/flagpoles.gif" alt="Flagpoles Inc" />
-	  </a>
-	  <a href="https://www.4xpro.com/" target="_blank" rel="noopener noreferrer">
-		<img src="/images/sponsors/4xpro.avif" alt="4XPro" />
-	  </a>
-	  <a href="https://www.ghaasfoundation.org/" target="_blank" rel="noopener noreferrer">
-		<img src="/images/sponsors/ghaas.png" alt="Gene Haas Foundation" />
-	  </a>
-	  <a href="http://basebrooklyn.net/online/" target="_blank" rel="noopener noreferrer">
-		<img src="/images/sponsors/basebrooklyn.png" alt="Base Brooklyn" />
-	  </a>
-	  <a href="https://burtonind.com/" target="_blank" rel="noopener noreferrer">
-		<img src="/images/sponsors/burton.png" alt="Burton Industries Inc" />
-	  </a>
-	  <a href="https://maloyalaser.com/" target="_blank" rel="noopener noreferrer">
-		<img src="/images/sponsors/maloya.webp" alt="Maloya" />
-	  </a>
-	  <a href="#" target="_blank" rel="noopener noreferrer">
-		<img src="/images/sponsors/di_finishing.png" alt="D&I Finishing Inc" />
-	  </a>
-	  <a href="http://www.kkfinishingco.com/" target="_blank" rel="noopener noreferrer">
-		<img src="/images/sponsors/kkfinishing.png" alt="KK Finishing Inc" />
-	  </a>
-	</div>
-</div>
-
-  </section>
   
+	<!-- Platinum Tier -->
+	<div class="sponsor-tier platinum">
+	  <h4>Platinum</h4>
+	  <div class="sponsor-grid">
+		<div class="logo-box">
+		  <a href="https://www.stonybrook.edu/ceas/" target="_blank">
+			<img src="/images/sponsors/ceas.jpg" alt="Stony Brook College of Engineering & Applied Sciences" />
+		  </a>
+		</div>
+		<div class="logo-box">
+		  <a href="https://www.stonybrook.edu/ceas/connect" target="_blank">
+			<img src="/images/sponsors/usg.png" alt="Stony Brook USG" />
+		  </a>
+		</div>
+		<div class="logo-box">
+		  <a href="https://www.stonybrook.edu/ceas/mechanical" target="_blank">
+			<img src="/images/sponsors/mecheng.png" alt="Stony Brook Mechanical Engineering" />
+		  </a>
+		</div>
+		<div class="logo-box">
+		  <a href="https://www.solidworks.com/" target="_blank">
+			<img src="/images/sponsors/solidworks.svg" alt="Solidworks" />
+		  </a>
+		</div>
+	  </div>
+	</div>
+  
+	<!-- Gold Tier -->
+	<div class="sponsor-tier gold">
+	  <h4>Gold</h4>
+	  <div class="sponsor-grid">
+		<div class="logo-box">
+		<a href="https://www.ansys.com/" target="_blank">
+			<img src="/images/sponsors/ansys.svg" alt="Ansys" />
+		  </a>
+		</div>
+		<div class="logo-box">
+		  <a href="https://www.kisssoft.com/en/" target="_blank">
+			<img src="/images/sponsors/kisssoft.svg" alt="KISSsoft" />
+		  </a>
+		</div>
+	
+		<div class="logo-box">
+		  <a href="https://hexagon.com/" target="_blank">
+			<img src="/images/sponsors/hexagon.png" alt="Hexagon" />
+		  </a>
+		</div>
+		<div class="logo-box">
+		  <a href="https://www.mastercam.com/" target="_blank">
+			<img src="/images/sponsors/Mastercam.svg" alt="Mastercam" />
+		</a>
 
-  <!-- Contact -->
-  <section id="contact" class="section">
-    <h3>Contact Us</h3>
-    <p>
-      Email: stonybrookbmotorsports@gmail.com<br />
-      Instagram: <a href="https://instagram.com/stonybrookmotorsports" target="_blank">@stonybrookmotorsports</a>
-    </p>
-  </section>
-
-  <!-- 🔄 Animation JS -->
-  <script>
-	window.addEventListener('DOMContentLoaded', () => {
-		const overlay = document.querySelector('.animation-overlay');
-		const logo = document.getElementById('navbar-logo');
-
-		// Check if animation has already played this session
-		const hasPlayed = sessionStorage.getItem('animationPlayed');
-
-		if (!hasPlayed) {
-			// Disable scrolling
-			document.body.style.overflow = 'hidden';
-
-			setTimeout(() => {
-				// Remove overlay and re-enable scroll
-				if (overlay instanceof HTMLElement) {
-					overlay.style.display = 'none';
-					document.body.style.overflow = 'auto';
-				}
-				if (logo instanceof HTMLElement) {
-					logo.style.opacity = '1';
-				}
-				// Mark animation as played
-				sessionStorage.setItem('animationPlayed', 'true');
-			}, 4000); // Match animation duration
-		} else {
-			// Skip animation entirely
-			if (overlay instanceof HTMLElement) {
-				overlay.style.display = 'none';
-			}
-			if (logo instanceof HTMLElement) {
-				logo.style.opacity = '1';
-			}
-		}
-	});
-	</script>
-
+	  </div>
+	</div>
+  
+	<!-- Silver Tier -->
+	<div class="sponsor-tier silver">
+	  <h4>Silver</h4>
+	  <div class="sponsor-grid">
+		<div class="logo-box">
+			<a href="https://www.kenesto.com/" target="_blank">
+			  <img src="/images/sponsors/kenesto.png" alt="Kenesto" />
+			</a>
+		  </div>
+		  <div class="logo-box">
+			<a href="http://www.flagpolesinc.com/" target="_blank">
+			  <img src="/images/sponsors/flagpoles.gif" alt="Flagpoles Inc" />
+			</a>
+		  </div>
+		  <div class="logo-box">
+			<a href="https://www.4xpro.com/" target="_blank">
+			  <img src="/images/sponsors/4xpro.avif" alt="4XPro" />
+			</a>
+		  </div>
+		  <div class="logo-box">
+			<a href="https://www.ghaasfoundation.org/" target="_blank">
+			  <img src="/images/sponsors/ghaas.png" alt="Gene Haas Foundation" />
+			</a>
+		  </div>
+		  <div class="logo-box">
+			<a href="https://base-brooklyn.myshopify.com/" target="_blank">
+			  <img src="/images/sponsors/basebrooklyn.webp" alt="Base Brooklyn" />
+			</a>
+		  </div>
+		  <div class="logo-box">
+			<a href="https://burtonind.com/" target="_blank">
+			  <img src="/images/sponsors/burton.png" alt="Burton Industries Inc" />
+			</a>
+		  </div>
+		  <div class="logo-box">
+			<a href="https://maloyalaser.com/" target="_blank">
+			  <img src="/images/sponsors/maloya.webp" alt="Maloya" />
+			</a>
+		  </div>
+		  <div class="logo-box">
+			<a href="#" target="_blank">
+			  <img src="/images/sponsors/di_finishing.png" alt="D&I Finishing Inc" />
+			</a>
+		  </div>
+		  <div class="logo-box">
+			<a href="http://www.kkfinishingco.com/" target="_blank">
+			  <img src="/images/sponsors/kkfinishing.png" alt="KK Finishing Inc" />
+			</a>
+		  </div>
+	  </div>
+	</div>
+</section>
   
   
 </BaseLayout>
-<script>
-	window.addEventListener('load', () => {
-	  const logos = document.querySelector('.sponsor-logos');
-	  if (logos) {
-		logos.classList.add('fade-to-white');
-	  }
-	});
-  </script>
+
+<script type="module">
+  window.addEventListener('DOMContentLoaded', () => {
+    // Animation overlay removal
+    const overlay = document.getElementById('animation-overlay');
+    const logo    = document.getElementById('navbar-logo');
+    const played  = sessionStorage.getItem('animationPlayed');
+    if (overlay && !played) {
+      overlay.style.pointerEvents = 'none';
+      setTimeout(() => { overlay.remove(); logo.style.opacity = '1'; sessionStorage.setItem('animationPlayed','true'); }, 4000);
+    } else overlay?.remove();
+
+    // Stats count‑up on scroll
+    const stats   = document.querySelectorAll('.stat-item');
+    const animate = () => {
+      stats.forEach((el) => {
+        const rect = el.getBoundingClientRect();
+        if (rect.top < window.innerHeight && !el.classList.contains('done')) {
+          const target = +el.dataset.target;
+          let count = 0;
+          const h3    = el.querySelector('h3');
+          const step  = Math.ceil(target / 50);
+          const timer = setInterval(() => {
+            count += step;
+            if (count >= target) {
+              count = target;
+              clearInterval(timer);
+              el.classList.add('done');
+            }
+            if (h3) h3.textContent = count + (el.classList.contains('done') ? '+' : '');
+          }, 20);
+        }
+      });
+    };
+    window.addEventListener('scroll', animate);
+    animate();
+
+    // Sponsors fade
+    const sp = document.getElementById('sponsors');
+    const logos = document.querySelector('.sponsor-logos');
+    window.addEventListener('scroll', () => {
+      if (sp.getBoundingClientRect().top < window.innerHeight / 2) {
+        logos?.classList.add('fade-to-white');
+      }
+    });
+  });
+</script>

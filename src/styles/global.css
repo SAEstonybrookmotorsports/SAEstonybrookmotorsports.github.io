@@ -1,255 +1,62 @@
-/* src/styles/global.css */
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap');
+
 * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    font-family: 'Roboto', sans-serif;
-  }
-  
-  body {
-    background-color: #000000;
-    color: white;
-    line-height: 1.6;
-  }
-  
-  .navbar {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 1rem 2rem;
-    background-color: #990000;
-    position:relative;
-    top: 0;
-    z-index: 999;
-  }
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
 
-  .nav-left,
-  .nav-right {
-    display: flex;
-    gap: 1.2rem;
-  }
-    
-  
-  .navbar h1 {
-    font-size: 1.8rem;
-  }
-  
-  .navbar a {
-    color: white;
-    text-decoration: none;
-    font-weight: 400;
-    font-size: 1.1rem;
-    transition: color 0.2s ease;
-  }
-  .navbar a:hover {
-    color: #D52027;
-  }
-  .nav-links {
-    display: flex;
-    gap: 1.5rem;
-    flex-wrap: wrap;
-  }
-  
-  .nav-links a {
-    color: white;
-    text-decoration: none;
-    font-weight: 500;
-    transition: color 0.3s;
-  }
-  
-  .nav-links a:hover {
-    color: #ff5252; /* accent color on hover */
-  }
-  .navbar-logo {
-    height: 80px;       /* Adjust height as needed */
-    width: auto;
-    filter: drop-shadow(0 0 2px rgb(180, 177, 177));
-    transition: transform 0.3s ease;
-  }
-  
-  .hero {
-    height: 80vh;
-    background: url('/images/main-hero.jpg') center/cover no-repeat;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    text-align: center;
-    padding: 0 2rem;
-  }
-  
-  .hero h2 {
-    font-size: 3rem;
-    color: white;
-    background-color: rgba(0, 0, 0, 0.6);
-    padding: 1rem 2rem;
-    border-radius: 10px;
-  }
-  
-  .section {
-    padding: 4rem 2rem;
-    max-width: 900px;
-    margin: auto;
-  }
-  
-  .section h3 {
-    font-size: 2rem;
-    margin-bottom: 1rem;
-  }
-  
-  .section p {
-    font-size: 1.1rem;
-  }
-  .sponsors {
-    padding: 4rem 2rem;
-    background-color: #000;
-    text-align: center;
-  }
-  
-  .sponsors h3 {
-    font-size: 2rem;
-    margin-bottom: 2.5rem;
-    color: white;
-  }
-  h4 {
-    font-size: 1.3rem;
-    margin-top: 2rem;
-    margin-bottom: 0.5rem;
-    color: white;
-    font-weight: 600;
-  }
-  .sponsor-grid {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    gap: 2rem; /* space between logos */
-    padding: 0 1rem;
-  }
-  
-  .sponsor-grid a {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-  }
-  .sponsor-grid img[alt="Solidworks"],.sponsor-grid img[alt="KK Finishing Inc"] {
-    height: 80px;
-  }
-  .sponsor-grid img {
-    max-height: 80px;
-    width: auto;
-    filter: drop-shadow(0 0 1px white);
-    transition: transform 0.3s ease;
-  }
-  
-  .sponsor-grid img:hover {
-    transform: scale(1.05);
-  }
+body {
+  font-family: 'Roboto', sans-serif;
+  background: #000;
+  color: #fff;
+  line-height: 1.6;
+}
 
-  .join-button {
-    display: inline-block;
-    margin-top: 2rem;
-    padding: 0.75rem 1.5rem;
-    background-color: #ff4d4d;
-    color: white;
-    text-decoration: none;
-    font-weight: 600;
-    border-radius: 6px;
-    transition: background-color 0.3s ease;
-  }
-  .join-button:hover {
-    background-color: #e04040;
-  }
-  
-  ul {
-    margin-top: 1rem;
-    margin-left: 1.5rem;
-    text-align: left;
-    line-height: 1.8;
-  }
-  #fade-wrapper {
-    opacity: 0;
-    transition: opacity 0.25s ease-in-out;
-  }
-  
-  #fade-wrapper.fade-in {
-    opacity: 1;
-  }
-  
-  #fade-wrapper.fade-out {
-    opacity: 0;
-  }
-  .hero.join-hero {
-    background: url('/images/join-hero.JPG') center/cover no-repeat;
-  }  
-  
-  .gallery {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 1.5rem;
-    justify-content: center;
-    margin-top: 2rem;
-  }
-  
-  .gallery img {
-    max-width: 300px;
-    width: 100%;
-    height: auto;
-    border-radius: 8px;
-    object-fit: cover;
-    box-shadow: 0 0 10px rgba(255, 255, 255, 0.1);
-    transition: transform 0.3s ease;
-  }
-  
-  .gallery img:hover {
-    transform: scale(1.05);
-  }
- /* The thank-you section stays dark */
-.sponsor-section {
-    background-color: black;
-    color: white;
-    padding: 4rem 2rem;
-  }
-  
-  /* Only the logo grid area will fade to white */
-  .sponsor-logos {
-    background-color: black;
-    color: white;
-    transition: background-color 1.5s ease, color 1.5s ease;
-    padding: 3rem 2rem;
-  }
-  
-  .sponsor-logos.fade-to-white {
-    background-color: white;
-    color: black;
-  }
-  
-  .sponsor-logos.fade-to-white a {
-    color: black;
-  }
-  
-  .sponsor-grid {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    gap: 2rem;
-    margin-top: 2rem;
-  }
-  
-  .sponsor-grid img {
-    max-height: 80px;
-    width: auto;
-    filter: drop-shadow(0 0 1px black);
-    transition: transform 0.3s ease;
-  }
-  
-  .sponsor-grid img:hover {
-    transform: scale(1.05);
-  }
-  
-  
-  footer {
-    text-align: center;
-    padding: 2rem;
-    background-color: #1c1c1c;
-    font-size: 0.9rem;
-    color: #aaa;
-  }
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.5rem 1.5rem;           /* thinner */
+  background-color: rgba(153,0,0,0.9); /* lower opacity */
+  border-radius: 0 0 12px 12px;    /* rounded bottom corners */
+  position: relative;              /* no longer sticky */
+  z-index: 999;
+}
+
+.navbar-logo {
+  height: 80px;                    /* 80px tall */
+  width: auto;
+  transition: opacity .3s ease, transform .3s ease;
+}
+
+.navbar a {
+  color: #fff;
+  text-decoration: none;           /* no underlines */
+  font-weight: 500;
+  font-size: 1rem;
+  margin: 0 0.75rem;
+  position: relative;
+  transition: color .2s;
+}
+
+.navbar a:hover {
+  color: #F1EA86;
+}
+
+.navbar a.active::after {
+  content: '';
+  position: absolute;
+  left: 0; bottom: -4px;
+  width: 100%; height: 3px;
+  background: #cc0033;
+  border-radius: 2px;
+}
+
+footer {
+  text-align: center;
+  padding: 2rem;
+  background: #1c1c1c;
+  color: #aaa;
+  font-size: 0.9rem;
+}

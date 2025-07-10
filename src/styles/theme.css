@@ -1,0 +1,236 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@600;800&display=swap');
+
+/*───────────────── Hero Section ─────────────────*/
+.hero {
+  --hero-img: url('/images/main-hero.jpg');
+  position: relative;
+  height: 90vh;
+  background: var(--hero-img) center/cover no-repeat;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.hero-content {
+  text-align: center;
+  animation: reveal 1.4s ease-out forwards;
+  opacity: 0;
+  transform: translateY(20px);
+}
+@keyframes reveal {
+  to { opacity:1; transform:translateY(0); }
+}
+.hero-title, .hero-sub {
+  font-family: 'Montserrat', sans-serif;
+  color: #fff;
+  text-shadow: 0 2px 6px rgba(0,0,0,0.6);
+}
+.hero-title {
+  font-size: clamp(2.5rem,6vw,5rem);
+  font-weight: 800;
+  margin-bottom: .5rem;
+}
+.hero-sub {
+  font-size: clamp(1.2rem,3vw,2rem);
+  font-weight: 600;
+  margin-bottom: 1.5rem;
+}
+
+/*───────────────── Custom Arrow Button ─────────────────*/
+.btn-cta {
+  display: inline-flex;
+  align-items: center;
+  background: #cc0033;
+  color: #fff;
+  padding: .75rem 1.5rem;
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 600;
+  border-radius: 50px;
+  font-size: 1.1rem;
+  transition: background .2s, transform .2s;
+  text-decoration: none;
+}
+.btn-cta .arrow-circle {
+  display: inline-block;
+  margin-left: .5rem;
+  width: 24px; height: 24px;
+  border: 2px solid #fff;
+  border-radius: 50%;
+  position: relative;
+  transition: transform .2s, border-color .2s;
+}
+.btn-cta .arrow-circle::before {
+  content: '';
+  position: absolute;
+  top: 50%; left: 50%;
+  width: 8px; height: 8px;
+  border-right: 2px solid #fff;
+  border-bottom: 2px solid #fff;
+  transform: translate(-50%,-50%) rotate(45deg);
+}
+.btn-cta:hover {
+  background: #a10028;
+  transform: translateX(4px);
+}
+.btn-cta:hover .arrow-circle {
+  transform: translateX(4px);
+  border-color: #fff;
+}
+
+/*───────────────── Stats Bar ─────────────────*/
+.stat-bar {
+  display: flex;
+  justify-content: space-around;
+  background: #111;
+  padding: 2rem 1rem;
+  gap: 1rem;
+}
+.stat-item {
+  text-align: center;
+  animation: countUp .8s ease-out forwards;
+  opacity: 0;
+}
+.stat-item:nth-child(1){ animation-delay:.3s; }
+.stat-item:nth-child(2){ animation-delay:.6s; }
+.stat-item:nth-child(3){ animation-delay:.9s; }
+.stat-item h3 {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 2.5rem;
+  color: #cc0033;
+}
+.stat-item p {
+  font-size: 1rem;
+  color: #fff;
+}
+@keyframes countUp {
+  from { opacity:0; transform: translateY(20px); }
+  to   { opacity:1; transform: translateY(0); }
+}
+
+/*───────────────── About Section ─────────────────*/
+.about {
+  background: #000;
+  padding: 4rem 2rem;
+  text-align: center;
+}
+.about h2 {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 2.5rem;
+  color: #cc0033;
+  margin-bottom: 1rem;
+}
+.about p {
+  max-width: 700px;
+  margin: 0 auto 1.5rem;
+  font-size: 1.1rem;
+  color: #fff;
+}
+.btn-secondary {
+  display: inline-block;
+  background: transparent;
+  color: #cc0033;
+  border: 2px solid #cc0033;
+  padding: .5rem 1rem;
+  border-radius: 6px;
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 600;
+  transition: background .2s, transform .2s;
+  text-decoration: none;
+}
+.btn-secondary:hover {
+  background: #cc0033;
+  color: #fff;
+  transform: translateX(4px);
+}
+
+/*───────────────── Sponsors Section ─────────────────*/
+.sponsors {
+  background: #000;
+  padding: 4rem 2rem;
+  text-align: center;
+  transition: background 1s ease, color 1s ease;
+}
+.sponsors.fade-to-white {
+  background: #fff;
+  color: #000;
+}
+.sponsors h3 {
+  font-family: 'Montserrat', sans-serif;
+  color: inherit;
+  font-size: 2.75rem;
+  margin-bottom: 2rem;
+}
+
+/* Tier Headings & Platinum Glint */
+.sponsor-tier {
+  margin-bottom: 4rem;
+}
+.sponsor-tier h4 {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 2rem;
+  margin-bottom: 1.5rem;
+  color: inherit;
+}
+.sponsor-tier.platinum h4 {
+  position: relative;
+  background: linear-gradient(90deg,
+    rgba(245,245,245,0.2) 25%,
+    rgba(255,255,255,0.8) 50%,
+    rgba(245,245,245,0.2) 75%);
+  background-size: 400px 100%;
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  animation: platinumGlint 3s infinite;
+}
+@keyframes platinumGlint {
+  0%,100% { background-position: -200px 0; }
+  50%     { background-position: 200px 0; }
+}
+.sponsor-tier.gold h4    { color: #ffd700; }
+.sponsor-tier.silver h4  { color: #c0c0c0; }
+
+/* Flex‑based Grid (no overlap) */
+.sponsor-grid {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 2.5rem 5rem;
+  margin: 0 auto 2rem;
+  max-width: 1200px;
+}
+  /* Logo‑Box Container */
+  .logo-box {
+    padding: 1rem;
+    border-radius: 8px;
+    width: auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background .3s ease, box-shadow .3s ease;
+  }
+  .logo-box:hover {
+    background: #222;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.7);
+  }
+
+    /* Logo Image */
+   .logo-box img {
+    max-height: 60px;
+    width: auto;
+    object-fit: contain;
+    filter: grayscale(100%);
+    transition: filter .3s ease, transform .3s ease;
+  }
+  .logo-box:hover img {
+    filter: grayscale(0);
+    transform: scale(1.05);
+  } 
+
+/*───────────────── Footer─────────────────*/
+footer {
+  text-align: center;
+  padding: 2rem;
+  background: #1c1c1c;
+  color: #aaa;
+  font-size: .9rem;
+}
