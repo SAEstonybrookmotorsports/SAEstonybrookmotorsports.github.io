@@ -241,6 +241,85 @@
     color: #fff;
     line-height: 1.5;
   }
+  /* Increased padding for sponsor sections */
+.sponsor-tier {
+  padding: 3rem 2rem;
+  background: inherit;       /* continues fade-to-white if applied */
+  border-radius: 8px;
+}
+.sponsor-tier.platinum h2,
+.sponsor-tier.gold h2,
+.sponsor-tier.silver h2 {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 2.5rem;
+  margin-bottom: 1rem;
+}
+
+.sponsor-tier.platinum h2 {
+  color: #e5e4e2;
+  background: linear-gradient(90deg,
+    rgba(245,245,245,0.2) 25%,
+    rgba(255,255,255,0.8) 50%,
+    rgba(245,245,245,0.2) 75%);
+  background-size: 400px 100%;
+  background-clip: text;
+  -webkit-background-clip: text;
+  color: transparent;
+  -webkit-text-fill-color: transparent;
+  animation: platinumGlint 3s infinite;
+}
+
+.sponsor-tier.gold h2 {
+  color: #ffd700;
+}
+
+.sponsor-tier.silver h2 {
+  color: #c0c0c0;
+}
+
+.tier-desc {
+  font-size: 1.1rem;
+  color: #aaa;
+  max-width: 700px;
+  margin: 0 auto 2.5rem;
+  text-align: center;
+}
+/* Tier description text */
+.sponsor-tier .tier-desc {
+  max-width: 800px;
+  margin: 0 auto 2rem;
+  font-size: 1.1rem;
+  line-height: 1.5;
+  color: inherit;
+}
+
+/* Wider hero-sub for this page */
+.hero-sub {
+  max-width: 700px;
+  margin: 0 auto 2rem;
+}
+
+/* Slightly larger grid gap */
+.sponsor-grid {
+  gap: 3rem 4rem;            /* more vertical and horizontal breathing room */
+}
+
+/* Increased logo-box padding */
+/* Logo stays grayscale by default */
+.logo-box img {
+  filter: grayscale(100%);
+  opacity: 0;
+  transform: scale(0.95);
+  transition: filter 1s ease, opacity 1s ease, transform 1s ease;
+}
+
+/* Reveal class applied when in view */
+.logo-box.reveal img {
+  filter: grayscale(0%);
+  opacity: 1;
+  transform: scale(1);
+}
+
 /*───────────────── Footer─────────────────*/
 footer {
   text-align: center;

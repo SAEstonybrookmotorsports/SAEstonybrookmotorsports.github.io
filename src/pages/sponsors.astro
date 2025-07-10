@@ -1,50 +1,154 @@
 ---
-import BaseLayout from '../layouts/BaseLayout.astro';
-import '../styles/global.css';
+import "../styles/global.css";
+import "../styles/theme.css";
+import BaseLayout from "../layouts/BaseLayout.astro";
 ---
-
 <BaseLayout>
-  <section class="hero" style="background-image: url('/images/sponsors-hero.JPG'); background-size: cover; background-position: center;">
-    <h2 style="text-align: center; background-color: rgba(0, 0, 0, 0.6); padding: 1rem; border-radius: 8px;">
-      Our Sponsors
-    </h2>
+  <!-- HERO -->
+  <section class="hero" style="--hero-img: url('/images/sponsors-hero.JPG')">
+    <div class="hero-content">
+      <h1 class="hero-title">Our Sponsors</h1>
+      <p class="hero-sub">Thank You for Fueling Our Journey</p>
+    </div>
   </section>
 
-  <section id="sponsors" class="sponsor-section">
-    <h2 style="text-align: center;">Thank You to Our Sponsors</h2>
-    <h4 style="text-align: center; max-width: 700px; margin: 1rem auto;">
-      We’re incredibly grateful to all of our sponsors for their continued support. Your contributions help us innovate, compete, and inspire the next generation of engineers. If you or your company are interested in partnering with us, please <a href="/contact" style="color: #ff4d4d;">reach out</a> — we’d love to work with you.
-    </h4>
+  <!-- OVERVIEW -->
+  <section class="section about" style="max-width:900px; margin:0 auto 4rem;">
+    <h2>Partnering for Excellence</h2>
+    <p>
+      From concept sketches to roaring engines, our sponsors provide the resources, expertise, and mentorship that drive our success on and off the track. Below are the companies and organizations whose commitment powers Stony Brook Motorsports forward.
+    </p>
+  </section>
 
-    <div class="sponsor-logos">
-      <div class="sponsor-grid">
-        <a href="https://www.stonybrook.edu/ceas/" target="_blank"><img src="/images/sponsors/ceas.png" alt="CEAS" /></a>
-        <a href="https://www.stonybrook.edu/ceas/connect" target="_blank"><img src="/images/sponsors/usg.png" alt="USG" /></a>
-        <a href="https://www.stonybrook.edu/ceas/mechanical" target="_blank"><img src="/images/sponsors/mecheng.png" alt="Mechanical Engineering" /></a>
-        <a href="https://www.solidworks.com/" target="_blank"><img src="/images/sponsors/solidworks.svg" alt="Solidworks" /></a>
-        <a href="https://www.ansys.com/" target="_blank"><img src="/images/sponsors/ansys.svg" alt="Ansys" /></a>
-        <a href="https://www.kisssoft.com/en/" target="_blank"><img src="/images/sponsors/kisssoft.svg" alt="KISSsoft" /></a>
-        <a href="https://hexagon.com/" target="_blank"><img src="/images/sponsors/hexagon.svg" alt="Hexagon" /></a>
-        <a href="https://www.mastercam.com/" target="_blank" rel="noopener noreferrer">
-            <img src="public/images/sponsors/Mastercam.svg" alt="Mastercam" />
-          </a>
-        <a href="https://www.kenesto.com/" target="_blank"><img src="/images/sponsors/kenesto.png" alt="Kenesto" /></a>
-        <a href="http://www.flagpolesinc.com/" target="_blank"><img src="/images/sponsors/flagpoles.gif" alt="Flagpoles Inc" /></a>
-        <a href="https://www.4xpro.com/" target="_blank"><img src="/images/sponsors/4xpro.avif" alt="4XPro" /></a>
-        <a href="https://www.ghaasfoundation.org/" target="_blank"><img src="/images/sponsors/ghaas.png" alt="Gene Haas Foundation" /></a>
-        <a href="http://basebrooklyn.net/online/" target="_blank"><img src="/images/sponsors/basebrooklyn.png" alt="Base Brooklyn" /></a>
-        <a href="https://burtonind.com/" target="_blank"><img src="/images/sponsors/burton.png" alt="Burton Industries Inc" /></a>
-        <a href="https://maloyalaser.com/" target="_blank"><img src="/images/sponsors/maloya.webp" alt="Maloya" /></a>
-        <a href="#"><img src="/images/sponsors/di_finishing.png" alt="D&I Finishing Inc" /></a>
-        <a href="http://www.kkfinishingco.com/" target="_blank"><img src="/images/sponsors/kkfinishing.png" alt="KK Finishing Inc" /></a>
+  <!-- PLATINUM TIER -->
+  <section class="section sponsor-tier platinum">
+    <h2>Platinum Partners</h2>
+    <p class="tier-desc">
+      These cornerstone sponsors underwrite our core operations: materials, fabrication, and competition logistics. They allow us to innovate without limits.
+    </p>
+    <div class="section sponsor-grid">
+      <div class="logo-box">
+        <a href="https://www.stonybrook.edu/ceas/" target="_blank">
+          <img src="/images/sponsors/ceas.jpg" alt="CEAS" />
+        </a>
+      </div>
+      <div class="logo-box">
+        <a href="https://www.stonybrook.edu/ceas/connect" target="_blank">
+          <img src="/images/sponsors/usg.png" alt="USG" />
+        </a>
+      </div>
+      <div class="logo-box">
+        <a href="https://www.stonybrook.edu/ceas/mechanical" target="_blank">
+          <img src="/images/sponsors/mecheng.png" alt="Mechanical Engineering" />
+        </a>
+      </div>
+      <div class="logo-box">
+        <a href="https://www.solidworks.com/" target="_blank">
+          <img src="/images/sponsors/solidworks.svg" alt="Solidworks" />
+        </a>
       </div>
     </div>
   </section>
 
+  <!-- GOLD TIER -->
+  <section class="section sponsor-tier gold">
+    <h2>Gold Supporters</h2>
+    <p class="tier-desc">
+      Our Gold sponsors supply specialized software, testing equipment, and technical training that sharpen our competitive edge.
+    </p>
+    <div class="sponsor-grid">
+      <div class="logo-box">
+        <a href="https://www.ansys.com/" target="_blank">
+          <img src="/images/sponsors/ansys.svg" alt="Ansys" />
+        </a>
+      </div>
+      <div class="logo-box">
+        <a href="https://www.kisssoft.com/en/" target="_blank">
+          <img src="/images/sponsors/kisssoft.svg" alt="KISSsoft" />
+        </a>
+      </div>
+      <div class="logo-box">
+        <a href="https://hexagon.com/" target="_blank">
+          <img src="/images/sponsors/hexagon.png" alt="Hexagon" />
+        </a>
+      </div>
+      <div class="logo-box">
+        <a href="https://www.mastercam.com/" target="_blank">
+          <img src="/images/sponsors/Mastercam.svg" alt="Mastercam" />
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- SILVER TIER -->
+  <section class="sponsor-tier silver">
+    <h2>Silver Allies</h2>
+    <p class="tier-desc">
+      Silver-level partners provide vital consumables, fabrication services, and student internships to help us add even more depth to our program.
+    </p>
+    <div class="sponsor-grid">
+      <div class="logo-box">
+        <a href="https://www.kenesto.com/" target="_blank">
+          <img src="/images/sponsors/kenesto.png" alt="Kenesto" />
+        </a>
+      </div>
+      <div class="logo-box">
+        <a href="http://www.flagpolesinc.com/" target="_blank">
+          <img src="/images/sponsors/flagpoles.gif" alt="Flagpoles Inc" />
+        </a>
+      </div>
+      <div class="logo-box">
+        <a href="https://www.4xpro.com/" target="_blank">
+          <img src="/images/sponsors/4xpro.avif" alt="4XPro" />
+        </a>
+      </div>
+      <div class="logo-box">
+        <a href="https://www.ghaasfoundation.org/" target="_blank">
+          <img src="/images/sponsors/ghaas.png" alt="Gene Haas Foundation" />
+        </a>
+      </div>
+      <div class="logo-box">
+        <a href="http://basebrooklyn.net/online/" target="_blank">
+          <img src="/images/sponsors/basebrooklyn.webp" alt="Base Brooklyn" />
+        </a>
+      </div>
+      <div class="logo-box">
+        <a href="https://burtonind.com/" target="_blank">
+          <img src="/images/sponsors/burton.png" alt="Burton Industries" />
+        </a>
+      </div>
+      <div class="logo-box">
+        <a href="https://maloyalaser.com/" target="_blank">
+          <img src="/images/sponsors/maloya.webp" alt="Maloya" />
+        </a>
+      </div>
+      <div class="logo-box">
+        <a href="#" target="_blank">
+          <img src="/images/sponsors/di_finishing.png" alt="D&I Finishing" />
+        </a>
+      </div>
+      <div class="logo-box">
+        <a href="http://www.kkfinishingco.com/" target="_blank">
+          <img src="/images/sponsors/kkfinishing.png" alt="KK Finishing" />
+        </a>
+      </div>
+    </div>
+  </section>
   <script>
-    window.addEventListener("load", () => {
-      const logos = document.querySelector(".sponsor-logos");
-      if (logos) logos.classList.add("fade-to-white");
+    window.addEventListener("DOMContentLoaded", () => {
+      const observer = new IntersectionObserver(
+        (entries) => {
+          entries.forEach(entry => {
+            if (entry.isIntersecting) {
+              entry.target.classList.add("reveal");
+              observer.unobserve(entry.target); // Optional: remove after first reveal
+            }
+          });
+        },
+        { threshold: 0.2 }
+      );
+  
+      document.querySelectorAll(".logo-box").forEach(el => observer.observe(el));
     });
   </script>
 </BaseLayout>
