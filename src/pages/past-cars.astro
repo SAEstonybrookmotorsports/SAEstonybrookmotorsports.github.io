@@ -4,51 +4,58 @@ import { carData } from '../lib/carData';
 import '../styles/global.css';
 import '../styles/pastcars.css';
 
+const sortedCars = [...carData].sort((a, b) => parseInt(b.year) - parseInt(a.year)); // latest first
 ---
 
 <BaseLayout>
+  <!-- HERO -->
   <section class="hero" style="background-image: url('/images/pastcars/1988.jpg'); background-size: cover; background-position: center;">
-    <h2 style="text-align: center; background-color: rgba(0, 0, 0, 0.6); padding: 1rem; border-radius: 8px;">
-      Legacy Cars
-    </h2>
+    <div class="hero-content">
+      <h1 class="hero-title">Legacy Cars</h1>
+      <p class="hero-sub">Where it All Began</p>
+    </div>
   </section>
 
-  <section class="past-cars-grid">
-    {[...carData]
-      .sort((a, b) => parseInt(b.year) - parseInt(a.year))
-      .map((car) => (
-        <a href={car.detailPageUrl} class="past-car-card">
-          <img src={car.photoUrl} alt={`Car ${car.carNumber} - ${car.year}`} />
-          <div class="past-car-hover-box">
-            <span>{car.year}</span>
-          </div>
-        </a>
+  <!-- SORT BUTTON -->
+  <section class="section sort-toggle">
+    <button id="sort-toggle" class="btn-secondary">Sort: Newest First</button>
+  </section>
+
+  <!-- CAR ENTRIES -->
+  <section id="car-container" class="past-cars-list">
+    {sortedCars.map(car => (
+      <div class="car-year-block" data-year={car.year}>
+        <h2 class="year-heading">{car.year}</h2>
+        <div class="card-wrapper">
+          <a href={car.detailPageUrl} class="past-car-card">
+            <img src={car.photoUrl} alt={`Car ${car.carNumber} - ${car.year}`} />
+            <div class="past-car-hover-box">
+              <span>Learn more</span>
+            </div>
+          </a>
+        </div>
+      </div>
     ))}
   </section>
-  
 
-  <script>
-    document.addEventListener("DOMContentLoaded", () => {
-      const rows = document.querySelectorAll(".fade-row");
+  <!-- SORT SCRIPT -->
+  <script type="module">
+    const button = document.getElementById('sort-toggle');
+    const container = document.getElementById('car-container');
+    let ascending = false;
 
-      const observer = new IntersectionObserver(
-        entries => {
-          entries.forEach(entry => {
-            if (entry.isIntersecting) {
-              entry.target.classList.add("visible");
-              entry.target.classList.remove("fade-out");
-            } else {
-              entry.target.classList.remove("visible");
-              entry.target.classList.add("fade-out");
-            }
-          });
-        },
-        {
-          threshold: 0.3,
-        }
-      );
+    button.addEventListener('click', () => {
+      ascending = !ascending;
+      button.textContent = ascending ? 'Sort: Oldest First' : 'Sort: Newest First';
 
-      rows.forEach(row => observer.observe(row));
+      const blocks = Array.from(container.querySelectorAll('.car-year-block'));
+      blocks.sort((a, b) => {
+        const yearA = parseInt(a.dataset.year);
+        const yearB = parseInt(b.dataset.year);
+        return ascending ? yearA - yearB : yearB - yearA;
+      });
+
+      blocks.forEach(block => container.appendChild(block));
     });
   </script>
 </BaseLayout>
