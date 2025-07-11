@@ -211,6 +211,8 @@
   .logo-box:hover {
     background: #222;
     box-shadow: 0 4px 12px rgba(0,0,0,0.7);
+    transform: scale(1.05);
+
   }
 
     /* Logo Image */
@@ -222,7 +224,6 @@
     transition: filter .3s ease, transform .3s ease;
   }
   .logo-box:hover img {
-    filter: grayscale(0);
     transform: scale(1.05);
   } 
   .hero.join-hero {
