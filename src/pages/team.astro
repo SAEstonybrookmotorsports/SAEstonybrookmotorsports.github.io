@@ -1,77 +1,115 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
+import { teamData, type TeamMember } from '../lib/teamData';
 import '../styles/global.css';
 import '../styles/team.css';
+
+// Group members by subsystem
+const grouped = teamData.reduce<Record<string, TeamMember[]>>((acc, member) => {
+  (acc[member.subsystem] ||= []).push(member);
+  return acc;
+}, {});
+
+// Specify the exact order you want:
+const order = [
+  'Leadership',
+  'Powertrain',
+  'Chassis',
+  'Suspension',
+  'Electronics',
+  'Software',
+  'Drivetrain',
+  'Testing',
+  'CNC',
+  'Finance'
+];
 ---
 
 <BaseLayout>
-  <section class="hero" style="background-image: url('/images/team-hero.jpg'); background-size: cover; background-position: center;">
-    <h2 style="text-align: center; background-color: rgba(0, 0, 0, 0.6); padding: 1rem; border-radius: 8px;">
-      Meet the Team
-    </h2>
-  </section>
-
-  <section class="section team-section fade-in">
-    <h3 class="centered-title">Team President</h3>
-    <div class="president-card">
-      <img src="/images/team/president.jpg" alt="President Name" class="leader-img" />
-      <h4>President Name</h4>
+  <!-- Hero -->
+  <section class="hero" style="--hero-img: url('/images/team-hero.jpg')">
+    <div class="hero-content">
+      <h1 class="hero-title">Meet the Team</h1>
+      <p class="hero-sub">The people behind the machine</p>
     </div>
   </section>
 
-  <!-- Repeat this structure for each subsystem -->
-  <section class="section team-section fade-in">
-    <h3 class="subsystem-title">Powertrain</h3>
-    <div class="leader-card">
-      <img src="/images/team/powertrain-lead.jpg" alt="Powertrain Lead" class="leader-img" />
-      <h4>Powertrain Lead</h4>
-      <p>Subsystem Lead</p>
-    </div>
-    <div class="team-grid">
-      <div class="member-card">
-        <h4>Member 1</h4>
-        <img src="/images/team/powertrain1.jpg" alt="Member 1" />
-      </div>
-      <div class="member-card">
-        <h4>Member 2</h4>
-        <img src="/images/team/powertrain2.jpg" alt="Member 2" />
-      </div>
-      <!-- More members -->
-    </div>
-  </section>
+  <!-- Render in custom order -->
+  {order.map((subsystem, idx) => {
+    const members = grouped[subsystem];
+    if (!members || members.length === 0) return null;
 
-  <!-- New Members Section -->
-  <section class="section team-section fade-in">
-    <h3 class="subsystem-title">New Members</h3>
-    <div class="team-grid">
-      <div class="member-card">
-        <h4>New Member 1</h4>
-        <img src="/images/team/new1.jpg" alt="New Member 1" />
-      </div>
-      <div class="member-card">
-        <h4>New Member 2</h4>
-        <img src="/images/team/new2.jpg" alt="New Member 2" />
-      </div>
-      <!-- Add more as needed -->
-    </div>
-    <p style="text-align: center; margin-top: 1rem;">
-      Interested in joining? <a href="/join" class="join-link">Click here to join us!</a>
-    </p>
-  </section>
+    // Find the lead/president
+    const lead = members.find(m => /Lead|President/.test(m.role));
 
-  <script>
-    document.addEventListener('DOMContentLoaded', () => {
-      const observer = new IntersectionObserver(entries => {
-        entries.forEach(entry => {
-          if (entry.isIntersecting) {
-            entry.target.classList.add('visible');
-            observer.unobserve(entry.target);
-          }
-        });
-      }, { threshold: 0.1 });
+    return (
+      <>
+        <section class="section team-section fade-in" id={subsystem.toLowerCase()}>
+          <h2 class="section-heading">{subsystem}</h2>
 
-      document.querySelectorAll('.fade-in').forEach(elem => {
-        observer.observe(elem);
+          {lead && (
+            <div class="subsystem-lead">
+              <img src={lead.image} alt={lead.name} class="leader-img" />
+              <h3>{lead.name}</h3>
+              <p class="role">{lead.role}</p>
+              {lead.custom && <p class="member-custom">{lead.custom}</p>}
+              {lead.linkedin && (
+                <a href={lead.linkedin} class="linkedin-icon" target="_blank" rel="noopener">
+                  <img src="/images/linkedin.svg" alt="LinkedIn" />
+                </a>
+              )}
+              <p class="bio" data-clicks="0">{lead.bio}</p>
+            </div>
+          )}
+
+          <div class="members-grid">
+            {members
+              .filter(m => m !== lead)
+              .map(m => (
+                <div class="member">
+                  <img src={m.image} alt={m.name} />
+                  <p class="member-name">{m.name}</p>
+                  {m.custom && <p class="member-custom">{m.custom}</p>}
+                  {m.linkedin && (
+                    <a href={m.linkedin} class="linkedin-icon" target="_blank" rel="noopener">
+                      <img src="/images/linkedin.svg" alt="LinkedIn" />
+                    </a>
+                  )}
+                  <p class="bio" data-clicks="0">{m.bio}</p>
+                </div>
+              ))}
+          </div>
+        </section>
+
+        {idx < order.length - 1 && <hr class="section-divider" />}
+      </>
+    );
+  })}
+  
+  <!-- Scroll & Easter‑egg Script (unchanged) -->
+  <script type="module">
+    const io = new IntersectionObserver(entries => {
+      entries.forEach(e => {
+        if (e.isIntersecting) {
+          e.target.classList.add('visible');
+          io.unobserve(e.target);
+        }
+      });
+    }, { threshold: 0.2 });
+    document.querySelectorAll('.fade-in').forEach(el => io.observe(el));
+
+    document.querySelectorAll('.bio').forEach(el => {
+      el.addEventListener('click', () => {
+        const clicks = (+el.dataset.clicks || 0) + 1;
+        el.dataset.clicks = clicks;
+        if (clicks === 5) {
+          const name = el.closest('.subsystem-lead, .member')
+                         ?.querySelector('h3, .member-name')?.textContent;
+          import('../lib/teamData').then(mod => {
+            const member = mod.teamData.find(m => m.name === name);
+            if (member?.funBio) el.textContent = member.funBio;
+          });
+        }
       });
     });
   </script>

@@ -320,6 +320,15 @@
   opacity: 1;
   transform: scale(1);
 }
+/* Team section */
+.section-divider {
+  border: none;
+  height: 2px;
+  background: #cc0033;
+  margin: 4rem auto;
+  width: 60%;
+  opacity: 0.4;
+}
 
 /*───────────────── Footer─────────────────*/
 footer {

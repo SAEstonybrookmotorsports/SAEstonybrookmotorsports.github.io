@@ -1,163 +1,165 @@
-/* team.css */
-
+/*───────────────── Global Section Base ─────────────────*/
 .section {
-    padding: 4rem 2rem;
-    max-width: 1200px;
-    margin: auto;
-  }
-  
-  h2, h3 {
-    text-align: center;
-    margin-bottom: 2rem;
-  }
-  
-  .team-president {
-    text-align: center;
-    margin-bottom: 4rem;
-  }
-  
-  .team-president img {
-    width: 180px;
-    height: 180px;
-    object-fit: cover;
-    border-radius: 50%;
-    box-shadow: 0 0 15px rgba(255, 77, 77, 0.4);
-    margin-bottom: 1rem;
-    transition: transform 0.3s ease;
-  }
-  
-  .team-president img:hover {
-    transform: scale(1.05);
-  }
-  
-  .team-president h3 {
-    font-size: 1.8rem;
-    color: #ff4d4d;
-  }
-  
-  /* Subsystem sections */
-  
-  .subsystem-section {
-    margin-bottom: 4rem;
-    opacity: 0;
-    transform: translateY(40px);
-    transition: opacity 0.6s ease-out, transform 0.6s ease-out;
-  }
-  
-  .subsystem-section.visible {
-    opacity: 1;
-    transform: translateY(0);
-  }
-  
-  .subsystem-lead {
-    text-align: center;
-    margin-bottom: 2rem;
-  }
-  
-  .subsystem-lead img {
-    width: 150px;
-    height: 150px;
-    object-fit: cover;
-    border-radius: 50%;
-    border: 3px solid #ff4d4d;
-    box-shadow: 0 0 10px rgba(255, 77, 77, 0.3);
-    margin-bottom: 1rem;
-  }
-  
-  .subsystem-lead h4 {
-    font-size: 1.4rem;
-    color: #ff4d4d;
-  }
-  
-  /* Members grid */
-  
-  .members-grid {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 1.5rem;
-    justify-content: center;
-  }
-  
-  .member {
-    text-align: center;
-    width: 140px;
-    position: relative;
-  }
-  
-  .member img {
-    width: 100px;
-    height: 100px;
-    object-fit: cover;
-    border-radius: 50%;
-    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
-    transition: transform 0.2s ease;
-  }
-  
-  .member img:hover {
-    transform: scale(1.05);
-  }
-  
-  .member-name {
-    margin-top: 0.5rem;
-    font-size: 1rem;
-    color: #eee;
-  }
-  
-  /* LinkedIn popup */
-  
-  .member .linkedin-link {
-    opacity: 0;
-    position: absolute;
-    bottom: -20px;
-    left: 50%;
-    transform: translateX(-50%);
-    transition: opacity 0.3s ease;
-    background-color: #0a66c2;
-    color: white;
-    padding: 0.3rem 0.6rem;
-    font-size: 0.8rem;
-    border-radius: 4px;
-    white-space: nowrap;
-    z-index: 10;
-    pointer-events: none;
-  }
-  
-  .member:hover .linkedin-link {
-    opacity: 1;
-  }
-  
-  .member .linkedin-link::after {
-    content: '';
-    position: absolute;
-    top: -6px;
-    left: 50%;
-    transform: translateX(-50%);
-    border-width: 6px;
-    border-style: solid;
-    border-color: transparent transparent #0a66c2 transparent;
-  }
-  
-  /* New members */
-  
-  .new-members {
-    margin-top: 4rem;
-    text-align: center;
-  }
-  
-  .new-members h3 {
-    margin-bottom: 1rem;
-    font-size: 1.8rem;
-    color: #ff4d4d;
-  }
-  
-  .new-members a {
-    color: #ff4d4d;
-    font-weight: 600;
-    text-decoration: underline;
-    transition: color 0.3s ease;
-  }
-  
-  .new-members a:hover {
-    color: #ff7777;
-  }
-  
+  padding: 4rem 2rem;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+/*───────────────── Hero (reuse from theme) ─────────────────*/
+.hero {
+  position: relative;
+  height: 60vh;
+  background: var(--hero-img) center/cover no-repeat;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+#fade-wrapper { opacity: 1 !important; }
+
+.hero-content {
+  text-align: center;
+  animation: reveal 1.4s ease-out forwards;
+  opacity: 0;
+  transform: translateY(20px);
+}
+@keyframes reveal {
+  to { opacity: 1; transform: translateY(0); }
+}
+.hero-title {
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 800;
+  font-size: clamp(2.5rem, 6vw, 5rem);
+  color: #fff;
+  text-shadow: 0 2px 6px rgba(0,0,0,0.9);
+}
+.hero-sub {
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 600;
+  font-size: clamp(1rem, 3vw, 2rem);
+  color: #fff;
+  margin-top: 0.5rem;
+  text-shadow: 0 1px 4px rgba(0,0,0,0.7);
+}
+
+/*───────────────── Fade‑in Utility ─────────────────*/
+.fade-in {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+}
+.fade-in.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/*───────────────── Section Headings ─────────────────*/
+.section-heading {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 2.75rem;
+  color: #cc0033;
+  text-align: center;
+  margin-bottom: 2rem;
+}
+
+/*───────────────── Subsystem Lead ─────────────────*/
+.subsystem-lead {
+  text-align: center;
+  margin-bottom: 2rem;
+}
+.subsystem-lead .leader-img {
+  width: 160px;
+  height: 160px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 4px solid #cc0033;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.4);
+  margin-bottom: 1rem;
+  transition: transform 0.3s ease;
+}
+.subsystem-lead .leader-img:hover {
+  transform: scale(1.05);
+}
+.subsystem-lead h3 {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 1.75rem;
+  color: #fff;
+  margin: 0.5rem 0;
+}
+.subsystem-lead .role,
+.subsystem-lead .member-custom {
+  font-size: 1rem;
+  color: #ddd;
+  margin: 0.3rem 0;
+}
+
+/*───────────────── Members Grid ─────────────────*/
+.members-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 2rem;
+  justify-content: center;
+}
+.member {
+  position: relative;
+  width: 140px;
+  text-align: center;
+}
+.member img {
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  object-fit: cover;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+  transition: transform 0.2s ease;
+}
+.member img:hover {
+  transform: scale(1.05);
+}
+.member-name {
+  margin-top: 0.5rem;
+  font-family: 'Montserrat', sans-serif;
+  font-size: 1rem;
+  color: #fff;
+}
+.member-custom {
+  font-size: 0.85rem;
+  color: #aaa;
+  margin: 0.2rem 0 0.6rem;
+  font-style: italic;
+}
+
+/*───────────────── LinkedIn Icon on Hover ─────────────────*/
+.linkedin-icon {
+  position: absolute;
+  bottom: -4px;
+  right: -4px;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+.member:hover .linkedin-icon,
+.subsystem-lead:hover .linkedin-icon {
+  opacity: 1;
+}
+.linkedin-icon img {
+  width: 24px;
+  height: 24px;
+}
+
+/*───────────────── Bio Text & Easter‑egg ─────────────────*/
+.bio {
+  margin-top: 0.5rem;
+  font-size: 0.9rem;
+  color: #ddd;
+  cursor: pointer;
+  line-height: 1.4;
+}
+
+/*───────────────── Section Divider ─────────────────*/
+.section-divider {
+  border: none;
+  height: 2px;
+  background: #cc0033;
+  width: 60%;
+  margin: 3rem auto;
+  opacity: 0.4;
+}
