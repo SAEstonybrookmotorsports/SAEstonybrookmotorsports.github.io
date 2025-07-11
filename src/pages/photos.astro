@@ -12,10 +12,11 @@ const images: ImageData[] = await fetchCloudinaryImages();
 ---
 
 <BaseLayout>
-  <section class="hero" style="background-image: url('/images/gallery-hero.jpg'); background-size: cover; background-position: center;">
-    <h2 style="text-align: center; background-color: rgba(0, 0, 0, 0.6); padding: 1rem; border-radius: 8px;">
-      Team Gallery
-    </h2>
+  <section class="hero" style="--hero-img: url('/images/gallery-hero.jpg')">
+    <div class="hero-content">
+      <h1 class="hero-title">Team Gallery</h1>
+      <p class="hero-sub">The latest photos straight from the shops</p>
+    </div>
   </section>
 
   <section class="gallery">
