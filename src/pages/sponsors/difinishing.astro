@@ -1,0 +1,34 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import '../../styles/global.css';
+---
+
+<BaseLayout title="D&I Finishing, Inc.">
+  <section class="section" style="max-width: 600px; margin: 3rem auto; text-align: center;">
+    <!-- Logo -->
+    <img
+      src="/images/sponsors/di_finishing.png"
+      alt="D&I Finishing, Inc. logo"
+      style="max-width: 200px; width: 100%; margin-bottom: 1.5rem;"
+    />
+
+    <!-- Company Info -->
+    <h1 style="font-family: 'Montserrat', sans-serif; font-size: 2rem; margin-bottom: 0.5rem;">
+      D&amp;I Finishing, Inc.
+    </h1>
+    <p style="margin-bottom: 1.5rem; color: #ccc;">
+      Powder Coating · Spray Finishing · Silkscreening<br/>
+      Commercial, Industrial, Military & Medical Industries
+    </p>
+
+    <!-- Contact -->
+    <div style="text-align: left; font-size: 1rem; line-height: 1.6; color: #eee;">
+      <p><strong>Email:</strong> <a href="mailto:dnifinishinginc@aol.com" style="color: #ff4d4d;">dnifinishinginc@aol.com</a></p>
+      <p><strong>Phone:</strong> <a href="tel:6314713034" style="color: #ff4d4d;">(631) 471‑3034</a></p>
+    </div>
+
+    <!-- Back Button -->
+    <section class="section" style="text-align: left;">
+        <a href="#" onclick="if (history.length > 1) history.back(); else window.location.href = '/index';" class="back-button">← Back</a>
+      </section>      
+</BaseLayout>
