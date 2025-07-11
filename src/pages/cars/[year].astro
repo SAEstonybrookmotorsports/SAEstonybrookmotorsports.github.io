@@ -1,11 +1,9 @@
 ---
-// src/pages/cars/[year].astro
-
 import BaseLayout from '../../layouts/BaseLayout.astro';
-import type { CarData, PhotoLink } from '../../lib/carData';
+import type { PhotoLink } from '../../lib/carData';
 import { carData } from '../../lib/carData';
 import '../../styles/global.css';
-import '../../styles/pastcars.css';
+import '../../styles/carDetail.css';
 
 export const prerender = true;
 
@@ -22,7 +20,7 @@ if (!car) {
   return new Response(`Car for year ${year} not found.`, { status: 404 });
 }
 
-// build specs list from either specs[] or specNames/specValues
+// Build a unified specs list
 let specList: { name: string; value: string }[] = [];
 if (Array.isArray((car as any).specs)) {
   specList = (car as any).specs;
@@ -42,7 +40,7 @@ if (Array.isArray((car as any).specs)) {
   <!-- Hero -->
   <section
     class="hero"
-    style={`background-image: url('${car.photoUrl}'); background-size: cover; background-position: center;`}
+    style={`background-image: url('${car.photoUrl}');`}
   >
     <div class="hero-overlay">
       <h1>Car {car.carNumber}</h1>
@@ -51,7 +49,7 @@ if (Array.isArray((car as any).specs)) {
     </div>
   </section>
 
-  <!-- Photos Links -->
+  <!-- Competition Photos -->
   <section class="section">
     <h3>Competition Photos</h3>
     {car.photosLink.length > 0 ? (
@@ -101,8 +99,8 @@ if (Array.isArray((car as any).specs)) {
     </section>
   )}
 
-  <!-- Back link -->
-  <section class="section">
+  <!-- Back to All Cars -->
+  <section class="section" style="text-align:center;">
     <a href="/past-cars" class="back-button">← Back to All Cars</a>
   </section>
 </BaseLayout>

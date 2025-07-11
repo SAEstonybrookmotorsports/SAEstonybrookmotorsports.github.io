@@ -1,0 +1,128 @@
+/* src/styles/carDetail.css */
+
+/*─────────────────────────────────────────────────────────────────────*/
+/* 1) Font Import                                                     */
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@600;800&display=swap');
+
+/*─────────────────────────────────────────────────────────────────────*/
+/* 2) Prevent global fade‑wrapper from hiding detail pages            */
+#fade-wrapper {
+  opacity: 1 !important;
+}
+
+/*─────────────────────────────────────────────────────────────────────*/
+/* 3) Hero Section                                                    */
+.hero {
+  position: relative;
+  height: 60vh;
+  background-size: cover;
+  background-position: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.hero-overlay {
+  background: rgba(0, 0, 0, 0.5);
+  padding: 1.5rem 2rem;
+  border-radius: 8px;
+  max-width: 80%;
+  text-align: center;
+}
+.hero-overlay h1 {
+  font-family: 'Montserrat', sans-serif;
+  font-size: clamp(2rem, 5vw, 3rem);
+  color: #fff;
+  margin: 0.25rem 0;
+}
+.hero-overlay h2 {
+  font-family: 'Montserrat', sans-serif;
+  font-size: clamp(1.5rem, 4vw, 2.5rem);
+  color: #cc0033;
+  margin: 0.25rem 0;
+}
+.hero-overlay .standing {
+  font-style: italic;
+  font-size: 1rem;
+  color: #ddd;
+  margin-top: 0.5rem;
+}
+
+/*─────────────────────────────────────────────────────────────────────*/
+/* 4) Section Headings                                                */
+.section h3 {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 1.75rem;
+  color: #cc0033;
+  text-align: center;
+  margin-bottom: 1rem;
+}
+
+/*─────────────────────────────────────────────────────────────────────*/
+/* 5) Photo Links                                                     */
+.photo-links {
+  list-style: none;
+  padding: 0;
+  margin: 0.5rem 0 1rem;
+}
+.photo-links li + li {
+  margin-top: 0.5rem;
+}
+.photo-links a {
+  color: #cc0033;
+  text-decoration: none;
+  transition: color 0.2s;
+}
+.photo-links a:hover {
+  color: #a10028;
+  text-decoration: underline;
+}
+
+/*─────────────────────────────────────────────────────────────────────*/
+/* 6) Specifications Table                                            */
+.specs {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 1rem 0 2rem;
+}
+.specs th,
+.specs td {
+  border: 1px solid #444;
+  padding: 0.6rem 1rem;
+  text-align: left;
+  font-size: 0.95rem;
+}
+.specs th {
+  background: #111;
+  color: #fff;
+}
+
+/*─────────────────────────────────────────────────────────────────────*/
+/* 7) Awards List                                                     */
+.awards-list {
+  list-style: disc inside;
+  margin: 0.5rem 0 1.5rem;
+  padding-left: 1rem;
+}
+.awards-list li {
+  margin-bottom: 0.4rem;
+  color: #eee;
+}
+
+/*─────────────────────────────────────────────────────────────────────*/
+/* 8) Back Button                                                     */
+.back-button {
+  display: inline-block;
+  margin-top: 2rem;
+  padding: 0.75rem 1.5rem;
+  background: #cc0033;
+  color: #fff;
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 600;
+  border-radius: 6px;
+  text-decoration: none;
+  transition: background 0.2s ease, transform 0.2s ease;
+}
+.back-button:hover {
+  background: #a10028;
+  transform: translateY(-2px);
+}
