@@ -24,11 +24,15 @@ import '../../styles/global.css';
     <!-- Contact -->
     <div style="text-align: left; font-size: 1rem; line-height: 1.6; color: #eee;">
       <p><strong>Email:</strong> <a href="mailto:dnifinishinginc@aol.com" style="color: #ff4d4d;">dnifinishinginc@aol.com</a></p>
-      <p><strong>Phone:</strong> <a href="tel:6314713034" style="color: #ff4d4d;">(631) 471‑3034</a></p>
+      <p><strong>Phone:</strong> <a href="tel:6314713034" style="color: #ff4d4d;">(631) 471-3034</a></p>
     </div>
 
     <!-- Back Button -->
-    <section class="section" style="text-align: left;">
-        <a href="#" onclick="if (history.length > 1) history.back(); else window.location.href = '/index';" class="back-button">← Back</a>
-      </section>      
+    <section class="section">
+        <a href='/sponsors'; class="back-button" style = "text-align-left">Back to Sponsors →</a>
+        <p>                                   </p>
+        <a href="/" class="back-button" onclick="sessionStorage.setItem('animationPlayed', 'true')">
+            ← Back to Index
+        </a>
+    </section>   
 </BaseLayout>
