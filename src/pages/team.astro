@@ -3,6 +3,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 import { teamData, type TeamMember } from '../lib/teamData';
 import '../styles/global.css';
 import '../styles/team.css';
+import Subsystems from './subsystems.astro';
 
 // Group members by subsystem
 const grouped = teamData.reduce<Record<string, TeamMember[]>>((acc, member) => {
@@ -17,10 +18,10 @@ const order = [
   'Chassis',
   'Suspension',
   'Electronics',
+  'CNC',
   'Software',
   'Drivetrain',
   'Testing',
-  'CNC',
   'Finance'
 ];
 ---
