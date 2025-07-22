@@ -1,16 +1,6 @@
 /* src/styles/carDetail.css */
 
 /*─────────────────────────────────────────────────────────────────────*/
-/* 1) Font Import                                                     */
-@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@600;800&display=swap');
-
-/*─────────────────────────────────────────────────────────────────────*/
-/* 2) Prevent global fade‑wrapper from hiding detail pages            */
-#fade-wrapper {
-  opacity: 1 !important;
-}
-
-/*─────────────────────────────────────────────────────────────────────*/
 /* 3) Hero Section                                                    */
 .hero {
   position: relative;

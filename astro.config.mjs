@@ -5,4 +5,7 @@ export default defineConfig({
   output: 'static',
   site: 'https://CVRobo.github.io',
   integrations: [image()],
+  image: {
+    domains: ["res.cloudinary.com"],
+  },
 });

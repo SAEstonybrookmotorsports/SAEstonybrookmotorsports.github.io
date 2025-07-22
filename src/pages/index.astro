@@ -1,6 +1,24 @@
 ---
+import { Image } from "@astrojs/image/components";
 import LogoAnimation from "../components/LogoAnimation.astro";
 import BaseLayout from "../layouts/BaseLayout.astro";
+import ceas from "/public/images/sponsors/ceas.jpg";
+import usg from "/public/images/sponsors/usg.png";
+import mecheng from "/public/images/sponsors/mecheng.png";
+import solidworks from "/public/images/sponsors/solidworks.svg";
+import ansys from "/public/images/sponsors/ansys.svg";
+import kisssoft from "/public/images/sponsors/kisssoft.svg";
+import hexagon from "/public/images/sponsors/hexagon.png";
+import mastercam from "/public/images/sponsors/Mastercam.svg";
+import kenesto from "/public/images/sponsors/kenesto.png";
+import flagpoles from "/public/images/sponsors/flagpoles.gif";
+import fourxpro from "/public/images/sponsors/4xpro.avif";
+import ghaas from "/public/images/sponsors/ghaas.png";
+import basebrooklyn from "/public/images/sponsors/basebrooklyn.webp";
+import burton from "/public/images/sponsors/burton.png";
+import maloya from "/public/images/sponsors/maloya.webp";
+import difinishing from "/public/images/sponsors/di_finishing.png";
+import kkfinishing from "/public/images/sponsors/kkfinishing.png";
 ---
 <LogoAnimation />
 
@@ -54,22 +72,22 @@ import BaseLayout from "../layouts/BaseLayout.astro";
 	  <div class="sponsor-grid">
 		<div class="logo-box">
 		  <a href="https://www.stonybrook.edu/ceas/" target="_blank">
-			<img src="/images/sponsors/ceas.jpg" alt="Stony Brook College of Engineering & Applied Sciences" />
+			<Image src={ceas} alt="Stony Brook College of Engineering & Applied Sciences" />
 		  </a>
 		</div>
 		<div class="logo-box">
 		  <a href="https://stonybrookusg.com/" target="_blank">
-			<img src="/images/sponsors/usg.png" alt="Stony Brook USG" />
+			<Image src={usg} alt="Stony Brook USG" />
 		  </a>
 		</div>
 		<div class="logo-box">
 		  <a href="https://www.stonybrook.edu/undergraduate-admissions/programs/mec.php" target="_blank">
-			<img src="/images/sponsors/mecheng.png" alt="Stony Brook Mechanical Engineering" />
+			<Image src={mecheng} alt="Stony Brook Mechanical Engineering" />
 		  </a>
 		</div>
 		<div class="logo-box">
 		  <a href="https://www.solidworks.com/" target="_blank">
-			<img src="/images/sponsors/solidworks.svg" alt="Solidworks" />
+			<Image src={solidworks} alt="Solidworks" />
 		  </a>
 		</div>
 	  </div>
@@ -81,23 +99,23 @@ import BaseLayout from "../layouts/BaseLayout.astro";
 	  <div class="sponsor-grid">
 		<div class="logo-box">
 		<a href="https://www.ansys.com/" target="_blank">
-			<img src="/images/sponsors/ansys.svg" alt="Ansys" />
+			<Image src={ansys} alt="Ansys" />
 		  </a>
 		</div>
 		<div class="logo-box">
 		  <a href="https://www.kisssoft.com/en/" target="_blank">
-			<img src="/images/sponsors/kisssoft.svg" alt="KISSsoft" />
+			<Image src={kisssoft} alt="KISSsoft" />
 		  </a>
 		</div>
 	
 		<div class="logo-box">
 		  <a href="https://hexagon.com/" target="_blank">
-			<img src="/images/sponsors/hexagon.png" alt="Hexagon" />
+			<Image src={hexagon} alt="Hexagon" />
 		  </a>
 		</div>
 		<div class="logo-box">
 		  <a href="https://www.mastercam.com/" target="_blank">
-			<img src="/images/sponsors/Mastercam.svg" alt="Mastercam" />
+			<Image src={mastercam} alt="Mastercam" />
 		</a>
 
 	  </div>
@@ -109,47 +127,47 @@ import BaseLayout from "../layouts/BaseLayout.astro";
 	  <div class="sponsor-grid">
 		<div class="logo-box">
 			<a href="https://www.kenesto.com/" target="_blank">
-			  <img src="/images/sponsors/kenesto.png" alt="Kenesto" />
+			  <Image src={kenesto} alt="Kenesto" />
 			</a>
 		  </div>
 		  <div class="logo-box">
 			<a href="http://www.flagpolesinc.com/" target="_blank">
-			  <img src="/images/sponsors/flagpoles.gif" alt="Flagpoles Inc" />
+			  <Image src={flagpoles} alt="Flagpoles Inc" />
 			</a>
 		  </div>
 		  <div class="logo-box">
 			<a href="https://www.4xpro.com/" target="_blank">
-			  <img src="/images/sponsors/4xpro.avif" alt="4XPro" />
+			  <Image src={fourxpro} alt="4XPro" />
 			</a>
 		  </div>
 		  <div class="logo-box">
 			<a href="https://www.ghaasfoundation.org/" target="_blank">
-			  <img src="/images/sponsors/ghaas.png" alt="Gene Haas Foundation" />
+			  <Image src={ghaas} alt="Gene Haas Foundation" />
 			</a>
 		  </div>
 		  <div class="logo-box">
 			<a href="https://base-brooklyn.myshopify.com/" target="_blank">
-			  <img src="/images/sponsors/basebrooklyn.webp" alt="Base Brooklyn" />
+			  <Image src={basebrooklyn} alt="Base Brooklyn" />
 			</a>
 		  </div>
 		  <div class="logo-box">
 			<a href="https://burtonind.com/" target="_blank">
-			  <img src="/images/sponsors/burton.png" alt="Burton Industries Inc" />
+			  <Image src={burton} alt="Burton Industries Inc" />
 			</a>
 		  </div>
 		  <div class="logo-box">
 			<a href="https://maloyalaser.com/" target="_blank">
-			  <img src="/images/sponsors/maloya.webp" alt="Maloya" />
+			  <Image src={maloya} alt="Maloya" />
 			</a>
 		  </div>
 		  <div class="logo-box">
 			<a href="/sponsors/difinishing" target="_blank">
-			  <img src="/images/sponsors/di_finishing.png" alt="D&I Finishing Inc" />
+			  <Image src={difinishing} alt="D&I Finishing Inc" />
 			</a>
 		  </div>
 		  <div class="logo-box">
 			<a href="http://www.kkfinishingco.com/" target="_blank">
-			  <img src="/images/sponsors/kkfinishing.png" alt="KK Finishing Inc" />
+			  <Image src={kkfinishing} alt="KK Finishing Inc" />
 			</a>
 		  </div>
 	  </div>

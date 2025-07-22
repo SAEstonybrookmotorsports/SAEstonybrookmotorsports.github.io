@@ -1,4 +1,5 @@
 ---
+import { Image } from '@astrojs/image/components';
 import BaseLayout from '../layouts/BaseLayout.astro';
 import { fetchCloudinaryImages } from '../lib/server/cloudinary';
 import '../styles/global.css';
@@ -35,10 +36,12 @@ const images: ImageData[] = await fetchCloudinaryImages();
                 class="gallery-media"
               ></video>
             ) : (
-              <img
+              <Image
                 src={item.url}
                 alt={item.name}
                 class="gallery-media"
+                width={500}
+                height={500}
                 loading="lazy"
               />
             )}

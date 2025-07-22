@@ -23,7 +23,12 @@ export async function fetchCloudinaryImages() {
     });
     console.log('Cloudinary response:', JSON.stringify(result, null, 2));
     return result.resources.map((image: any) => ({
-      url: image.secure_url,
+      url: cloudinary.url(image.public_id, {
+        width: 500,
+        quality: 'auto',
+        fetch_format: 'auto',
+        crop: 'scale'
+      }),
       name: image.public_id.split('/').pop() || image.public_id,
     }));
   } catch (error) {
