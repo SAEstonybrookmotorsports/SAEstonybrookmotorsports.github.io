@@ -22,7 +22,7 @@ export const carData: CarData[] = [
     year: "1988",
     carNumber: "45",
     standing: "Unknown",
-    photoUrl: "/images/pastcars/1988.jpg",
+    photoUrl: "images/pastcars/1988.jpg",
     detailPageUrl: "/cars/1988",
     photosLink: [
       { label: "1988 Competition Photos", url: "https://goo.gl/photos/TFczhRE4p4Tr1WHbA" }
@@ -32,7 +32,7 @@ export const carData: CarData[] = [
     year: "1997",
     carNumber: "47",
     standing: "23rd Overall in Midwest",
-    photoUrl: "/images/pastcars/1997.jpg",
+    photoUrl: "images/pastcars/1997.jpg",
     detailPageUrl: "/cars/1997",
     photosLink: [
       { label: "Baja SAE Midwest", url: "https://goo.gl/photos/zeEx1v5M6ETEytA7" }
@@ -42,7 +42,7 @@ export const carData: CarData[] = [
     year: "1998",
     carNumber: "45",
     standing: "54th Overall in Midwest",
-    photoUrl: "/images/pastcars/1998.jpg",
+    photoUrl: "images/pastcars/1998.jpg",
     detailPageUrl: "/cars/1998",
     photosLink: [],
   },
@@ -50,7 +50,7 @@ export const carData: CarData[] = [
     year: "1999",
     carNumber: "40",
     standing: "51st Overall in Ohio",
-    photoUrl: "/images/pastcars/1999.jpg",
+    photoUrl: "images/pastcars/1999.jpg",
     detailPageUrl: "/cars/1999",
     photosLink: [
       { label: "Baja SAE Ohio", url: "https://goo.gl/photos/rng852EZecGdyR3c9" }
@@ -60,7 +60,7 @@ export const carData: CarData[] = [
     year: "2000",
     carNumber: "51",
     standing: "23rd Overall in Midwest",
-    photoUrl: "/images/pastcars/2000.jpg",
+    photoUrl: "images/pastcars/2000.jpg",
     detailPageUrl: "/cars/2000",
     photosLink: [
       { label: "Baja SAE Midwest", url: "https://goo.gl/photos/DyJFreZFReyYJsFS7" }
@@ -70,7 +70,7 @@ export const carData: CarData[] = [
     year: "2001",
     carNumber: "86",
     standing: "28th Overall in Midwest",
-    photoUrl: "/images/pastcars/2001.jpg",
+    photoUrl: "images/pastcars/2001.jpg",
     detailPageUrl: "/cars/2001",
     photosLink: [
       { label: "Baja SAE Midwest", url: "https://goo.gl/photos/nu9vdUDB8uvUHaz37" }
@@ -80,7 +80,7 @@ export const carData: CarData[] = [
     year: "2002",
     carNumber: "52",
     standing: "62nd Overall in Midwest",
-    photoUrl: "/images/pastcars/2002.jpg",
+    photoUrl: "images/pastcars/2002.jpg",
     detailPageUrl: "/cars/2002",
     photosLink: [
       { label: "Baja SAE Midwest", url: "https://goo.gl/photos/SNeb2BFWxMeS6daz6" }
@@ -90,7 +90,7 @@ export const carData: CarData[] = [
     year: "2003",
     carNumber: "20",
     standing: "88th Overall in Midwest",
-    photoUrl: "/images/pastcars/2003.jpg",
+    photoUrl: "images/pastcars/2003.jpg",
     detailPageUrl: "/cars/2003",
     photosLink: [
       { label: "Baja SAE Midwest", url: "https://goo.gl/photos/uC6BL7gDu917Apfd8" }
@@ -100,7 +100,7 @@ export const carData: CarData[] = [
     year: "2004",
     carNumber: "100",
     standing: "47th Overall in Midwest",
-    photoUrl: "/images/pastcars/2004.jpg",
+    photoUrl: "images/pastcars/2004.jpg",
     detailPageUrl: "/cars/2004",
     photosLink: [
       { label: "Baja SAE Midwest", url: "https://goo.gl/photos/mMVx3LAvxPBA3Twv9" }
@@ -112,7 +112,7 @@ export const carData: CarData[] = [
     year: "2005",
     carNumber: "99",
     standing: "61st Overall in Ohio",
-    photoUrl: "/images/pastcars/2005.jpg",
+    photoUrl: "images/pastcars/2005.jpg",
     detailPageUrl: "/cars/2005",
     photosLink: [
       { label: "Baja SAE Ohio", url: "https://goo.gl/photos/cBkezsAY9UGx3HW2A" }
@@ -131,7 +131,7 @@ export const carData: CarData[] = [
     year: "2006",
     carNumber: "130",
     standing: "44th Overall in Wisconsin",
-    photoUrl: "/images/pastcars/2006.jpg",
+    photoUrl: "images/pastcars/2006.jpg",
     detailPageUrl: "/cars/2006",
     photosLink: [
       { label: "Fabrication", url: "https://goo.gl/photos/9nwyDoUggJ9prFJn7" },
@@ -150,7 +150,7 @@ export const carData: CarData[] = [
     year: "2007",
     carNumber: "27/50",
     standing: "3rd Overall in South Dakota & 20th Overall in Rochester",
-    photoUrl: "/images/pastcars/2007.jpg",
+    photoUrl: "images/pastcars/2007.jpg",
     detailPageUrl: "/cars/2007",
     photosLink: [
       { label: "Fabrication", url: "https://goo.gl/photos/uhwezdamVx6thC429" },
@@ -183,7 +183,7 @@ export const carData: CarData[] = [
     year: "2008",
     carNumber: "3/19",
     standing: "2nd Overall in Montreal & 8th Overall in Illinois",
-    photoUrl: "/images/pastcars/2008.jpg",
+    photoUrl: "images/pastcars/2008.jpg",
     detailPageUrl: "/cars/2008",
     photosLink: [
       { label: "Fabrication: Part 1", url: "https://goo.gl/photos/JtVw8ncuVcjnLs7a7" },
@@ -218,7 +218,7 @@ export const carData: CarData[] = [
     year: "2009",
     carNumber: "2",
     standing: "5th Overall in Wisconsin",
-    photoUrl: "/images/pastcars/2009.jpg",
+    photoUrl: "images/pastcars/2009.jpg",
     detailPageUrl: "/cars/2009",
     photosLink: [
       { label: "Fabrication: Part 1", url: "https://goo.gl/photos/iqeBvHxBSRqLVsz69" },
@@ -241,7 +241,7 @@ export const carData: CarData[] = [
     year: "2010",
     carNumber: "64",
     standing: "32nd Overall in Rochester",
-    photoUrl: "/images/pastcars/2010.jpg",
+    photoUrl: "images/pastcars/2010.jpg",
     detailPageUrl: "/cars/2010",
     photosLink: [
       { label: "Baja SAE Rochester", url: "https://goo.gl/photos/PjfUJ2P8ouRPNgd69" }
@@ -259,7 +259,7 @@ export const carData: CarData[] = [
     year: "2011",
     carNumber: "34",
     standing: "10th Overall in Illinois",
-    photoUrl: "/images/pastcars/2011.jpg",
+    photoUrl: "images/pastcars/2011.jpg",
     detailPageUrl: "/cars/2011",
     photosLink: [
       { label: "Fabrication", url: "https://goo.gl/photos/f18Drw9eKZFpGFwc6" },
@@ -279,7 +279,7 @@ export const carData: CarData[] = [
     year: "2012",
     carNumber: "10/96",
     standing: "33rd Overall in Oregon & 21st Overall in Wisconsin",
-    photoUrl: "/images/pastcars/2012.jpg",
+    photoUrl: "images/pastcars/2012.jpg",
     detailPageUrl: "/cars/2012",
     photosLink: [
       { label: "Fabrication", url: "https://goo.gl/photos/Kdqp8tQpHJud8KLH7" },
@@ -299,7 +299,7 @@ export const carData: CarData[] = [
     year: "2013",
     carNumber: "45",
     standing: "36th Overall in Rochester",
-    photoUrl: "/images/pastcars/2013.jpg",
+    photoUrl: "images/pastcars/2013.jpg",
     detailPageUrl: "/cars/2013",
     photosLink: [
       { label: "Fabrication", url: "https://goo.gl/photos/MqW7GTRZTbLX75SJ7" },
@@ -318,7 +318,7 @@ export const carData: CarData[] = [
     year: "2014",
     carNumber: "68",
     standing: "16th Overall in Illinois",
-    photoUrl: "/images/pastcars/2014.jpg",
+    photoUrl: "images/pastcars/2014.jpg",
     detailPageUrl: "/cars/2014",
     photosLink: [
       { label: "Fabrication", url: "https://goo.gl/photos/iE5i9xyUQMsjS1oc9" },
@@ -337,7 +337,7 @@ export const carData: CarData[] = [
     year: "2015",
     carNumber: "18",
     standing: "70th Overall in Maryland",
-    photoUrl: "/images/pastcars/2015.jpg",
+    photoUrl: "images/pastcars/2015.jpg",
     detailPageUrl: "/cars/2015",
     photosLink: [
       { label: "Baja SAE Maryland", url: "https://goo.gl/photos/4w1e3ApXzz3kep83A" }
@@ -355,7 +355,7 @@ export const carData: CarData[] = [
     year: "2016",
     carNumber: "22",
     standing: "46th Overall in Rochester",
-    photoUrl: "/images/pastcars/2016.jpg",
+    photoUrl: "images/pastcars/2016.jpg",
     detailPageUrl: "/cars/2016",
     photosLink: [
       { label: "Fabrication", url: "https://goo.gl/photos/9nwyDoUggJ9prFJn7" },
@@ -374,7 +374,7 @@ export const carData: CarData[] = [
     year: "2017",
     carNumber: "15/125",
     standing: "27th Overall in Kansas & 61st Overall in Illinois",
-    photoUrl: "/images/pastcars/2017.jpg",
+    photoUrl: "images/pastcars/2017.jpg",
     detailPageUrl: "/cars/2017",
     photosLink: [
       { label: "Fabrication", url: "https://goo.gl/photos/9u6NvxjEFnQvXJ52A" },
@@ -397,7 +397,7 @@ export const carData: CarData[] = [
     year: "2018",
     carNumber: "22",
     standing: "31st Overall in Oregon",
-    photoUrl: "/images/pastcars/2018.png",
+    photoUrl: "images/pastcars/2018.png",
     detailPageUrl: "/cars/2018",
     photosLink: [
       { label: "Fabrication", url: "https://photos.app.goo.gl/F8VooVZbv23qnGjA8" },
@@ -420,7 +420,7 @@ export const carData: CarData[] = [
     year: "2019",
     carNumber: "14",
     standing: "43rd Overall in Rochester",
-    photoUrl: "/images/pastcars/2019.jpg",
+    photoUrl: "images/pastcars/2019.jpg",
     detailPageUrl: "/cars/2019",
     photosLink: [
       { label: "Fabrication", url: "https://photos.app.goo.gl/wAHvUF427Rb2ZmrYA" },
@@ -442,7 +442,7 @@ export const carData: CarData[] = [
     year: "2022",
     carNumber: "14",
     standing: "70th Overall in Rochester",
-    photoUrl: "/images/pastcars/2022.jpg",
+    photoUrl: "images/pastcars/2022.jpg",
     detailPageUrl: "/cars/2022",
     photosLink: [
       { label: "Fabrication", url: "https://photos.app.goo.gl/" },
@@ -464,7 +464,7 @@ export const carData: CarData[] = [
     year: "2023",
     carNumber: "15",
     standing: "62nd Overall in Oregon",
-    photoUrl: "/images/pastcars/2023.jpg",
+    photoUrl: "images/pastcars/2023.jpg",
     detailPageUrl: "/cars/2023",
     photosLink: [
       { label: "Fabrication", url: "https://photos.app.goo.gl/" },
@@ -486,7 +486,7 @@ export const carData: CarData[] = [
     year: "2024",
     carNumber: "86/99",
     standing: "31st Overall in California & 25th Overall in Williamsport; 13th Maneuverability & 10th Endurance",
-    photoUrl: "/images/pastcars/2024.jpg",
+    photoUrl: "images/pastcars/2024.jpg",
     detailPageUrl: "/cars/2024",
     photosLink: [
       { label: "Fabrication", url: "https://photos.app.goo.gl/" },

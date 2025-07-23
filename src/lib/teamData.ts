@@ -13,7 +13,7 @@ export interface TeamMember {
 export const teamData: TeamMember[] = [
   {
     name: 'Kushagra Taneja',
-    image: '/images/team/kushagra-taneja.jpg',
+    image: 'images/team/kushagra-taneja.jpg',
     role: 'Software Lead',
     subsystem: 'Software',
     linkedin: 'https://www.linkedin.com/in/kushagra-taneja/',
@@ -23,7 +23,7 @@ export const teamData: TeamMember[] = [
   },
   {
     name: 'Edward Cibu',
-    image: '/images/team/edward-cibu.jpg',
+    image: 'images/team/edward-cibu.jpg',
     role: 'Brakes Lead / Internal PR',
     subsystem: 'Brakes',
     bio: 'insert professional bio here',
@@ -33,7 +33,7 @@ export const teamData: TeamMember[] = [
   },
   {
     name: 'Brandon Chan',
-    image: '/images/team/brandon-chan.jpg',
+    image: 'images/team/brandon-chan.jpg',
     role: 'Suspension Lead',
     subsystem: 'Suspension',
     linkedin: 'https://www.linkedin.com/in/brandon-chan-0467591ab/',
@@ -43,7 +43,7 @@ export const teamData: TeamMember[] = [
   },
   {
     name: 'Denys Tserkovniuk',
-    image: '/images/team/denys-tserkovniuk.jpg',
+    image: 'images/team/denys-tserkovniuk.jpg',
     role: 'Driveshaft & Axles Lead',
     subsystem: 'Drivetrain',
     bio: 'insert professional bio here',
@@ -51,7 +51,7 @@ export const teamData: TeamMember[] = [
   },
   {
     name: 'Erik Khachatryan',
-    image: '/images/team/erik-khachatryan.jpg',
+    image: 'images/team/erik-khachatryan.jpg',
     role: 'CVT Lead',
     subsystem: 'Transmission',
     bio: 'insert professional bio here',
@@ -59,7 +59,7 @@ export const teamData: TeamMember[] = [
   },
   {
     name: 'Arthur Siek',
-    image: '/images/team/arthur-siek.jpg',
+    image: 'images/team/arthur-siek.jpg',
     role: 'Vice President / CNC Lead',
     subsystem: 'CNC',
     bio: 'insert professional bio here',
@@ -68,7 +68,7 @@ export const teamData: TeamMember[] = [
   },
   {
     name: 'Hunter Guthy',
-    image: '/images/team/hunter-guthy.jpg',
+    image: 'images/team/hunter-guthy.jpg',
     role: 'Frame Lead',
     subsystem: 'Chassis',
     linkedin: 'https://www.linkedin.com/in/hunterguthy/',
@@ -78,7 +78,7 @@ export const teamData: TeamMember[] = [
   },
   {
     name: 'Julianna Wehmann',
-    image: '/images/team/julianna-wehmann.jpg',
+    image: 'images/team/julianna-wehmann.jpg',
     role: 'President',
     subsystem: 'Leadership',
     linkedin: 'https://www.linkedin.com/in/julianna-wehmann/',
@@ -88,7 +88,7 @@ export const teamData: TeamMember[] = [
   },
   {
     name: 'Kevin Zhuo',
-    image: '/images/team/kevin-zhuo.jpg',
+    image: 'images/team/kevin-zhuo.jpg',
     role: 'Powertrain Lead / Head Machinist',
     subsystem: 'Powertrain',
     linkedin: 'https://www.linkedin.com/in/kevin-zhuo43/',
@@ -98,7 +98,7 @@ export const teamData: TeamMember[] = [
   },
   {
     name: 'Ziqi Wang',
-    image: '/images/team/ziqi-wang.jpg',
+    image: 'images/team/ziqi-wang.jpg',
     role: 'Gearbox Lead',
     subsystem: 'Drivetrain',
     bio: 'insert professional bio here',
@@ -106,7 +106,7 @@ export const teamData: TeamMember[] = [
   },
   {
     name: 'Pasha Kusumo',
-    image: '/images/team/pasha-kusumo.jpg',
+    image: 'images/team/pasha-kusumo.jpg',
     role: 'Differential Co‑Lead',
     subsystem: 'Drivetrain',
     linkedin: 'https://www.linkedin.com/in/pashakusumo/',
@@ -115,7 +115,7 @@ export const teamData: TeamMember[] = [
   },
   {
     name: 'Samantha Margulies',
-    image: '/images/team/samantha-margulies.jpg',
+    image: 'images/team/samantha-margulies.jpg',
     role: 'Treasurer',
     subsystem: 'Finance',
     linkedin: 'https://www.linkedin.com/in/samantha-margulies',
@@ -124,7 +124,7 @@ export const teamData: TeamMember[] = [
   },
   {
     name: 'Nick Clement',
-    image: '/images/team/nick-clement.jpg',
+    image: 'images/team/nick-clement.jpg',
     role: 'Chassis Lead',
     subsystem: 'Chassis',
     bio: 'insert professional bio here',
@@ -132,7 +132,7 @@ export const teamData: TeamMember[] = [
   },
   {
     name: 'Misha Zaslavsky',
-    image: '/images/team/misha-zaslavsky.jpg',
+    image: 'images/team/misha-zaslavsky.jpg',
     role: 'Testing Lead',
     subsystem: 'Testing',
     bio: 'insert professional bio here',
@@ -140,7 +140,7 @@ export const teamData: TeamMember[] = [
   },
   {
     name: 'Vinny Blendell',
-    image: '/images/team/vinny-blendell.jpg',
+    image: 'images/team/vinny-blendell.jpg',
     role: 'Composites Lead',
     subsystem: 'Composites',
     bio: 'insert professional bio here',

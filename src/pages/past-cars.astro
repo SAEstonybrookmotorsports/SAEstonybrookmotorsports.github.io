@@ -6,11 +6,6 @@ import '../styles/global.css';
 import '../styles/pastcars.css';
 
 const sortedCars = [...carData].sort((a, b) => parseInt(b.year) - parseInt(a.year)); // latest first
-
-const images = await Promise.all(sortedCars.map(async (car) => {
-  const image = await import(/* @vite-ignore */ car.photoUrl);
-  return { ...car, photoUrl: image.default };
-}));
 ---
 
 <BaseLayout>
@@ -29,7 +24,7 @@ const images = await Promise.all(sortedCars.map(async (car) => {
 
   <!-- CAR ENTRIES -->
   <section id="car-container" class="past-cars-list">
-    {images.map(car => (
+    {sortedCars.map(car => (
       <div class="car-year-block" data-year={car.year}>
         <h2 class="year-heading">{car.year}</h2>
         <div class="card-wrapper">

@@ -26,16 +26,6 @@ const order = [
   'Testing',
   'Finance'
 ];
-
-const images = await Promise.all(teamData.map(async (member) => {
-  const image = await import(/* @vite-ignore */ member.image);
-  return { ...member, image: image.default };
-}));
-
-const groupedWithImages = images.reduce<Record<string, (TeamMember & { image: any })[]>>((acc, member) => {
-  (acc[member.subsystem] ||= []).push(member);
-  return acc;
-}, {});
 ---
 
 <BaseLayout>
@@ -49,7 +39,7 @@ const groupedWithImages = images.reduce<Record<string, (TeamMember & { image: an
 
   <!-- Render in custom order -->
   {order.map((subsystem, idx) => {
-    const members = groupedWithImages[subsystem];
+    const members = grouped[subsystem];
     if (!members || members.length === 0) return null;
 
     // Find the lead/president
