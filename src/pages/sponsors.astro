@@ -2,6 +2,16 @@
 import "../styles/global.css";
 import "../styles/theme.css";
 import BaseLayout from "../layouts/BaseLayout.astro";
+import { sponsors, tierDescriptions } from "../lib/sponsors.ts";
+
+// Define tiers in order (must match sponsor.tier.toLowerCase())
+const tiers: Array<keyof typeof tierDescriptions> = [
+  "platinum",
+  "gold",
+  "silver",
+  "bronze",
+  "honorable"
+];
 ---
 <BaseLayout>
   <!-- HERO -->
@@ -12,143 +22,53 @@ import BaseLayout from "../layouts/BaseLayout.astro";
     </div>
   </section>
 
-  <!-- OVERVIEW -->
-  <section class="section about" style="max-width:900px; margin:0 auto 4rem;">
-    <h2>Partnering for Excellence</h2>
-    <p>
-      From concept sketches to roaring engines, our sponsors provide the resources, expertise, and mentorship that drive our success on and off the track. Below are the companies and organizations whose commitment powers Stony Brook Motorsports forward.
-    </p>
-  </section>
-
-  <!-- PLATINUM TIER -->
-  <section class="section sponsor-tier platinum">
-    <h2>Platinum Partners</h2>
-    <p class="tier-desc">
-      These cornerstone sponsors underwrite our core operations: materials, fabrication, and competition logistics. They allow us to innovate without limits.
-    </p>
-    <div class="section sponsor-grid">
-      <div class="logo-box">
-        <a href="https://www.stonybrook.edu/ceas/" target="_blank">
-          <img src="/images/sponsors/ceas.jpg" alt="CEAS" />
-        </a>
-      </div>
-      <div class="logo-box">
-        <a href="https://www.stonybrook.edu/ceas/connect" target="_blank">
-          <img src="/images/sponsors/usg.png" alt="USG" />
-        </a>
-      </div>
-      <div class="logo-box">
-        <a href="https://www.stonybrook.edu/ceas/mechanical" target="_blank">
-          <img src="/images/sponsors/mecheng.png" alt="Mechanical Engineering" />
-        </a>
-      </div>
-      <div class="logo-box">
-        <a href="https://www.solidworks.com/" target="_blank">
-          <img src="/images/sponsors/solidworks.svg" alt="Solidworks" />
-        </a>
-      </div>
-    </div>
-  </section>
-
-  <!-- GOLD TIER -->
-  <section class="section sponsor-tier gold">
-    <h2>Gold Supporters</h2>
-    <p class="tier-desc">
-      Our Gold sponsors supply specialized software, testing equipment, and technical training that sharpen our competitive edge.
-    </p>
-    <div class="sponsor-grid">
-      <div class="logo-box">
-        <a href="https://www.ansys.com/" target="_blank">
-          <img src="/images/sponsors/ansys.svg" alt="Ansys" />
-        </a>
-      </div>
-      <div class="logo-box">
-        <a href="https://www.kisssoft.com/en/" target="_blank">
-          <img src="/images/sponsors/kisssoft.svg" alt="KISSsoft" />
-        </a>
-      </div>
-      <div class="logo-box">
-        <a href="https://hexagon.com/" target="_blank">
-          <img src="/images/sponsors/hexagon.png" alt="Hexagon" />
-        </a>
-      </div>
-      <div class="logo-box">
-        <a href="https://www.mastercam.com/" target="_blank">
-          <img src="/images/sponsors/Mastercam.svg" alt="Mastercam" />
-        </a>
-      </div>
-    </div>
-  </section>
-
-  <!-- SILVER TIER -->
-  <section class="sponsor-tier silver">
-    <h2>Silver Allies</h2>
-    <p class="tier-desc">
-      Silver-level partners provide vital consumables, fabrication services, and student internships to help us add even more depth to our program.
-    </p>
-    <div class="sponsor-grid">
-      <div class="logo-box">
-        <a href="https://www.kenesto.com/" target="_blank">
-          <img src="/images/sponsors/kenesto.png" alt="Kenesto" />
-        </a>
-      </div>
-      <div class="logo-box">
-        <a href="http://www.flagpolesinc.com/" target="_blank">
-          <img src="/images/sponsors/flagpoles.gif" alt="Flagpoles Inc" />
-        </a>
-      </div>
-      <div class="logo-box">
-        <a href="https://www.4xpro.com/" target="_blank">
-          <img src="/images/sponsors/4xpro.avif" alt="4XPro" />
-        </a>
-      </div>
-      <div class="logo-box">
-        <a href="https://www.ghaasfoundation.org/" target="_blank">
-          <img src="/images/sponsors/ghaas.png" alt="Gene Haas Foundation" />
-        </a>
-      </div>
-      <div class="logo-box">
-        <a href="http://basebrooklyn.net/online/" target="_blank">
-          <img src="/images/sponsors/basebrooklyn.webp" alt="Base Brooklyn" />
-        </a>
-      </div>
-      <div class="logo-box">
-        <a href="https://burtonind.com/" target="_blank">
-          <img src="/images/sponsors/burton.png" alt="Burton Industries" />
-        </a>
-      </div>
-      <div class="logo-box">
-        <a href="https://maloyalaser.com/" target="_blank">
-          <img src="/images/sponsors/maloya.webp" alt="Maloya" />
-        </a>
-      </div>
-      <div class="logo-box">
-        <a href="sponsors/difinishing" target="_blank">
-          <img src="/images/sponsors/di_finishing.png" alt="D&I Finishing" />
-        </a>
-      </div>
-      <div class="logo-box">
-        <a href="http://www.kkfinishingco.com/" target="_blank">
-          <img src="/images/sponsors/kkfinishing.png" alt="KK Finishing" />
-        </a>
-      </div>
-    </div>
-  </section>
-  <script>
-    window.addEventListener("DOMContentLoaded", () => {
-      const observer = new IntersectionObserver(
-        (entries) => {
-          entries.forEach(entry => {
-            if (entry.isIntersecting) {
-              entry.target.classList.add("reveal");
-              observer.unobserve(entry.target); // Optional: remove after first reveal
-            }
-          });
-        },
-        { threshold: 0.2 }
+  <!-- SPONSORS -->
+  <section id="sponsors" class="sponsors">
+    <h3 style="text-align:left; font-size:3rem; margin-bottom:1.5rem;">Our Sponsors</h3>
+    {tiers.map(tier => {
+      const tierSponsors = sponsors.filter(s => s.tier.toLowerCase() === tier);
+      if (tierSponsors.length === 0) return null;
+      return (
+        <div class={"sponsor-tier " + tier} style="text-align:left; margin-bottom:3rem;">
+          <h4 style="text-align:left; font-size:3rem; margin-bottom:0.5rem;">
+            {tier.charAt(0).toUpperCase() + tier.slice(1)}
+          </h4>
+          <p class="tier-desc" style="text-align:left; font-size:1.2rem; margin-bottom:1.5rem;">
+            {tierDescriptions[tier]}
+          </p>
+          <div class={tier === 'honorable' ? 'sponsor-grid honorable-grid' : 'sponsor-grid'}>
+            {tierSponsors.map(sponsor => (
+              <div class="logo-box reveal">
+                {sponsor.url ? (
+                  <a href={sponsor.url} target="_blank" rel="noopener">
+                    <img src={sponsor.image} alt={sponsor.alt} />
+                  </a>
+                ) : (
+                  <img src={sponsor.image} alt={sponsor.alt} />
+                )}
+                {sponsor.personName && <p class="sponsor-name" style="text-align:left; margin-top:0.75rem; font-size:1rem;">
+                  {sponsor.personName}
+                </p>}
+              </div>
+            ))}
+          </div>
+        </div>
       );
-  
-      document.querySelectorAll(".logo-box").forEach(el => observer.observe(el));
+    })}
+  </section>
+
+  <script type="module">
+    document.addEventListener('DOMContentLoaded', () => {
+      const boxes = document.querySelectorAll('.logo-box');
+      const io = new IntersectionObserver((entries) => {
+        entries.forEach(e => {
+          if (e.isIntersecting) {
+            e.target.classList.add('reveal');
+            io.unobserve(e.target);
+          }
+        });
+      }, { threshold: 0.3 });
+      boxes.forEach(b => io.observe(b));
     });
   </script>
 </BaseLayout>

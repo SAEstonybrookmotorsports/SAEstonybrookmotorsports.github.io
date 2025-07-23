@@ -173,9 +173,9 @@
 .sponsor-tier.platinum h4 {
   position: relative;
   background: linear-gradient(90deg,
-    rgba(245,245,245,0.2) 25%,
+    rgba(234, 255, 0, 0.2) 25%,
     rgba(255,255,255,0.8) 50%,
-    rgba(245,245,245,0.2) 75%);
+    rgba(228, 244, 54, 0.2) 75%,);
   background-size: 400px 100%;
   -webkit-background-clip: text;
   background-clip: text;
@@ -186,7 +186,7 @@
   0%,100% { background-position: -200px 0; }
   50%     { background-position: 200px 0; }
 }
-.sponsor-tier.gold h4    { color: #ffd700; }
+.sponsor-tier.gold h4    { color: rgb(255, 215, 0); }
 .sponsor-tier.silver h4  { color: #c0c0c0; }
 
 /* Flex‑based Grid (no overlap) */
@@ -259,9 +259,9 @@
 .sponsor-tier.platinum h2 {
   color: #e5e4e2;
   background: linear-gradient(90deg,
-    rgba(245,245,245,0.2) 25%,
+    rgba(255, 215, 0, 0.8) 25%,
     rgba(255,255,255,0.8) 50%,
-    rgba(245,245,245,0.2) 75%);
+    rgba(255, 215, 0, 0.866) 75%);
   background-size: 400px 100%;
   background-clip: text;
   -webkit-background-clip: text;
@@ -269,9 +269,45 @@
   -webkit-text-fill-color: transparent;
   animation: platinumGlint 3s infinite;
 }
+/* Add this to your existing CSS */
+.sponsor-tier.gold h4 {
+  position: relative;
+  background: linear-gradient(90deg,
+    rgba(255, 231, 97, 0.8) 50%,
+    rgba(255, 215, 0, 0.8) 50%,
+    rgba(255, 235, 122, 0.7) 75%);
+  background-size: 400px 100%;
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  animation: goldGlint 3s infinite;
+}
+@keyframes goldGlint {
+  0%,100% { background-position: -200px 0; }
+  50%     { background-position: 200px 0; }
+}
+
+.sponsor-tier.bronze h4 {
+  color: #cd7f32;
+}
+
+.sponsor-tier.honorable h4 {
+  color: #999;
+}
+
+.honorable-grid .logo-box {
+  flex-direction: column;
+  color: inherit;
+  text-align: center;
+}
+.honorable-grid .logo-box img {
+  max-height: 80px;
+  border-radius: 50%;
+  margin-bottom: 0.5rem;
+}
 
 .sponsor-tier.gold h2 {
-  color: #ffd700;
+  color: rgb(255, 215, 0);
 }
 
 .sponsor-tier.silver h2 {
@@ -279,10 +315,11 @@
 }
 
 .tier-desc {
-  font-size: 1.1rem;
+  font-size: 1.8rem;
   color: #aaa;
   max-width: 700px;
-  margin: 0 auto 2.5rem;
+  font-family: 'Montserrat';
+  margin: 0 auto 1rem;
   text-align: center;
 }
 /* Tier description text */

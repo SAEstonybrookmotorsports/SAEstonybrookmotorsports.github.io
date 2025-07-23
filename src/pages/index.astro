@@ -1,7 +1,11 @@
 ---
 import LogoAnimation from "../components/LogoAnimation.astro";
 import BaseLayout from "../layouts/BaseLayout.astro";
+import { sponsors, tierDescriptions } from "../lib/sponsors.ts";
+
+const tiers = ["Gold", "Silver", "Bronze", "Honorable Mentions"];
 ---
+
 <LogoAnimation />
 
 <BaseLayout>
@@ -17,17 +21,12 @@ import BaseLayout from "../layouts/BaseLayout.astro";
     </div>
   </header>
 
-  <!-- JOIN + RECAP buttons in navbar slot (in BaseLayout, under .nav-right) -->
-  <!-- Example: -->
-  <!-- <a href="/join" class="btn-secondary">Join the Team</a> -->
-  <!-- <a href="/last-baja" class="btn-secondary">Baja 2026 Recap</a> -->
-
   <!-- STATS BAR -->
   <section class="stat-bar">
     <div class="stat-item" data-target="75">
       <h3>0</h3><p>Active Members</p>
     </div>
-    <div class="stat-item" data-target="20">
+    <div class="stat-item" data-target="35">
       <h3>0</h3><p>Competitions</p>
     </div>
     <div class="stat-item" data-target="120">
@@ -42,182 +41,101 @@ import BaseLayout from "../layouts/BaseLayout.astro";
       We're a multidisciplinary student team passionate about building off-road race cars from scratch.<br>
       We push the limits of engineering and teamwork  all while forging lifelong friendships.
     </p>
-    <!-- moved into navbar -->
   </section>
 
+  <!-- SPONSORS SECTION -->
   <section id="sponsors" class="sponsors">
-	<h3>Our Sponsors</h3>
-  
-	<!-- Platinum Tier -->
-	<div class="sponsor-tier platinum">
-	  <h4>Platinum</h4>
-	  <div class="sponsor-grid">
-		<div class="logo-box">
-		  <a href="https://www.stonybrook.edu/ceas/" target="_blank">
-			<img src="/images/sponsors/ceas.jpg" alt="Stony Brook College of Engineering & Applied Sciences" />
-		  </a>
-		</div>
-		<div class="logo-box">
-		  <a href="https://stonybrookusg.com/" target="_blank">
-			<img src="/images/sponsors/usg.png" alt="Stony Brook USG" />
-		  </a>
-		</div>
-		<div class="logo-box">
-		  <a href="https://www.stonybrook.edu/undergraduate-admissions/programs/mec.php" target="_blank">
-			<img src="/images/sponsors/mecheng.png" alt="Stony Brook Mechanical Engineering" />
-		  </a>
-		</div>
-		<div class="logo-box">
-		  <a href="https://www.solidworks.com/" target="_blank">
-			<img src="/images/sponsors/solidworks.svg" alt="Solidworks" />
-		  </a>
-		</div>
-	  </div>
-	</div>
-  
-	<!-- Gold Tier -->
-	<div class="sponsor-tier gold">
-	  <h4>Gold</h4>
-	  <div class="sponsor-grid">
-		<div class="logo-box">
-		<a href="https://www.ansys.com/" target="_blank">
-			<img src="/images/sponsors/ansys.svg" alt="Ansys" />
-		  </a>
-		</div>
-		<div class="logo-box">
-		  <a href="https://www.kisssoft.com/en/" target="_blank">
-			<img src="/images/sponsors/kisssoft.svg" alt="KISSsoft" />
-		  </a>
-		</div>
-	
-		<div class="logo-box">
-		  <a href="https://hexagon.com/" target="_blank">
-			<img src="/images/sponsors/hexagon.png" alt="Hexagon" />
-		  </a>
-		</div>
-		<div class="logo-box">
-		  <a href="https://www.mastercam.com/" target="_blank">
-			<img src="/images/sponsors/Mastercam.svg" alt="Mastercam" />
-		</a>
+    <h3>Our Sponsors</h3>
+    {tiers.map(tier => {
+      const tierSponsors = sponsors.filter(s => s.tier === tier);
+      if (!tierSponsors.length) return null;
+      return (
+        <div class={`sponsor-tier ${tier.toLowerCase().replace(/ /g, '-')}`}> 
+          <h4>{tier}</h4>
+          {tierDescriptions[tier] && <p>{tierDescriptions[tier]}</p>}
+          <div class={`sponsor-grid ${tier === 'Honorable Mentions' ? 'honorable-grid' : ''}`}>
+            {tierSponsors.map(({ name, image, alt, url, personName }) => (
+              <div class="logo-box">
+                {url ? (
+                  <a href={url} target="_blank" rel="noopener">
+                    <img src={image} alt={alt} />
+                  </a>
+                ) : (
+                  <img src={image} alt={alt} />
+                )}
+                {tier === 'Honorable Mentions' && (
+                  <p>{personName ?? name}</p>
+                )}
+              </div>
+            ))}
+          </div>
+        </div>
+      );
+    })}
+  </section>
 
-	  </div>
-	</div>
-  
-	<!-- Silver Tier -->
-	<div class="sponsor-tier silver">
-	  <h4>Silver</h4>
-	  <div class="sponsor-grid">
-		<div class="logo-box">
-			<a href="https://www.kenesto.com/" target="_blank">
-			  <img src="/images/sponsors/kenesto.png" alt="Kenesto" />
-			</a>
-		  </div>
-		  <div class="logo-box">
-			<a href="http://www.flagpolesinc.com/" target="_blank">
-			  <img src="/images/sponsors/flagpoles.gif" alt="Flagpoles Inc" />
-			</a>
-		  </div>
-		  <div class="logo-box">
-			<a href="https://www.4xpro.com/" target="_blank">
-			  <img src="/images/sponsors/4xpro.avif" alt="4XPro" />
-			</a>
-		  </div>
-		  <div class="logo-box">
-			<a href="https://www.ghaasfoundation.org/" target="_blank">
-			  <img src="/images/sponsors/ghaas.png" alt="Gene Haas Foundation" />
-			</a>
-		  </div>
-		  <div class="logo-box">
-			<a href="https://base-brooklyn.myshopify.com/" target="_blank">
-			  <img src="/images/sponsors/basebrooklyn.webp" alt="Base Brooklyn" />
-			</a>
-		  </div>
-		  <div class="logo-box">
-			<a href="https://burtonind.com/" target="_blank">
-			  <img src="/images/sponsors/burton.png" alt="Burton Industries Inc" />
-			</a>
-		  </div>
-		  <div class="logo-box">
-			<a href="https://maloyalaser.com/" target="_blank">
-			  <img src="/images/sponsors/maloya.webp" alt="Maloya" />
-			</a>
-		  </div>
-		  <div class="logo-box">
-			<a href="/sponsors/difinishing" target="_blank">
-			  <img src="/images/sponsors/di_finishing.png" alt="D&I Finishing Inc" />
-			</a>
-		  </div>
-		  <div class="logo-box">
-			<a href="http://www.kkfinishingco.com/" target="_blank">
-			  <img src="/images/sponsors/kkfinishing.png" alt="KK Finishing Inc" />
-			</a>
-		  </div>
-	  </div>
-	</div>
-</section>
-  
-  
-</BaseLayout>
+  <!-- JS: ANIMATION + STATS -->
+  <script type="module">
+    window.addEventListener('DOMContentLoaded', () => {
+      const overlay = document.getElementById('animation-overlay');
+      const logo = document.getElementById('navbar-logo');
+      const played = sessionStorage.getItem('animationPlayed');
+      if (overlay && !played) {
+        overlay.style.pointerEvents = 'none';
+        setTimeout(() => {
+          overlay.remove();
+          logo.style.opacity = '1';
+          sessionStorage.setItem('animationPlayed','true');
+        }, 4000);
+      } else overlay?.remove();
 
-<script type="module">
-  window.addEventListener('DOMContentLoaded', () => {
-    // Animation overlay removal
-    const overlay = document.getElementById('animation-overlay');
-    const logo    = document.getElementById('navbar-logo');
-    const played  = sessionStorage.getItem('animationPlayed');
-    if (overlay && !played) {
-      overlay.style.pointerEvents = 'none';
-      setTimeout(() => { overlay.remove(); logo.style.opacity = '1'; sessionStorage.setItem('animationPlayed','true'); }, 4000);
-    } else overlay?.remove();
+      const stats = document.querySelectorAll('.stat-item');
+      const animate = () => {
+        stats.forEach((el) => {
+          const rect = el.getBoundingClientRect();
+          if (rect.top < window.innerHeight && !el.classList.contains('done')) {
+            const target = +el.dataset.target;
+            let count = 0;
+            const h3 = el.querySelector('h3');
+            const step = Math.ceil(target / 50);
+            const timer = setInterval(() => {
+              count += step;
+              if (count >= target) {
+                count = target;
+                clearInterval(timer);
+                el.classList.add('done');
+              }
+              if (h3) h3.textContent = count + (el.classList.contains('done') ? '+' : '');
+            }, 20);
+          }
+        });
+      };
+      window.addEventListener('scroll', animate);
+      animate();
 
-    // Stats count‑up on scroll
-    const stats   = document.querySelectorAll('.stat-item');
-    const animate = () => {
-      stats.forEach((el) => {
-        const rect = el.getBoundingClientRect();
-        if (rect.top < window.innerHeight && !el.classList.contains('done')) {
-          const target = +el.dataset.target;
-          let count = 0;
-          const h3    = el.querySelector('h3');
-          const step  = Math.ceil(target / 50);
-          const timer = setInterval(() => {
-            count += step;
-            if (count >= target) {
-              count = target;
-              clearInterval(timer);
-              el.classList.add('done');
-            }
-            if (h3) h3.textContent = count + (el.classList.contains('done') ? '+' : '');
-          }, 20);
+      const sp = document.getElementById('sponsors');
+      const logos = document.querySelector('.sponsor-logos');
+      window.addEventListener('scroll', () => {
+        if (sp.getBoundingClientRect().top < window.innerHeight / 2) {
+          logos?.classList.add('fade-to-white');
         }
       });
-    };
-    window.addEventListener('scroll', animate);
-    animate();
-
-    // Sponsors fade
-    const sp = document.getElementById('sponsors');
-    const logos = document.querySelector('.sponsor-logos');
-    window.addEventListener('scroll', () => {
-      if (sp.getBoundingClientRect().top < window.innerHeight / 2) {
-        logos?.classList.add('fade-to-white');
-      }
     });
-  });
-</script>
-<script type="module">
-	document.addEventListener('DOMContentLoaded', () => {
-	  const boxes = document.querySelectorAll('.logo-box');
-	  const io = new IntersectionObserver((entries) => {
-		entries.forEach(e => {
-		  if (e.isIntersecting) {
-			e.target.classList.add('reveal');
-			io.unobserve(e.target);
-		  }
-		});
-	  }, { threshold: 0.3 });
-  
-	  boxes.forEach(b => io.observe(b));
-	});
   </script>
-  
+
+  <script type="module">
+    document.addEventListener('DOMContentLoaded', () => {
+      const boxes = document.querySelectorAll('.logo-box');
+      const io = new IntersectionObserver((entries) => {
+        entries.forEach(e => {
+          if (e.isIntersecting) {
+            e.target.classList.add('reveal');
+            io.unobserve(e.target);
+          }
+        });
+      }, { threshold: 0.3 });
+
+      boxes.forEach(b => io.observe(b));
+    });
+  </script>
+</BaseLayout>
