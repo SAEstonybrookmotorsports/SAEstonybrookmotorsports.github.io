@@ -1,5 +1,5 @@
 ---
-import { Image } from '@astrojs/image/components';
+import { Picture } from "astro:assets";
 import BaseLayout from '../layouts/BaseLayout.astro';
 import { teamData, type TeamMember } from '../lib/teamData';
 import '../styles/global.css';
@@ -52,13 +52,13 @@ const order = [
 
           {lead && (
             <div class="subsystem-lead">
-              <Image src={lead.image} alt={lead.name} class="leader-img" width={200} height={200} />
+              <Picture src={lead.image} alt={lead.name} formats={["avif","webp","png"]} width={200} height={200} />
               <h3>{lead.name}</h3>
               <p class="role">{lead.role}</p>
               {lead.custom && <p class="member-custom">{lead.custom}</p>}
               {lead.linkedin && (
                 <a href={lead.linkedin} class="linkedin-icon" target="_blank" rel="noopener">
-                  <Image src={linkedinIcon} alt="LinkedIn" width={24} height={24} />
+                  <Picture src={linkedinIcon} alt="LinkedIn" formats={["svg"]} width={24} height={24} />
                 </a>
               )}
               <p class="bio" data-clicks="0">{lead.bio}</p>
@@ -70,12 +70,12 @@ const order = [
               .filter(m => m !== lead)
               .map(m => (
                 <div class="member">
-                  <Image src={m.image} alt={m.name} width={150} height={150} />
+                  <Picture src={m.image} alt={m.name} formats={["avif","webp","png"]} width={150} height={150} />
                   <p class="member-name">{m.name}</p>
                   {m.custom && <p class="member-custom">{m.custom}</p>}
                   {m.linkedin && (
                     <a href={m.linkedin} class="linkedin-icon" target="_blank" rel="noopener">
-                      <Image src={linkedinIcon} alt="LinkedIn" width={24} height={24} />
+                      <Picture src={linkedinIcon} alt="LinkedIn" formats={["svg"]} width={24} height={24} />
                     </a>
                   )}
                   <p class="bio" data-clicks="0">{m.bio}</p>

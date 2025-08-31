@@ -1,5 +1,5 @@
 ---
-import { Image } from '@astrojs/image/components';
+import { Picture } from "astro:assets";
 import BaseLayout from '../layouts/BaseLayout.astro';
 import '../styles/global.css';
 import '../styles/subsystems.css';
@@ -76,8 +76,15 @@ const subsystems = [
             <p>{subsystem.description}</p>
           </div>
           <div class="subsystem-image">
-            <Image src={subsystem.image} alt={`${subsystem.name} Subsystem`} />
-          </div>
+          <Picture 
+            src={subsystem.image} 
+            alt={`${subsystem.name} Subsystem`} 
+            formats={['avif','webp','jpg']} 
+            width={600} 
+            height={400} 
+          />
+        </div>
+
         </div>
       ))}
     </div>

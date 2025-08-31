@@ -1,11 +1,24 @@
 ---
-import { Image } from '@astrojs/image/components';
+// src/pages/PastCars.astro
+import { Picture } from "astro:assets";
 import BaseLayout from '../layouts/BaseLayout.astro';
 import { carData } from '../lib/carData';
 import '../styles/global.css';
 import '../styles/pastcars.css';
 
-const sortedCars = [...carData].sort((a, b) => parseInt(b.year) - parseInt(a.year)); // latest first
+// Glob import all images from pastcars folder
+const carImages: Record<string, string> = import.meta.glob('../assets/pastcars/*.{jpg,png}', { eager: true, query: '?url', import: 'default' });
+
+// Map carData to use the imported URLs
+const sortedCars = [...carData].sort((a, b) => parseInt(b.year) - parseInt(a.year)).map(car => {
+  const fileName = car.photoUrl.split('/').pop(); // e.g., '1988.jpg'
+  const key = `../assets/pastcars/${fileName}`;
+  return {
+    ...car,
+    photoUrl: carImages[key] as string || '/images/placeholder.jpg', // cast as string
+  };
+});
+
 ---
 
 <BaseLayout>
@@ -29,7 +42,13 @@ const sortedCars = [...carData].sort((a, b) => parseInt(b.year) - parseInt(a.yea
         <h2 class="year-heading">{car.year}</h2>
         <div class="card-wrapper">
           <a href={car.detailPageUrl} class="past-car-card">
-            <Image src={car.photoUrl} alt={`Car ${car.carNumber} - ${car.year}`} width={400} height={300} />
+            <Picture 
+              src={car.photoUrl} 
+              alt={`Car ${car.carNumber} - ${car.year}`} 
+              formats={['avif','webp','jpg']} 
+              width={400} 
+              height={300} 
+            />
             <div class="past-car-hover-box">
               <span>Learn more</span>
             </div>
