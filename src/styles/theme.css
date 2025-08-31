@@ -139,10 +139,52 @@
   color: #fff;
   transform: translateX(4px);
 }
+/* Join Steps Section */
+.join-steps {
+  background: #000;
+  padding: 4rem 2rem;
+  text-align: center;       /* center everything inside */
+}
+
+.join-steps h2 {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 2.5rem;
+  color: #cc0033;
+  margin-bottom: 1rem;
+}
+
+.join-steps h3 {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 2rem;
+  color: #fff;
+  margin-top: 2rem;
+  margin-bottom: 1rem;
+}
+
+.join-steps p, 
+.join-steps ul, 
+.join-steps ol {
+  font-size: 1.1rem;
+  color: #fff;
+  max-width: 700px;        /* same as hero-sub */
+  margin: 0 auto 1.5rem;   /* centers lists/text */
+  text-align: left;         /* lists stay left-aligned for readability */
+}
+
+.join-step {
+  margin-bottom: 3rem;
+}
+
+.join-step a.btn-cta,
+.join-step a.btn-secondary {
+  margin-top: 1rem;
+  display: inline-flex;      /* ensures button styling matches hero buttons */
+}
+
 
 /*───────────────── Sponsors Section ─────────────────*/
 .sponsors {
-  background: #000;
+  background-image: linear-gradient(to bottom, #000000, #5e5e5e); /* Red at top, blue at bottom */
   padding: 4rem 2rem;
   text-align: center;
   transition: background 1s ease, color 1s ease;
@@ -180,13 +222,29 @@
   color: transparent;
   animation: platinumGlint 3s infinite;
 }
+.sponsor-tier.gold h4 {
+  position: relative;
+  background: linear-gradient(90deg,
+    rgba(255, 231, 97, 0.8) 50%,
+    rgba(255, 215, 0, 0.8) 50%,
+    rgba(255, 235, 122, 0.7) 75%);
+  background-size: 400px 100%;
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  animation: goldGlint 3s infinite;
+}
+@keyframes goldGlint {
+  0%,100% { background-position: -200px 0; }
+  50%     { background-position: 200px 0; }
+}
+
 @keyframes platinumGlint {
   0%,100% { background-position: -200px 0; }
   50%     { background-position: 200px 0; }
 }
-.sponsor-tier.gold h4    { color: #ffd700; }
-.sponsor-tier.silver h4  { color: #c0c0c0; }
-
+.sponsor-tier.silver h4  { color: #9a9a9a; }
+.sponsor-tier.bronze h4  { color: #c07503; }
 /* Flex‑based Grid (no overlap) */
 .sponsor-grid {
   display: flex;
@@ -243,7 +301,7 @@
   /* Increased padding for sponsor sections */
 .sponsor-tier {
   padding: 3rem 2rem;
-  background: inherit;       /* continues fade-to-white if applied */
+  background: transparent;       
   border-radius: 8px;
 }
 .sponsor-tier.platinum h2,
@@ -314,6 +372,66 @@
 
 /* Reveal class applied when in view */
 .logo-box.reveal img {
+  filter: grayscale(0%);
+  opacity: 1;
+  transform: scale(1);
+}
+.sponsor-grid.honorable-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(160px, 1fr)); /* adjust min size */
+  gap: 2rem;
+  align-items: start;
+  justify-items: center;
+}
+
+/* Make each logo-box a vertical card (image on top, name below) */
+.sponsor-tier.honorable-mentions .logo-box {
+  flex-direction: column;      /* stack image + name */
+  align-items: center;
+  justify-content: flex-start;
+  padding: 1rem;
+  width: 100%;
+  max-width: 220px;            /* card width — tweak as needed */
+  background: transparent;     /* keep tiers solid / transparent */
+  border-radius: 8px;
+}
+
+/* Larger image size for honorable mentions (overrides 60px) */
+.sponsor-tier.honorable-mentions .logo-box img {
+  max-height: 140px;           /* make larger — tweak between 120–200 */
+  width: auto;
+  object-fit: contain;
+  display: block;
+  margin: 0 auto;
+  filter: grayscale(0%);       /* show full color (optional) */
+  opacity: 1;                  /* reveal animation will still work */
+  transform: scale(1);
+  transition: transform .35s ease, opacity 1s ease, filter .5s ease;
+}
+
+/* Sponsor name underneath the image */
+.sponsor-tier.honorable-mentions .logo-box p,
+.sponsor-tier.honorable-mentions .logo-box .sponsor-name {
+  margin-top: .6rem;
+  font-size: 1rem;
+  color: #fff;                 /* or #000 if the section is light */
+  text-align: center;
+  line-height: 1.2;
+  width: 100%;
+  word-wrap: break-word;
+}
+
+/* Optional: hover pop for the honorable mentions */
+.sponsor-tier.honorable-mentions .logo-box:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 8px 20px rgba(0,0,0,0.45);
+}
+.sponsor-tier.honorable-mentions .logo-box:hover img {
+  transform: scale(1.04);
+}
+
+/* Keep your reveal behavior working — if you want the grayscale -> color transition on reveal */
+.sponsor-tier.honorable-mentions .logo-box.reveal img {
   filter: grayscale(0%);
   opacity: 1;
   transform: scale(1);
