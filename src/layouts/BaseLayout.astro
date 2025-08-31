@@ -2,6 +2,17 @@
 // src/layouts/BaseLayout.astro
 import "../styles/global.css";
 import '../styles/theme.css';
+import hero from '../assets/hero.jpg';
+// Universal image fallback helper for use in any child component/page:
+// Usage: safeImage(img) will return img if defined, otherwise hero.jpg
+function safeImage(img: any) {
+  try {
+    return img ?? hero;
+  } catch {
+    return hero;
+  }
+}
+// To use in a child: import { safeImage } from '../layouts/BaseLayout.astro';
 
 ---
 
@@ -26,7 +37,7 @@ import '../styles/theme.css';
         </div>
 
         <a href="/" class="logo-link">
-            <img src="/images/sbmlogo.webp" class="navbar-logo" id="navbar-logo" />
+            <img src="/images/sbmlogo.webp" class="navbar-logo" id="navbar-logo" alt="Stony Brook Motorsports Logo" />
         </a>
         
         <div class="nav-right">

@@ -117,7 +117,7 @@ export const teamData: TeamMember[] = [
     name: 'Samantha Margulies',
     image: 'images/team/samantha-margulies.jpg',
     role: 'Treasurer',
-    subsystem: 'Finance',
+    subsystem: 'Treasurer',
     linkedin: 'https://www.linkedin.com/in/samantha-margulies',
     bio: 'insert professional bio here',
     custom: ''

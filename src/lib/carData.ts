@@ -504,4 +504,26 @@ export const carData: CarData[] = [
       `4 Wheel Independent Suspension`,`CVT, Transaxle, Transfer Case, 4WD`
     ],
   },
+  {
+    year: "2025",
+    carNumber: "92",
+    standing: "40th Overall in Maryland",
+    photoUrl: "images/pastcars/2024.jpg",
+    detailPageUrl: "/cars/2024",
+    photosLink: [
+      { label: "Fabrication", url: "https://photos.app.goo.gl/" },
+      { label: "Involvement Fairs", url: "https://photos.app.goo.gl/" },
+      { label: "New Member Competition", url: "https://photos.app.goo.gl/" },
+      { label: "CommUniversity Day", url: "https://photos.app.goo.gl/" },
+      { label: "Baja SAE Rochester", url: "https://photos.app.goo.gl/" }
+    ],
+    specNames: [
+      "Wheel Base","Track","Length","Width","Height","Weight","Wheels","Front Tires","Rear Tires","Suspension","Powertrain"
+    ],
+    specValues: [
+      `59"`,`52"/50"`,`86"`,`59"`,`63"`,`500 lbs`,
+      `10" × 5" Front & Rear`,`23x7-10 Maxxis RAZR2`,`23x7-10 Kenda Bear Klaw`,
+      `4 Wheel Independent Suspension`,`CVT, Transaxle, Transfer Case, 4WD`
+    ],
+  },
 ];
