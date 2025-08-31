@@ -1,26 +1,10 @@
 ---
-import { Image } from "@astrojs/image/components";
-import "../styles/global.css";
-import "../styles/theme.css";
-import BaseLayout from "../layouts/BaseLayout.astro";
-import ceas from "/images/sponsors/ceas.png";
-import usg from "/images/sponsors/usg.png";
-import mecheng from "/images/sponsors/mecheng.png";
-import solidworks from "/images/sponsors/solidworks.svg";
-import ansys from "/images/sponsors/ansys.svg";
-import kisssoft from "/images/sponsors/kisssoft.svg";
-import hexagon from "/images/sponsors/hexagon.png";
-import mastercam from "/images/sponsors/Mastercam.svg";
-import kenesto from "/images/sponsors/kenesto.png";
-import flagpoles from "/images/sponsors/flagpoles.gif";
-import fourxpro from "/images/sponsors/4xpro.avif";
-import ghaas from "/images/sponsors/ghaas.png";
-import basebrooklyn from "/images/sponsors/basebrooklyn.webp";
-import burton from "/images/sponsors/burton.png";
-import maloya from "/images/sponsors/maloya.webp";
-import difinishing from "/images/sponsors/di_finishing.png";
-import kkfinishing from "/images/sponsors/kkfinishing.png";
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { sponsors, tierDescriptions } from '../lib/sponsors.ts';
+
+const tiers = ["Platinum", "Gold", "Silver", "Honorable Mentions"];
 ---
+
 <BaseLayout>
   <!-- HERO -->
   <section class="hero" style="--hero-img: url('/images/sponsors-hero.JPG')">
@@ -34,139 +18,51 @@ import kkfinishing from "/images/sponsors/kkfinishing.png";
   <section class="section about" style="max-width:900px; margin:0 auto 4rem;">
     <h2>Partnering for Excellence</h2>
     <p>
-      From concept sketches to roaring engines, our sponsors provide the resources, expertise, and mentorship that drive our success on and off the track. Below are the companies and organizations whose commitment powers Stony Brook Motorsports forward.
+      Our sponsors provide the resources, expertise, and mentorship that drive our success on and off the track. Below are the companies and organizations whose commitment powers Stony Brook Motorsports forward.
     </p>
   </section>
 
-  <!-- PLATINUM TIER -->
-  <section class="section sponsor-tier platinum">
-    <h2>Platinum Partners</h2>
-    <p class="tier-desc">
-      These cornerstone sponsors underwrite our core operations: materials, fabrication, and competition logistics. They allow us to innovate without limits.
-    </p>
-    <div class="section sponsor-grid">
-      <div class="logo-box">
-        <a href="https://www.stonybrook.edu/ceas/" target="_blank">
-          <Image src={ceas} alt="CEAS" />
-        </a>
-      </div>
-      <div class="logo-box">
-        <a href="https://www.stonybrook.edu/ceas/connect" target="_blank">
-          <Image src={usg} alt="USG" />
-        </a>
-      </div>
-      <div class="logo-box">
-        <a href="https://www.stonybrook.edu/ceas/mechanical" target="_blank">
-          <Image src={mecheng} alt="Mechanical Engineering" />
-        </a>
-      </div>
-      <div class="logo-box">
-        <a href="https://www.solidworks.com/" target="_blank">
-          <Image src={solidworks} alt="Solidworks" />
-        </a>
-      </div>
-    </div>
-  </section>
-
-  <!-- GOLD TIER -->
-  <section class="section sponsor-tier gold">
-    <h2>Gold Supporters</h2>
-    <p class="tier-desc">
-      Our Gold sponsors supply specialized software, testing equipment, and technical training that sharpen our competitive edge.
-    </p>
-    <div class="sponsor-grid">
-      <div class="logo-box">
-        <a href="https://www.ansys.com/" target="_blank">
-          <Image src={ansys} alt="Ansys" />
-        </a>
-      </div>
-      <div class="logo-box">
-        <a href="https://www.kisssoft.com/en/" target="_blank">
-          <Image src={kisssoft} alt="KISSsoft" />
-        </a>
-      </div>
-      <div class="logo-box">
-        <a href="https://hexagon.com/" target="_blank">
-          <Image src={hexagon} alt="Hexagon" />
-        </a>
-      </div>
-      <div class="logo-box">
-        <a href="https://www.mastercam.com/" target="_blank">
-          <Image src={mastercam} alt="Mastercam" />
-        </a>
-      </div>
-    </div>
-  </section>
-
-  <!-- SILVER TIER -->
-  <section class="sponsor-tier silver">
-    <h2>Silver Allies</h2>
-    <p class="tier-desc">
-      Silver-level partners provide vital consumables, fabrication services, and student internships to help us add even more depth to our program.
-    </p>
-    <div class="sponsor-grid">
-      <div class="logo-box">
-        <a href="https://www.kenesto.com/" target="_blank">
-          <Image src={kenesto} alt="Kenesto" />
-        </a>
-      </div>
-      <div class="logo-box">
-        <a href="http://www.flagpolesinc.com/" target="_blank">
-          <Image src={flagpoles} alt="Flagpoles Inc" />
-        </a>
-      </div>
-      <div class="logo-box">
-        <a href="https://www.4xpro.com/" target="_blank">
-          <Image src={fourxpro} alt="4XPro" />
-        </a>
-      </div>
-      <div class="logo-box">
-        <a href="https://www.ghaasfoundation.org/" target="_blank">
-          <Image src={ghaas} alt="Gene Haas Foundation" />
-        </a>
-      </div>
-      <div class="logo-box">
-        <a href="http://basebrooklyn.net/online/" target="_blank">
-          <Image src={basebrooklyn} alt="Base Brooklyn" />
-        </a>
-      </div>
-      <div class="logo-box">
-        <a href="https://burtonind.com/" target="_blank">
-          <Image src={burton} alt="Burton Industries" />
-        </a>
-      </div>
-      <div class="logo-box">
-        <a href="https://maloyalaser.com/" target="_blank">
-          <Image src={maloya} alt="Maloya" />
-        </a>
-      </div>
-      <div class="logo-box">
-        <a href="sponsors/difinishing" target="_blank">
-          <Image src={difinishing} alt="D&I Finishing" />
-        </a>
-      </div>
-      <div class="logo-box">
-        <a href="http://www.kkfinishingco.com/" target="_blank">
-          <Image src={kkfinishing} alt="KK Finishing" />
-        </a>
-      </div>
-    </div>
-  </section>
-  <script>
-    window.addEventListener("DOMContentLoaded", () => {
-      const observer = new IntersectionObserver(
-        (entries) => {
-          entries.forEach(entry => {
-            if (entry.isIntersecting) {
-              entry.target.classList.add("reveal");
-              observer.unobserve(entry.target); // Optional: remove after first reveal
-            }
-          });
-        },
-        { threshold: 0.2 }
+  <!-- SPONSORS GRID -->
+  <section id="sponsors" class="sponsors">
+    {tiers.map(tier => {
+      const tierSponsors = sponsors.filter(s => s.tier === tier);
+      if (!tierSponsors.length) return null;
+      return (
+        <div class={`sponsor-tier ${tier.toLowerCase().replace(/ /g, '-')}`}>
+          <h3>{tier}</h3>
+          {tierDescriptions[tier] && <p>{tierDescriptions[tier]}</p>}
+          <div class={`sponsor-grid ${tier === 'Honorable Mentions' ? 'honorable-grid' : ''}`}>
+            {tierSponsors.map(({ name, image, alt, url, personName }) => (
+              <div class="logo-box">
+                {url ? (
+                  <a href={url} target="_blank" rel="noopener">
+                    <img src={image} alt={alt} />
+                  </a>
+                ) : (
+                  <img src={image} alt={alt} />
+                )}
+                {tier === 'Honorable Mentions' && <p>{personName ?? name}</p>}
+              </div>
+            ))}
+          </div>
+        </div>
       );
-  
-      document.querySelectorAll(".logo-box").forEach(el => observer.observe(el));
+    })}
+  </section>
+
+  <!-- LOGO REVEAL ANIMATION -->
+  <script type="module">
+    document.addEventListener('DOMContentLoaded', () => {
+      const boxes = document.querySelectorAll('.logo-box');
+      const io = new IntersectionObserver((entries) => {
+        entries.forEach(e => {
+          if (e.isIntersecting) {
+            e.target.classList.add('reveal');
+            io.unobserve(e.target);
+          }
+        });
+      }, { threshold: 0.3 });
+      boxes.forEach(b => io.observe(b));
     });
   </script>
 </BaseLayout>
