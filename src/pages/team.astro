@@ -4,16 +4,29 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 import { teamData, type TeamMember } from '../lib/teamData';
 import '../styles/global.css';
 import '../styles/team.css';
-import Subsystems from './subsystems.astro';
-import linkedinIcon from '/images/linkedin.svg';
+import linkedinIcon from '../assets/linkedin.svg';
+import heroPlaceholder from '../assets/hero.jpg';
 
-// Group members by subsystem
-const grouped = teamData.reduce<Record<string, TeamMember[]>>((acc, member) => {
+// ─── Glob import all team images ───
+const teamImages: Record<string, string> = import.meta.glob('../assets/team/*.{jpg,png}', { eager: true, query: '?url', import: 'default' });
+
+// ─── Map teamData to use imported URLs or fallback ───
+const mappedTeamData = teamData.map(member => {
+  const fileName = member.image.split('/').pop();
+  const key = `../assets/team/${fileName}`;
+  return {
+    ...member,
+    image: teamImages[key] as string || heroPlaceholder, // use hero.jpg if missing
+  };
+});
+
+// ─── Group members by subsystem ───
+const grouped = mappedTeamData.reduce<Record<string, TeamMember[]>>((acc, member) => {
   (acc[member.subsystem] ||= []).push(member);
   return acc;
 }, {});
 
-// Specify the exact order you want:
+// ─── Specify the exact order ───
 const order = [
   'Leadership',
   'Powertrain',
@@ -24,7 +37,10 @@ const order = [
   'Software',
   'Drivetrain',
   'Testing',
-  'Treasurer'
+  'Treasurer',
+  'Composites',
+  'Brakes',
+  'Transmission'
 ];
 ---
 
@@ -42,7 +58,6 @@ const order = [
     const members = grouped[subsystem];
     if (!members || members.length === 0) return null;
 
-    // Find the lead/president
     const lead = members.find(m => /Lead|President/.test(m.role));
 
     return (
@@ -88,8 +103,8 @@ const order = [
       </>
     );
   })}
-  
-  <!-- Scroll & Easter‑egg Script (unchanged) -->
+
+  <!-- Scroll & Easter‑egg Script -->
   <script type="module">
     const io = new IntersectionObserver(entries => {
       entries.forEach(e => {

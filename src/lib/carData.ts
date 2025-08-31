@@ -42,7 +42,7 @@ export const carData: CarData[] = [
     year: "1998",
     carNumber: "45",
     standing: "54th Overall in Midwest",
-    photoUrl: "images/pastcars/1998.jpg",
+    photoUrl: "images/pastcars/1999.jpg",
     detailPageUrl: "/cars/1998",
     photosLink: [],
   },
