@@ -81,6 +81,14 @@ function safeImage(img: any) {
           }
         });
       </script>
+      <script>
+        document.addEventListener('error', (event) => {
+          const el = event.target;
+          if (el.tagName === 'IMG') {
+            el.src = '/images/hero.jpg';
+          }
+        }, true);
+      </script>
       
   </body>
 </html>
