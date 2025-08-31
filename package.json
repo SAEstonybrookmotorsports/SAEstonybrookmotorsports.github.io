@@ -9,9 +9,12 @@
     "astro": "astro"
   },
   "dependencies": {
-    "@astrojs/image": "^0.12.1",
     "@astrojs/node": "^9.3.0",
+    "@cloudinary/url-gen": "^1.22.0",
     "astro": "^5.11.0",
     "cloudinary": "^2.7.0"
+  },
+  "devDependencies": {
+    "sharp": "^0.34.3"
   }
 }

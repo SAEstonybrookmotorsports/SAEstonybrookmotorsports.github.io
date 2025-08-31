@@ -1,11 +1,6 @@
-import { defineConfig } from 'astro/config';
-import image from '@astrojs/image';
+import { defineConfig } from "astro/config";
 
 export default defineConfig({
-  output: 'static',
-  site: 'https://CVRobo.github.io',
-  integrations: [image()],
-  image: {
-    domains: ["res.cloudinary.com"],
-  },
+  site: "https://CVRobo.github.io",
+  output: "static",
 });
