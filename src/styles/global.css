@@ -13,32 +13,50 @@ body {
   color: #fff;
   line-height: 1.6;
 }
-
+#fade-wrapper {
+  padding-top: 100px; /* adjust based on your navbar + desired extra view */
+}
+#fade-wrapper.team{
+  padding-top: 74px; /* less padding for this page */
+}
 .navbar {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 0.5rem 1.5rem;           /* thinner */
-  background-color: rgba(153,0,0,0.9); /* lower opacity */
-  border-radius: 0 0 12px 12px;    /* rounded bottom corners */
-  position: relative;              /* no longer sticky */
+  padding: 0.5rem 1.5rem;           /* preserved */
+  background-color: #990000;        /* solid red at top */
+  border-radius: 0;                 /* normal at top */
+  position: fixed;                  /* fixed for scroll effect */
+  top: 0;
+  width: 100%;
   z-index: 999;
+  transition: all 0.3s ease;        /* smooth changes */
+}
+
+.navbar.scrolled {
+  background-color: rgba(109, 2, 2, 0.8); /* semi-transparent red */
+  border-radius: 0 0 12px 12px;        /* rounded bottom corners */
+  box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+}
+
+.navbar.hidden {
+  transform: translateY(-100%);
 }
 
 .navbar-logo {
-  height: 80px;                    /* 80px tall */
+  height: 80px;                    /* preserved */
   width: auto;
-  transition: opacity .3s ease, transform .3s ease;
+  transition: opacity 0.3s ease, transform 0.3s ease;
 }
 
 .navbar a {
   color: #fff;
-  text-decoration: none;           /* no underlines */
+  text-decoration: none;
   font-weight: 500;
   font-size: 1rem;
   margin: 0 0.75rem;
   position: relative;
-  transition: color .2s;
+  transition: color 0.2s;
 }
 
 .navbar a:hover {
@@ -53,6 +71,7 @@ body {
   background: #cc0033;
   border-radius: 2px;
 }
+
 .back-button {
   display: inline-block;
   margin-top: 2rem;
@@ -66,6 +85,94 @@ body {
 .back-button:hover {
   color: #cc0033;
   text-decoration: underline;
+}
+/* Mobile MENU button (hidden on desktop) */
+.menu-toggle {
+  display: none;
+  cursor: pointer;
+  font-weight: 700;
+  font-size: 1rem;
+  color: #fff;
+  background: none;
+  border: none;
+  padding: 0.25rem 0.5rem;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+}
+
+/* Slide-in panel */
+.mobile-menu {
+  position: fixed;
+  top: 0;
+  left: -100%;
+  width: 80%;
+  max-width: 420px;
+  height: 100vh;
+  background: rgba(0, 0, 0, 0.98);
+  transition: left 0.35s ease;
+  z-index: 1100;
+  padding: 2rem 1.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.mobile-menu.active {
+  left: 0;
+}
+
+.mobile-menu .close-btn {
+  align-self: flex-end;
+  font-size: 1.6rem;
+  cursor: pointer;
+  background: none;
+  border: none;
+  color: #fff;
+}
+
+.mobile-menu .menu-grid a {
+  display: block;
+  padding: 0.9rem 1rem;
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 12px;
+  text-decoration: none;
+  color: #fff;
+  font-weight: 700;
+  font-size: 1rem;
+}
+
+.mobile-menu .menu-grid a:hover {
+  background: rgba(255, 255, 255, 0.1);
+}
+
+/* Overlay behind menu */
+.mobile-menu-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.4);
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.3s ease;
+  z-index: 1050;
+}
+
+.mobile-menu-overlay.active {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+/* Show MENU button, hide nav links on mobile */
+@media (max-width: 768px) {
+  .nav-left,
+  .nav-right {
+    display: none;
+  }
+  .menu-toggle {
+    display: inline-block;
+  }
+  .navbar-logo {
+    height: 64px;
+  }
 }
 
 footer {

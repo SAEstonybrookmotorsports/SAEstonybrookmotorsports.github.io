@@ -1,10 +1,8 @@
 ---
-// src/layouts/BaseLayout.astro
 import "../styles/global.css";
-import '../styles/theme.css';
-import hero from '../assets/hero.jpg';
-// Universal image fallback helper for use in any child component/page:
-// Usage: safeImage(img) will return img if defined, otherwise hero.jpg
+import "../styles/theme.css";
+import hero from "../assets/hero.jpg";
+
 function safeImage(img: any) {
   try {
     return img ?? hero;
@@ -12,23 +10,27 @@ function safeImage(img: any) {
     return hero;
   }
 }
-// To use in a child: import { safeImage } from '../layouts/BaseLayout.astro';
-
+const { pageClass } = Astro.props;
 ---
 
 <html lang="en">
   <head>
-
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Stony Brook Motorsports</title>
     <link rel="icon" href="/sbmlogo.png" type="image/png" />
-    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap"
+      rel="stylesheet"
+    />
   </head>
 
   <body>
     <div id="page-transition-wrapper">
       <header class="navbar">
+        <!-- MENU trigger MUST be first for left placement -->
+        <button class="menu-toggle" id="menuToggle" aria-label="Open menu">Menu</button>
+
         <div class="nav-left">
           <a href="/">Home</a>
           <a href="/past-cars">Past Cars</a>
@@ -37,9 +39,9 @@ function safeImage(img: any) {
         </div>
 
         <a href="/" class="logo-link">
-            <img src="/images/sbmlogo.webp" class="navbar-logo" id="navbar-logo" alt="Stony Brook Motorsports Logo" />
+          <img src="/images/sbmlogo.webp" class="navbar-logo" id="navbar-logo" alt="Stony Brook Motorsports Logo" />
         </a>
-        
+
         <div class="nav-right">
           <a href="/sponsors">Sponsors</a>
           <a href="/photos">Photos</a>
@@ -48,7 +50,23 @@ function safeImage(img: any) {
         </div>
       </header>
 
-      <main id="fade-wrapper">
+      <!-- Mobile slide-in menu -->
+      <div class="mobile-menu-overlay" id="mobileMenuOverlay"></div>
+      <nav class="mobile-menu" id="mobileMenu">
+        <button class="close-btn" id="closeMenu" aria-label="Close menu">&times;</button>
+        <div class="menu-grid">
+          <a href="/">Home</a>
+          <a href="/past-cars">Past Cars</a>
+          <a href="/subsystems">Subsystems</a>
+          <a href="/team">Team</a>
+          <a href="/sponsors">Sponsors</a>
+          <a href="/photos">Photos</a>
+          <a href="/join">Join</a>
+          <a href="/contact">Contact Us</a>
+        </div>
+      </nav>
+
+      <main id="fade-wrapper" class={pageClass ?? ""}>
         <slot />
       </main>
 
@@ -58,30 +76,69 @@ function safeImage(img: any) {
     </div>
 
     <script>
-        document.addEventListener('DOMContentLoaded', () => {
-          const wrapper = document.getElementById('fade-wrapper');
-      
-          if (wrapper) {
-            wrapper.classList.add('fade-in');
-      
-            const links = document.querySelectorAll('a[href]');
-            links.forEach(link => {
-              const href = link.getAttribute('href');
-              if (href && !href.startsWith('#') && !link.hasAttribute('target')) {
-                link.addEventListener('click', (e) => {
-                  e.preventDefault();
-                  wrapper.classList.remove('fade-in');
-                  wrapper.classList.add('fade-out');
-                  setTimeout(() => {
-                    window.location.href = href;
-                  }, 250);
-                });
-              }
-            });
-          }
+      document.addEventListener("DOMContentLoaded", () => {
+        // --- Fade transitions ---
+        const wrapper = document.getElementById("fade-wrapper");
+        if (wrapper) {
+          wrapper.classList.add("fade-in");
+          const links = document.querySelectorAll("a[href]");
+          links.forEach((link) => {
+            const href = link.getAttribute("href");
+            if (href && !href.startsWith("#") && !link.hasAttribute("target")) {
+              link.addEventListener("click", (e: MouseEvent) => {
+                if (e.metaKey || e.ctrlKey || e.shiftKey || e.altKey) return;
+                e.preventDefault();
+                wrapper.classList.remove("fade-in");
+                wrapper.classList.add("fade-out");
+                setTimeout(() => (window.location.href = href), 250);
+              });
+            }
+          });
+        }
+
+        // --- Navbar scroll behavior ---
+        const navbar = document.querySelector(".navbar");
+        if (navbar) {
+          let lastScrollTop = 0;
+          window.addEventListener("scroll", () => {
+            const scrollTop = window.scrollY || document.documentElement.scrollTop;
+            if (scrollTop > 0) navbar.classList.add("scrolled");
+            else navbar.classList.remove("scrolled");
+
+            if (scrollTop > lastScrollTop && scrollTop > 50) {
+              navbar.classList.add("hidden");
+            } else {
+              navbar.classList.remove("hidden");
+            }
+            lastScrollTop = Math.max(scrollTop, 0);
+          });
+        }
+
+        // --- Mobile menu ---
+        const menuToggle = document.getElementById("menuToggle");
+        const mobileMenu = document.getElementById("mobileMenu");
+        const closeMenu = document.getElementById("closeMenu");
+        const overlay = document.getElementById("mobileMenuOverlay");
+
+        function openMenu() {
+          mobileMenu?.classList.add("active");
+          overlay?.classList.add("active");
+          document.documentElement.style.overflow = "hidden";
+        }
+        function closeMenuFn() {
+          mobileMenu?.classList.remove("active");
+          overlay?.classList.remove("active");
+          document.documentElement.style.overflow = "";
+        }
+
+        menuToggle?.addEventListener("click", openMenu);
+        closeMenu?.addEventListener("click", closeMenuFn);
+        overlay?.addEventListener("click", closeMenuFn);
+
+        document.addEventListener("keydown", (e: KeyboardEvent) => {
+          if (e.key === "Escape") closeMenuFn();
         });
-      </script>
-      
-      
+      });
+    </script>
   </body>
 </html>
