@@ -1,4 +1,5 @@
 ---
+// src/pages/subsystems.astro (replace your current file)
 import { Picture } from "astro:assets";
 import BaseLayout from '../layouts/BaseLayout.astro';
 import '../styles/global.css';
@@ -10,43 +11,89 @@ import steering from '../assets/hero.jpg';
 import suspension from '../assets/hero.jpg';
 import control from '../assets/hero.jpg';
 import composites from '../assets/hero.jpg';
-;
 
-const subsystems = [
+const systems = [
   {
-    name: 'Powertrain',
-    image: powertrain,
-    description: `The powertrain is responsible for delivering horsepower from the Kohler 10HP engine to all four wheels. It begins with a continuously variable transmission (CVT) that adjusts the gear ratio dynamically and also functions as a clutch. From there, power travels through a custom-built gearbox and bevel gearbox. A spool in the rear gives us equal wheel speeds to handle the tough terrain, while CV joints and axles ensure reliable delivery of torque. In the frontl, we have U-Joint driveshafts going to our front differential to differentiate between the two steer wheels. Each year, we design and fabricate a new gearbox in-house, combining performance and precision.`
+    name: 'Vehicle Dynamics',
+    description: `Vehicle Dynamics is about how the car behaves and responds: handling, stopping, and stability across rough terrain. We tune geometry, damping, and control inputs to produce predictable, confidence-inspiring behavior for the driver.`,
+    subsystems: [
+      {
+        name: 'Brakes',
+        image: powertrain,
+        description: `Our braking system provides consistent stopping power under repeated loads. It combines lightweight calipers, ventilated rotors, and a fail-safe mechanical parking/kill system. We test for fade resistance, pedal feel, and heat management to ensure safe deceleration on long runs.`
+      },
+      {
+        name: 'Steering',
+        image: steering,
+        description: `Steering ensures agile control and response across demanding terrain. Inputs from the steering wheel travel through the column to a rack-and-pinion assembly, which translates rotation into lateral motion. Tie rods then move the steering arms to change the front wheels' angle. This setup, combined with carefully tuned geometry, delivers high precision and driver confidence in tight turns and uneven trails.`
+      },
+      {
+        name: 'Suspension',
+        image: suspension,
+        description: `Our vehicle features four-wheel independent suspension — SLA in the front and rear. This configuration maximizes stability and control during jumps, ruts, and steep inclines. From concept to fabrication, our suspension system relies on data collection, simulations, and field testing. Each part is optimized to improve ride quality, traction, and component longevity.`
+      }
+    ]
   },
+
   {
     name: 'Chassis',
-    image: chassis,
-    description: `The chassis forms the vehicle's backbone. Built from steel tubing and custom-welded during winter break, it's designed to balance strength, stiffness, and weight. Using CAD and simulation tools, the team optimizes the frame for impact protection, torsional rigidity, and mounting compatibility with other subsystems. Every curve, joint, and weld reflects a blend of theory, real-world data, and precision craftsmanship.`
+    description: `The chassis is the structural foundation of the vehicle: it defines mounting points, crash-worthiness, and stiffness. We balance strength and mass so the car stays light but robust through rigorous competition conditions.`,
+    subsystems: [
+      {
+        name: 'Frame',
+        image: chassis,
+        description: `The chassis forms the vehicle's backbone. Built from steel tubing and custom-welded during winter break, it's designed to balance strength, stiffness, and weight. Using CAD and simulation tools, the team optimizes the frame for impact protection, torsional rigidity, and mounting compatibility with other subsystems. Every curve, joint, and weld reflects a blend of theory, real-world data, and precision craftsmanship.`
+      },
+      {
+        name: 'Composites',
+        image: composites,
+        description: `To reduce weight and increase strength, we fabricate custom body panels, seat structures, and protective covers using carbon fiber and ABS plastic. Our team designs molds, prepares materials, and uses vacuum bagging to ensure clean, lightweight, and durable results. This subsystem is where material science meets hands-on manufacturing.`
+      }
+    ]
   },
+
   {
-    name: 'Electronics',
-    image: electronics,
-    description: `Electronics integrate data and diagnostics into every phase of the vehicle's lifecycle. We deploy sensors to measure speed, acceleration, suspension movement, and thermal performance. The insights drive design refinement and track performance. Our electronics also support safety systems like kill-switches and lighting, as well as a dashboard display giving drivers real-time data at a glance.`
+    name: 'Powertrain',
+    description: `Powertrain covers how we generate and transmit torque from engine to wheels — packaging, ratios, durability, and serviceability are the main concerns. Each year we iterate for better packaging and efficiency.`,
+    subsystems: [
+      {
+        name: 'CVT',
+        image: powertrain,
+        description: `The CVT (continuously variable transmission) adjusts gear ratio dynamically while acting as a clutch for smooth power delivery. It allows the engine to stay near peak power through varying speeds and terrains. We maintain and tune belt selection, pulley profiles, and cooling to maximize life and efficiency.`
+      },
+      {
+        name: 'Gearbox',
+        image: powertrain,
+        description: `A custom-built gearbox translates the CVT output to the desired torque and speed for the axles. Each iteration is designed and fabricated in-house to handle torque loads while minimizing friction and weight. Precision machining and careful gear selection are central to reliability.`
+      },
+      {
+        name: 'Axles & Driveshafts',
+        image: powertrain,
+        description: `Axles and driveshafts deliver torque from the gearbox to the wheels. We design CV/ U-joint solutions that tolerate articulation and impacts while maintaining drivetrain integrity. Durability testing and proper material selection are key focuses.`
+      },
+      {
+        name: 'Front Differential',
+        image: powertrain,
+        description: `The front differential enables differential wheel speeds while steering and cornering. Our design balances torque distribution and robustness for off-road duty, with attention to sealing, gearing, and serviceability in the paddock.`
+      }
+    ]
   },
+
   {
-    name: 'Steering',
-    image: steering,
-    description: `Steering ensures agile control and response across demanding terrain. Inputs from the steering wheel travel through the column to a rack-and-pinion assembly, which translates rotation into lateral motion. Tie rods then move the steering arms to change the front wheels' angle. This setup, combined with carefully tuned geometry, delivers high precision and driver confidence in tight turns and uneven trails.`
-  },
-  {
-    name: 'Suspension',
-    image: suspension,
-    description: `Our vehicle features four-wheel independent suspension — SLA in the front and rear. This configuration maximizes stability and control during jumps, ruts, and steep inclines. From concept to fabrication, our suspension system relies on data collection, simulations, and field testing. Each part is optimized to improve ride quality, traction, and component longevity.`
-  },
-  {
-    name: 'Control Systems',
-    image: control,
-    description: `Control Systems shape the user experience and safety of the vehicle. From ergonomic cockpit design that fits a wide range of body types to the precise layout of levers, pedals, and controls — this subsystem ensures the driver stays focused and responsive. The team also engineers a powerful braking system and integrates electronic interfaces, including data acquisition and driver feedback tools.`
-  },
-  {
-    name: 'Composites',
-    image: composites,
-    description: `To reduce weight and increase strength, we fabricate custom body panels, seat structures, and protective covers using carbon fiber and ABS plastic. Our team designs molds, prepares materials, and uses vacuum bagging to ensure clean, lightweight, and durable results. This subsystem is where material science meets hands-on manufacturing.`
+    name: 'Electrical & Software',
+    description: `Electrical & Software ties sensors, safety, and driver information together. From robust wiring harnesses to data-logging and driver interfaces, this system is the team’s nerve center for diagnostics and control.`,
+    subsystems: [
+      {
+        name: 'Electronics',
+        image: electronics,
+        description: `Electronics integrate data and diagnostics into every phase of the vehicle's lifecycle. We deploy sensors to measure speed, acceleration, suspension movement, and thermal performance. The insights drive design refinement and track performance. Our electronics also support safety systems like kill-switches and lighting, as well as a dashboard display giving drivers real-time data at a glance.`
+      },
+      {
+        name: 'Control Systems & Software',
+        image: control,
+        description: `Control Systems shape the user experience and safety of the vehicle. From ergonomic cockpit design that fits a wide range of body types to the precise layout of levers, pedals, and controls — this subsystem ensures the driver stays focused and responsive. The team also engineers a powerful braking system and integrates electronic interfaces, including data acquisition and driver feedback tools. On the software side, we collect, visualize, and analyze telemetry to guide design decisions.`
+      }
+    ]
   }
 ];
 ---
@@ -55,38 +102,49 @@ const subsystems = [
   <!-- Hero Section -->
   <section class="hero" style="--hero-img: url('/images/subsystems-hero.JPG');">
     <div class="hero-content">
-      <h1 class="hero-title">Our Subsystems</h1>
+      <h1 class="hero-title">Our Systems & Subsystems</h1>
       <p class="hero-sub">
-          Pioneering in performance, safety, and innovation.
+        Pioneering in performance, safety, and innovation.
       </p>
     </div>
   </section>
-  
+
   <!-- Description -->
   <section class="section">
     <p class="intro-text">
-      At Stony Brook Motorsports, every component of our Baja SAE off-road vehicle is built from the ground up by passionate students. Our team is divided into seven core subsystems — each playing a critical role in performance, reliability, and innovation. Team members often collaborate across multiple subsystems, gaining a hands-on, interdisciplinary engineering experience.
+      At Stony Brook Motorsports, every component of our Baja SAE off-road vehicle is built from the ground up by passionate students. Below we group our engineering work into broader systems and list the subsystems that live under each one — preserving our hands-on, interdisciplinary approach.
     </p>
 
-    <!-- Subsystem Blocks -->
-    <div class="subsystems-container">
-      {subsystems.map((subsystem, i) => (
-        <div class="subsystem {i % 2 === 1 ? 'reverse' : ''}">
-          <div class="subsystem-text center-text">
-            <h3>{subsystem.name}</h3>
-            <p>{subsystem.description}</p>
+    <!-- Systems -->
+    <div class="systems-container">
+      {systems.map((system, sysIndex) => (
+        <section class="system" aria-labelledby={`system-${sysIndex}-title`}>
+          <div class="system-header">
+            <h2 id={`system-${sysIndex}-title`}>{system.name}</h2>
+            <p class="system-desc">{system.description}</p>
           </div>
-          <div class="subsystem-image">
-          <Picture 
-            src={subsystem.image} 
-            alt={`${subsystem.name} Subsystem`} 
-            formats={['avif','webp','jpg']} 
-            width={600} 
-            height={400} 
-          />
-        </div>
 
-        </div>
+          <div class="subsystems-grid">
+            {system.subsystems.map((sub, i) => (
+              <article class={`subsystem-card ${i % 2 === 1 ? 'reverse' : ''}`} aria-labelledby={`sub-${sysIndex}-${i}-title`}>
+                <div class="subsystem-media">
+                  <Picture
+                    src={sub.image}
+                    alt={`${sub.name} Subsystem`}
+                    formats={['avif','webp','jpg']}
+                    width={600}
+                    height={400}
+                  />
+                </div>
+
+                <div class="subsystem-body">
+                  <h3 id={`sub-${sysIndex}-${i}-title`}>{sub.name}</h3>
+                  <p>{sub.description}</p>
+                </div>
+              </article>
+            ))}
+          </div>
+        </section>
       ))}
     </div>
   </section>
@@ -94,7 +152,7 @@ const subsystems = [
   <!-- Fade-in animation on scroll -->
   <script>
     document.addEventListener("DOMContentLoaded", () => {
-      const subsystems = document.querySelectorAll(".subsystem");
+      const subs = document.querySelectorAll(".subsystem-card");
 
       const observer = new IntersectionObserver(entries => {
         entries.forEach(entry => {
@@ -104,10 +162,10 @@ const subsystems = [
           }
         });
       }, {
-        threshold: 0.2
+        threshold: 0.15
       });
 
-      subsystems.forEach(s => observer.observe(s));
+      subs.forEach(s => observer.observe(s));
     });
   </script>
 </BaseLayout>

@@ -136,6 +136,7 @@ export type Sponsor = {
       tier: "Honorable Mentions",
       image: "/images/sponsors/MachtayNoah.jpg",
       alt: "Noah Machtay",
+      url:"https://me.stonybrook.edu/people/faculty/Machtay_Noah.php",
     },
     {
       name: "Austin Giordano",
@@ -143,6 +144,7 @@ export type Sponsor = {
       tier: "Honorable Mentions",
       image: "/images/sponsors/AustinGiordano.jpg",
       alt: "Austin Giordano",
+      url: "https://me.stonybrook.edu/people/faculty/Giordano_Austin.php",
     },
     {
       name: "Joe Schurz",

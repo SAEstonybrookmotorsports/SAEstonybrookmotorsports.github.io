@@ -84,3 +84,181 @@
   margin: 3rem auto;
   opacity: 0.4;
 }
+.system {
+  margin: 2.5rem 0;
+  padding: 1rem 0;
+  border-top: 1px solid rgba(0,0,0,0.06);
+}
+
+.system-header h2 {
+  font-size: 1.6rem;
+  margin-bottom: 0.25rem;
+}
+
+.system-desc {
+  margin-bottom: 1rem;
+  color: #444;
+}
+
+.subsystems-grid {
+  display: grid;
+  gap: 1.25rem;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+}
+
+.subsystem-card {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+  align-items: center;
+  padding: 0.75rem;
+  background: var(--card-bg, #3434344f);
+  border-radius: 8px;
+  box-shadow: 0 6px 18px rgba(20,20,20,0.04);
+  transition: transform .18s ease, box-shadow .18s ease;
+  opacity: 0;
+  transform: translateY(10px);
+}
+
+.subsystem-card.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.subsystem-card.reverse {
+  direction: rtl; /* easy flip for image/text order */
+}
+
+.subsystem-card.reverse .subsystem-body {
+  direction: ltr;
+  
+}
+
+.subsystem-media img {
+  width: 100%;
+  height: auto;
+  border-radius: 6px;
+  display: block;
+}
+
+.subsystem-body h3 {
+  margin: 0 0 0.35rem 0;
+}
+
+@media (max-width: 800px) {
+  .subsystem-card {
+    grid-template-columns: 1fr;
+  }
+  .subsystem-card.reverse {
+    direction: ltr;
+  }
+}
+/* -------------------------
+   Visual updates / overrides
+   ------------------------- */
+
+/* System description should be white and readable on dark backgrounds */
+.system-desc {
+  margin-bottom: 1rem;
+  color: #ffffff;            /* white text for system descriptions */
+  font-weight: 500;
+  line-height: 1.5;
+}
+
+/* Subsystem card: light-gray background, stronger contrast for text */
+.subsystem-card {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+  align-items: center;
+  padding: 1rem;                            /* slightly bigger padding */
+  background: #626262;                      /* soft gray card background */
+  color: #111214;                           /* high-contrast body text */
+  border-radius: 10px;
+  border: 1px solid rgba(18, 24, 28, 0.06); /* subtle border */
+  box-shadow: 0 10px 30px rgba(15, 20, 25, 0.05);
+  transition: transform .18s ease, box-shadow .18s ease, opacity .25s ease;
+  opacity: 0;
+  transform: translateY(10px);
+}
+
+/* Visible state (on-scroll) */
+.subsystem-card.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Flip for odd items (keeps image/text order visually reversed) */
+.subsystem-card.reverse {
+  direction: rtl;
+}
+.subsystem-card.reverse .subsystem-body {
+  direction: ltr;
+}
+
+/* Subsystem media (image) */
+.subsystem-media img {
+  width: 100%;
+  height: auto;
+  border-radius: 8px;
+  display: block;
+  object-fit: cover;
+  box-shadow: 0 8px 18px rgba(0,0,0,0.08);
+  background: linear-gradient(180deg, rgba(255,255,255,0.03), rgba(0,0,0,0.02)); /* subtle backing */
+}
+
+/* Subsystem body text: bigger, darker, more readable */
+.subsystem-body h3 {
+  margin: 0 0 0.35rem 0;
+  font-size: 1.35rem;
+  color: #cc0033;               /* keep your accent red */
+  text-shadow: 0px 0px 1px rgba(205,82,113,0.15);
+}
+
+.subsystem-body p {
+  font-size: 1.08rem;           /* slightly larger for readability */
+  line-height: 1.75;
+  color: #111214;               /* strong contrast against gray card */
+  margin: 0;
+}
+
+/* Intro and other text on the page (keep subtle / readable) */
+.intro-text {
+  font-size: 1.18rem;
+  max-width: 900px;
+  margin: 2rem auto;
+  text-align: center;
+  line-height: 1.8;
+  color: #ccc;
+}
+
+/* Keep .system visual separation but don't double-up contrast with header */
+.system {
+  margin: 2.5rem 0;
+  padding: 1rem 0;
+  border-top: 1px solid rgba(0,0,0,0.06);
+}
+
+/* Accessibility: ensure adequate spacing on small screens */
+@media (max-width: 800px) {
+  .subsystem-card {
+    grid-template-columns: 1fr;   /* stack card content on narrow screens */
+    padding: 0.85rem;
+  }
+  .subsystem-media {
+    margin-bottom: 0.6rem;
+  }
+  .subsystem-body h3 {
+    font-size: 1.2rem;
+  }
+  .subsystem-body p {
+    font-size: 1.05rem;
+  }
+}
+
+/* small polishing: nicer entrance shadow when hovered/focused */
+.subsystem-card:focus-within,
+.subsystem-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 16px 36px rgba(12,16,20,0.08);
+}
