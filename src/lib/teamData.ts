@@ -145,5 +145,45 @@ export const teamData: TeamMember[] = [
     subsystem: 'Composites',
     bio: 'insert professional bio here',
     custom: ''
+  },
+  {
+    name: 'Diana Russo',
+    image: 'images/team/diana-russo.jpg',
+    role: '',
+    subsystem: 'Elecrical',
+    bio: 'insert professional bio here',
+    custom: ''
+  },
+  {
+    name: 'Jason Praisner',
+    image: 'images/team/jason-praisner.jpg',
+    role: 'Design Lead',
+    subsystem: '',
+    bio: 'insert professional bio here',
+    custom: ''
+  },
+  {
+    name: 'Ashton Gomes',
+    image: 'images/team/ashton-gomes.jpg',
+    role: 'Vehicle Dynamics Lead',
+    subsystem: 'Vehicle Dynamics',
+    bio: 'insert professional bio here',
+    custom: ''
+  },
+  {
+    name: 'William Ouzounian',
+    image: 'images/team/william-ouzounian.jpg',
+    role: 'Secretary / Facilities Lead',
+    subsystem: '',
+    bio: 'insert professional bio here',
+    custom: ''
+  },
+  {
+    name: 'Samuel Block',
+    image: 'images/team/samuel-block.jpg',
+    role: '',
+    subsystem: 'Composites',
+    bio: 'insert professional bio here',
+    custom: ''
   }
 ];
