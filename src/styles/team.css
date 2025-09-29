@@ -1,47 +1,89 @@
-/*───────────────── Global Section Base ─────────────────*/
-.section {
-  padding: 4rem 2rem;
-  max-width: 1200px;
-  margin: 0 auto;
+/* Global section */
+.section { padding: 4rem 2rem; max-width: 1200px; margin: 0 auto; }
+.section-heading { text-align:center; font-size:2.75rem; color:#cc0033; margin-bottom:2rem; }
+
+/* Hero */
+.hero { height:60vh; background:var(--hero-img) center/cover no-repeat; display:flex; align-items:center; justify-content:center; }
+.hero-content { text-align:center; opacity:0; transform:translateY(20px); animation:reveal 1.4s forwards; }
+@keyframes reveal { to { opacity:1; transform:translateY(0); } }
+.hero-title { font-family:'Montserrat',sans-serif; font-weight:800; font-size:clamp(2.5rem,6vw,5rem); color:#fff; text-shadow:0 2px 6px rgba(0,0,0,0.9); }
+.hero-sub { font-family:'Montserrat',sans-serif; font-weight:600; font-size:clamp(1rem,3vw,2rem); color:#fff; margin-top:0.5rem; text-shadow:0 1px 4px rgba(0,0,0,0.7); }
+
+/* Fade-in */
+.fade-in { opacity:0; transform:translateY(30px); transition:0.8s ease-out; }
+.fade-in.visible { opacity:1; transform:translateY(0); }
+
+/* Members Grid */
+.members-grid.equal-size { display:grid; grid-template-columns:repeat(auto-fit,minmax(200px,1fr)); gap:2rem; justify-items:center; align-items:start; }
+.member { text-align:center; position:relative; }
+.member img { width:200px; height:200px; object-fit:cover; border-radius:12px; transition:transform 0.2s ease; }
+.member img:hover { transform:scale(1.05); }
+.member-name { margin-top:0.5rem; font-weight:600; color:#fff; }
+.role { font-size:0.9rem; color:#ddd; margin:0.2rem 0; }
+.bio { font-size:0.85rem; color:#ccc; cursor:pointer; line-height:1.4; }
+.linkedin-icon { position:absolute; bottom:5px; right:5px; opacity:0; transition:0.3s; }
+.member:hover .linkedin-icon { opacity:1; }
+.linkedin-icon img { width:16px; height:16px; }
+
+/* Section divider */
+.section-divider { border:none; height:2px; background:#cc0033; width:60%; margin:3rem auto; opacity:0.4; }
+/* grid */
+.members-grid.equal-size {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 1.25rem;
+  justify-items: center;
+  align-items: start;
 }
 
-/*───────────────── Hero (reuse from theme) ─────────────────*/
-.hero {
-  position: relative;
-  height: 60vh;
-  background: var(--hero-img) center/cover no-repeat;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+/* card + image */
+.member { text-align: center; position: relative; max-width: 240px; }
+.member img, .member picture, .member picture img {
+  width: 250px;
+  height: 300px;
+  object-fit: cover;
+  border-radius: 12px;
+  transition: transform 0.2s ease;
 }
-#fade-wrapper { opacity: 1 !important; }
+.member:hover img, .member:hover picture img { transform: scale(1.03); }
 
-.hero-content {
-  text-align: center;
-  animation: reveal 1.4s ease-out forwards;
+/* text */
+.member-name { margin-top: 0.5rem; font-weight: 600; color: #fff; }
+.role { font-size: 0.9rem; color: #ddd; margin: 0.25rem 0; }
+.bio { font-size: 0.9rem; color: #ccc; cursor: pointer; }
+
+/* linkedin */
+.linkedin-icon { position: absolute; bottom: 6px; right: 6px; opacity: 0; transition: opacity .25s ease; }
+.member:hover .linkedin-icon { opacity: 1; }
+.linkedin-icon img { width: 16px; height: 16px; display: block; }
+/* Page wrapper — separate from section fade-in */
+#fade-wrapper {
+  opacity: 1;
+  transform: none;
+  transition: opacity 300ms ease, transform 300ms ease;
+}
+
+/* starting state when page is entering */
+#fade-wrapper.page-enter {
   opacity: 0;
-  transform: translateY(20px);
-}
-@keyframes reveal {
-  to { opacity: 1; transform: translateY(0); }
-}
-.hero-title {
-  font-family: 'Montserrat', sans-serif;
-  font-weight: 800;
-  font-size: clamp(2.5rem, 6vw, 5rem);
-  color: #fff;
-  text-shadow: 0 2px 6px rgba(0,0,0,0.9);
-}
-.hero-sub {
-  font-family: 'Montserrat', sans-serif;
-  font-weight: 600;
-  font-size: clamp(1rem, 3vw, 2rem);
-  color: #fff;
-  margin-top: 0.5rem;
-  text-shadow: 0 1px 4px rgba(0,0,0,0.7);
+  transform: translateY(8px);
+  /* pointer-events kept normal so content is selectable after visible added */
 }
 
-/*───────────────── Fade‑in Utility ─────────────────*/
+/* final shown state */
+#fade-wrapper.page-enter.visible {
+  opacity: 1;
+  transform: none;
+}
+
+/* exit state for navigation */
+#fade-wrapper.page-exit {
+  opacity: 0;
+  transform: translateY(-6px);
+  pointer-events: none;
+}
+
+/* keep your existing section fade-in rules for elements */
 .fade-in {
   opacity: 0;
   transform: translateY(30px);
@@ -51,115 +93,30 @@
   opacity: 1;
   transform: translateY(0);
 }
-
-/*───────────────── Section Headings ─────────────────*/
-.section-heading {
-  font-family: 'Montserrat', sans-serif;
-  font-size: 2.75rem;
-  color: #cc0033;
-  text-align: center;
-  margin-bottom: 2rem;
-}
-
-/*───────────────── Subsystem Lead ─────────────────*/
-.subsystem-lead {
-  text-align: center;
-  margin-bottom: 2rem;
-}
-.subsystem-lead img {
-  width: 160px;
-  height: 160px;
-  border-radius: 12px;
-  object-fit: cover;
-  border: 2px solid #810020;
-  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.4);
-  margin-bottom: 1rem;
-  transition: transform 0.3s ease;
-}
-.subsystem-lead img:hover {
-  transform: scale(1.05);
-}
-.subsystem-lead h3 {
-  font-family: 'Montserrat', sans-serif;
-  font-size: 1.75rem;
-  color: #fff;
-  margin: 0.5rem 0;
-}
-.subsystem-lead .role,
-.subsystem-lead .member-custom {
-  font-size: 1rem;
-  color: #ddd;
-  margin: 0.3rem 0;
-}
-
-/*───────────────── Members Grid ─────────────────*/
-.members-grid {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 2rem;
-  justify-content: center;
-}
 .member {
-  position: relative;
-  width: 140px;
+  position: relative; /* needed for absolute positioning inside */
   text-align: center;
 }
-.member img {
-  width: 120px;
-  height: 120px;
-  border-radius: 12px;
-  object-fit: cover;
-  box-shadow: 0 2px 8px rgba(0,0,0,0.2);
-  transition: transform 0.2s ease;
-}
-.member img:hover {
-  transform: scale(1.05);
-}
-.member-name {
-  margin-top: 0.5rem;
-  font-family: 'Montserrat', sans-serif;
-  font-size: 1rem;
-  color: #fff;
-}
-.member-custom {
-  font-size: 0.85rem;
-  color: #aaa;
-  margin: 0.2rem 0 0.6rem;
-  font-style: italic;
+
+/* LinkedIn icon positioning */
+
+
+.member:hover .linkedin-icon {
+  opacity: 1;   /* show on hover */
 }
 
-/*───────────────── LinkedIn Icon on Hover ─────────────────*/
+.linkedin-icon img,
+.linkedin-icon .linkedin-svg {
+  width: 16px;  /* small icon size */
+  height: 16px;
+}
 .linkedin-icon {
   position: absolute;
-  bottom: -4px;
-  right: -4px;
+  bottom: 0px;  /* distance from image bottom */
+  right: 0px;   /* distance from image right */
+  display: flex;
+  align-items: center;
+  justify-content: center;
   opacity: 0;
   transition: opacity 0.3s ease;
-}
-.member:hover .linkedin-icon,
-.subsystem-lead:hover .linkedin-icon {
-  opacity: 1;
-}
-.linkedin-icon img {
-  width: 24px;
-  height: 24px;
-}
-
-/*───────────────── Bio Text & Easter‑egg ─────────────────*/
-.bio {
-  margin-top: 0.5rem;
-  font-size: 0.9rem;
-  color: #ddd;
-  cursor: pointer;
-  line-height: 1.4;
-}
-
-/*───────────────── Section Divider ─────────────────*/
-.section-divider {
-  border: none;
-  height: 2px;
-  background: #cc0033;
-  width: 60%;
-  margin: 3rem auto;
-  opacity: 0.4;
 }

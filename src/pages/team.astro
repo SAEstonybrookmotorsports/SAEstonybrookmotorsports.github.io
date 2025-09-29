@@ -1,37 +1,37 @@
 ---
-// src/pages/team.astro (or wherever your Team page lives)
-import { Picture } from "astro:assets";
 import BaseLayout from '../layouts/BaseLayout.astro';
 import { teamData, type TeamMember } from '../lib/teamData';
 import '../styles/global.css';
+import '../styles/theme.css';
 import '../styles/team.css';
 import linkedinIcon from '../assets/linkedin.svg';
+import heroPlaceholder from '../assets/hero.jpg';
+import MemberCard from '../components/MemberCard.astro';
 
-// Group members by subsystem
-const grouped = teamData.reduce<Record<string, TeamMember[]>>((acc, member) => {
-  (acc[member.subsystem] ||= []).push(member);
-  return acc;
-}, {});
 
-// Order for rendering
-const order = [
-  'Leadership',
-  'Powertrain',
-  'Chassis',
-  'Suspension',
-  'Electronics',
-  'CNC',
-  'Software',
-  'Drivetrain',
-  'Testing',
-  'Treasurer',
-  'Composites',
-  'Brakes',
-  'Transmission'
+// 1️⃣ fallback for missing images
+const mappedTeamData = teamData.map(m => ({ ...m, image: m.image ?? heroPlaceholder }));
+
+// 2️⃣ Separate members by category
+const faculty = mappedTeamData.filter(m => m.category === 'Faculty');
+const eboard = mappedTeamData.filter(m => m.category === 'Eboard');
+const systemLeads = mappedTeamData.filter(m => m.category === 'SystemLead');
+const grads = mappedTeamData.filter(m => m.category === 'Grad');
+const members = mappedTeamData.filter(m => m.category === 'Member');
+
+// 3️⃣ Group Member category by subsystem
+const subsystems: Record<string, TeamMember[]> = {};
+members.forEach(m => (subsystems[m.system] ||= []).push(m));
+
+// 4️⃣ Define subsystem display order
+const subsystemOrder = [
+  'Powertrain','Chassis','Electrical','Software', 'Vehicle Dynamics',
+  'Testing'
 ];
 ---
 
 <BaseLayout pageClass="team">
+
   <!-- Hero -->
   <section class="hero" style="--hero-img: url('/images/team-hero.jpg')">
     <div class="hero-content">
@@ -40,82 +40,116 @@ const order = [
     </div>
   </section>
 
-  <!-- Render in custom order -->
-  {order.map((subsystem, idx) => {
-    const members = grouped[subsystem];
-    if (!members || members.length === 0) return null;
+  <!-- Eboard -->
+  {eboard.length > 0 && (
+    <section class="section fade-in">
+      <h2 class="section-heading">Eboard</h2>
+      <div class="members-grid equal-size">
+        {eboard.map(m => <MemberCard member={m} />)}
+      </div>
+    </section>
+  )}
+<!-- Faculty -->
+  {faculty.length > 0 && (
+    <section class="section fade-in">
+      <h2 class="section-heading">Faculty Advisors</h2>
+      <div class="members-grid equal-size">
+        {faculty.map(m => <MemberCard member={m} />)}
+      </div>
+    </section>
+  )}
+  <!-- System Leads -->
+  {systemLeads.length > 0 && (
+    <section class="section fade-in">
+      <h2 class="section-heading">System Leads</h2>
+      <div class="members-grid equal-size">
+        {systemLeads.map(m => <MemberCard member={m} />)}
+      </div>
+    </section>
+  )}
 
-    // use explicit `lead` field (more reliable than string matching)
-    const lead = members.find(m => m.lead);
+  <!-- Graduate Members -->
+  {grads.length > 0 && (
+    <section class="section fade-in">
+      <h2 class="section-heading">Graduate Members</h2>
+      <div class="members-grid equal-size">
+        {grads.map(m => <MemberCard member={m} />)}
+      </div>
+    </section>
+  )}
 
+  <!-- Subsystems -->
+  {subsystemOrder.map(sys => {
+    const mems = subsystems[sys];
+    if (!mems) return null;
     return (
-      <>
-        <section class="section team-section fade-in" id={subsystem.toLowerCase()}>
-          <h2 class="section-heading">{subsystem}</h2>
-
-          {lead && (
-            <div class="subsystem-lead">
-              <Picture src={lead.image} alt={lead.name} formats={["avif","webp","png"]} width={200} height={200} />
-              <h3>{lead.name}</h3>
-              <p class="role">{lead.role}</p>
-              {lead.custom && <p class="member-custom">{lead.custom}</p>}
-              {lead.linkedin && (
-                <a href={lead.linkedin} class="linkedin-icon" target="_blank" rel="noopener">
-                  <Picture src={linkedinIcon} alt="LinkedIn" formats={["svg"]} width={24} height={24} />
-                </a>
-              )}
-              <p class="bio" data-clicks="0" data-funbio={lead.funBio ?? ''}>{lead.bio}</p>
-            </div>
-          )}
-
-          <div class="members-grid">
-            {members
-              .filter(m => m !== lead)
-              .map(m => (
-                <div class="member">
-                  <Picture src={m.image} alt={m.name} formats={["avif","webp","png"]} width={150} height={150} />
-                  <p class="member-name">{m.name}</p>
-                  {m.custom && <p class="member-custom">{m.custom}</p>}
-                  {m.linkedin && (
-                    <a href={m.linkedin} class="linkedin-icon" target="_blank" rel="noopener">
-                      <Picture src={linkedinIcon} alt="LinkedIn" formats={["svg"]} width={24} height={24} />
-                    </a>
-                  )}
-                  <p class="bio" data-clicks="0" data-funbio={m.funBio ?? ''}>{m.bio}</p>
-                </div>
-              ))}
-          </div>
-        </section>
-
-        {idx < order.length - 1 && <hr class="section-divider" />}
-      </>
+      <section class="section fade-in" id={sys.toLowerCase()}>
+        <h2 class="section-heading">{sys}</h2>
+        <div class="members-grid equal-size">
+          {mems.map(m => <MemberCard member={m} />)}
+        </div>
+      </section>
     );
   })}
 
-  <!-- Scroll & Easter-egg Script -->
+  <!-- Intersection observer & fun bio -->
   <script type="module">
-    // Intersection observer for fade-in elements
-    const io = new IntersectionObserver(entries => {
-      entries.forEach(e => {
-        if (e.isIntersecting) {
-          e.target.classList.add('visible');
-          io.unobserve(e.target);
-        }
+    document.addEventListener("DOMContentLoaded", () => {
+      // Page wrapper safe fade-in
+      const wrapper = document.getElementById("fade-wrapper");
+      if (wrapper) {
+        // Use distinct class so it doesn't clash with section .fade-in
+        wrapper.classList.add("page-enter");
+        // Add visible on next paint so transition runs
+        requestAnimationFrame(() => {
+          // allow one more frame for layout, then show
+          requestAnimationFrame(() => wrapper.classList.add("visible"));
+        });
+      }
+  
+      // --- Section fade-in intersection observer (unchanged) ---
+      const io = new IntersectionObserver(entries => {
+        entries.forEach(e => {
+          if (e.isIntersecting) {
+            e.target.classList.add('visible');
+            io.unobserve(e.target);
+          }
+        });
+      }, { threshold: 0.2 });
+      document.querySelectorAll('.fade-in').forEach(el => io.observe(el));
+  
+      // --- Link transition: fade out page before navigating ---
+      const links = document.querySelectorAll("a[href]");
+      links.forEach((link) => {
+        const href = link.getAttribute("href");
+        // skip hash links, external, target=_blank
+        if (!href || href.startsWith("#") || link.target === "_blank") return;
+        link.addEventListener("click", (e) => {
+          if (e.metaKey || e.ctrlKey || e.shiftKey || e.altKey) return; // preserve modifier navigation
+          e.preventDefault();
+          if (!wrapper) return window.location.href = href;
+          // trigger exit animation
+          wrapper.classList.remove("visible");
+          wrapper.classList.add("page-exit");
+          // wait for animation, then navigate
+          setTimeout(() => (window.location.href = href), 300);
+        });
       });
-    }, { threshold: 0.2 });
-
-    document.querySelectorAll('.fade-in').forEach(el => io.observe(el));
-
-    // Click-to-reveal funBio: increments counter, shows funBio on 5 clicks
-    document.querySelectorAll('.bio').forEach(el => {
-      el.addEventListener('click', () => {
-        const clicks = (+el.dataset.clicks || 0) + 1;
-        el.dataset.clicks = String(clicks);
-        if (clicks === 5) {
-          const fun = el.dataset.funbio;
-          if (fun) el.textContent = fun;
-        }
+  
+      // --- Fun-bio click handler (unchanged) ---
+      document.querySelectorAll('.bio').forEach(el => {
+        el.addEventListener('click', () => {
+          const clicks = (+el.dataset.clicks || 0) + 1;
+          el.dataset.clicks = String(clicks);
+          if (clicks === 5) {
+            const fun = el.dataset.funbio;
+            if (fun) el.textContent = fun;
+          }
+        });
       });
     });
   </script>
 </BaseLayout>
+
+---
+

@@ -1,0 +1,32 @@
+---
+// src/components/MemberCard.astro
+import { Picture } from 'astro:assets';
+import linkedinIcon from '../assets/linkedin.svg?url';
+import type { TeamMember } from '../lib/teamData';
+
+interface Props {
+  member: TeamMember;
+}
+const { member } = Astro.props as Props;
+---
+
+<div class="member">
+  {typeof member.image === 'string' ? (
+    // fallback when member.image is a public URL string
+    <img src={member.image} alt={member.name} width="200" height="200" />
+  ) : (
+    // preferred: ImageMetadata -> use Picture for optimization
+    <Picture src={member.image} alt={member.name} formats={['avif','webp','png']} />
+  )}
+
+  <p class="member-name">{member.name}</p>
+  <p class="role">{member.role}</p>
+
+  {member.linkedin && (
+    <a href={member.linkedin} class="linkedin-icon" target="_blank" rel="noopener">
+      <img src={linkedinIcon} alt="LinkedIn" width="16" height="16" />
+    </a>
+  )}
+
+  <p class="bio" data-clicks="0" data-funbio={member.funBio ?? ''}>{member.bio}</p>
+</div>
