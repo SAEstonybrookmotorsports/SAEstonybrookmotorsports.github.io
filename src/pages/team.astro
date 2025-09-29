@@ -1,32 +1,19 @@
 ---
+// src/pages/team.astro (or wherever your Team page lives)
 import { Picture } from "astro:assets";
 import BaseLayout from '../layouts/BaseLayout.astro';
 import { teamData, type TeamMember } from '../lib/teamData';
 import '../styles/global.css';
 import '../styles/team.css';
 import linkedinIcon from '../assets/linkedin.svg';
-import heroPlaceholder from '../assets/hero.jpg';
 
-// ─── Glob import all team images ───
-const teamImages: Record<string, string> = import.meta.glob('../assets/team/*.{jpg,png}', { eager: true, query: '?url', import: 'default' });
-
-// ─── Map teamData to use imported URLs or fallback ───
-const mappedTeamData = teamData.map(member => {
-  const fileName = member.image.split('/').pop();
-  const key = `../assets/team/${fileName}`;
-  return {
-    ...member,
-    image: teamImages[key] as string || heroPlaceholder, // use hero.jpg if missing
-  };
-});
-
-// ─── Group members by subsystem ───
-const grouped = mappedTeamData.reduce<Record<string, TeamMember[]>>((acc, member) => {
+// Group members by subsystem
+const grouped = teamData.reduce<Record<string, TeamMember[]>>((acc, member) => {
   (acc[member.subsystem] ||= []).push(member);
   return acc;
 }, {});
 
-// ─── Specify the exact order ───
+// Order for rendering
 const order = [
   'Leadership',
   'Powertrain',
@@ -58,7 +45,8 @@ const order = [
     const members = grouped[subsystem];
     if (!members || members.length === 0) return null;
 
-    const lead = members.find(m => /Lead|President/.test(m.role));
+    // use explicit `lead` field (more reliable than string matching)
+    const lead = members.find(m => m.lead);
 
     return (
       <>
@@ -76,7 +64,7 @@ const order = [
                   <Picture src={linkedinIcon} alt="LinkedIn" formats={["svg"]} width={24} height={24} />
                 </a>
               )}
-              <p class="bio" data-clicks="0">{lead.bio}</p>
+              <p class="bio" data-clicks="0" data-funbio={lead.funBio ?? ''}>{lead.bio}</p>
             </div>
           )}
 
@@ -93,7 +81,7 @@ const order = [
                       <Picture src={linkedinIcon} alt="LinkedIn" formats={["svg"]} width={24} height={24} />
                     </a>
                   )}
-                  <p class="bio" data-clicks="0">{m.bio}</p>
+                  <p class="bio" data-clicks="0" data-funbio={m.funBio ?? ''}>{m.bio}</p>
                 </div>
               ))}
           </div>
@@ -104,8 +92,9 @@ const order = [
     );
   })}
 
-  <!-- Scroll & Easter‑egg Script -->
+  <!-- Scroll & Easter-egg Script -->
   <script type="module">
+    // Intersection observer for fade-in elements
     const io = new IntersectionObserver(entries => {
       entries.forEach(e => {
         if (e.isIntersecting) {
@@ -114,19 +103,17 @@ const order = [
         }
       });
     }, { threshold: 0.2 });
+
     document.querySelectorAll('.fade-in').forEach(el => io.observe(el));
 
+    // Click-to-reveal funBio: increments counter, shows funBio on 5 clicks
     document.querySelectorAll('.bio').forEach(el => {
       el.addEventListener('click', () => {
         const clicks = (+el.dataset.clicks || 0) + 1;
-        el.dataset.clicks = clicks;
+        el.dataset.clicks = String(clicks);
         if (clicks === 5) {
-          const name = el.closest('.subsystem-lead, .member')
-                         ?.querySelector('h3, .member-name')?.textContent;
-          import('../lib/teamData').then(mod => {
-            const member = mod.teamData.find(m => m.name === name);
-            if (member?.funBio) el.textContent = member.funBio;
-          });
+          const fun = el.dataset.funbio;
+          if (fun) el.textContent = fun;
         }
       });
     });

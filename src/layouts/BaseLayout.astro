@@ -18,11 +18,14 @@ const { pageClass } = Astro.props;
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Stony Brook Motorsports</title>
+    <meta name="description" content="Official site of Stony Brook Motorsports">
+    <meta name="keywords" content="Stony Brook Motorsports, SBU Motorsports, Formula SAE, Baja SAE, student engineering team, collegiate race car, automotive engineering projects, electric race car, Formula Student USA, student motorsports competition, vehicle dynamics simulation, race car design, engineering innovation, student-built vehicles, automotive engineering club, motorsports engineering, mechanical engineering projects, college engineering competitions, SBU student organization, prototype race car, hybrid vehicle development, automotive design students, team engineering projects, university motorsports program">
     <link rel="icon" href="/sbmlogo.png" type="image/png" />
     <link
       href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap"
       rel="stylesheet"
     />
+    <link rel="sitemap" href="/sitemap-index.xml" />
   </head>
 
   <body>
@@ -85,14 +88,15 @@ const { pageClass } = Astro.props;
           links.forEach((link) => {
             const href = link.getAttribute("href");
             if (href && !href.startsWith("#") && !link.hasAttribute("target")) {
-              link.addEventListener("click", (e: MouseEvent) => {
-                if (e.metaKey || e.ctrlKey || e.shiftKey || e.altKey) return;
-                e.preventDefault();
+              link.addEventListener("click", (e: Event) => {
+                const mouseEvent = e as MouseEvent;
+                if (mouseEvent.metaKey || mouseEvent.ctrlKey || mouseEvent.shiftKey || mouseEvent.altKey) return;
+                mouseEvent.preventDefault();
                 wrapper.classList.remove("fade-in");
                 wrapper.classList.add("fade-out");
                 setTimeout(() => (window.location.href = href), 250);
               });
-            }
+            }        
           });
         }
 
