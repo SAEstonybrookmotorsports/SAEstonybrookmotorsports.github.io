@@ -1,19 +1,19 @@
 // src/lib/teamData.ts
-import kushagraImg from '../images/team/kushagra-taneja.jpg';
-import edwardImg from '../images/team/edward-cibu.jpg';
-import brandonImg from '../images/team/brandon-chan.jpg';
-import denysImg from '../images/team/denys-tserkovniuk.jpg';
-import erikImg from '../images/team/erik-khachatryan.jpg';
-import arthurImg from '../images/team/arthur-siek.jpg';
-import hunterImg from '../images/team/hunter-guthy.jpg';
-import juliannaImg from '../images/team/julianna-wehmann.jpg';
-import kevinImg from '../images/team/kevin-zhuo.jpg';
-import ziqiImg from '../images/team/ziqi-wang.jpg';
-import pashaImg from '../images/team/pasha-kusumo.jpg';
-import samanthaImg from '../images/team/samantha-margulies.jpg';
-import nickImg from '../images/team/nick-clement.jpg';
-import mishaImg from '../images/team/misha-zaslavsky.jpg';
-import vinnyImg from '../images/team/vinny-blendell.jpg';
+import kushagraImg from '../assets/team/kushagra-taneja.jpg';
+import edwardImg from '../assets/team/edward-cibu.jpg';
+import brandonImg from '../assets/hero.jpg';
+import denysImg from '../assets/team/denys-tserkovniuk.jpg';
+import erikImg from '../assets/team/erik-khachatryan.jpg';
+import arthurImg from '../assets/team/arthur-siek.jpg';
+import hunterImg from '../assets/team/hunter-guthy.jpg';
+import juliannaImg from '../assets/team/julianna-wehmann.jpg';
+import kevinImg from '../assets/team/kevin-zhuo.jpg';
+import ziqiImg from '../assets/team/ziqi-wang.jpg';
+import pashaImg from '../assets/team/pasha-kusumo.jpg';
+import samanthaImg from '../assets/team/samantha-margulies.jpg';
+import nickImg from '../assets/hero.jpg';
+import mishaImg from '../assets/team/misha-zaslavsky.jpg';
+import vinnyImg from '../assets/team/vinny-blendell.jpg';
 
 export interface TeamMember {
   name: string;
