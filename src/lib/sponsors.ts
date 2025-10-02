@@ -157,9 +157,24 @@ export type Sponsor = {
       name: "Joe Schurz",
       personName: "Joe Schurz",
       tier: "Honorable Mentions",
-      image: "/images/honorable/joe.jpg",
+      image: "/images/sponsors/SchurzJoe.png",
       alt: "Joe Schurz",
     },
+    {
+      name: "Demetri Papagermanos",
+      personName: "Demetri Papagermanos",
+      tier: "Honorable Mentions",
+      image: "/images/sponsors/Demetri.jpg",
+      alt: "Demetri Papagermanos",
+    },
+    {
+      name: "Leana Grotz",
+      personName: "Leana Grotz",
+      tier: "Honorable Mentions",
+      image: "/images/sponsors/leana.png",
+      alt: "Leana Grotz",
+    },
+
   ];
   
   export const tierDescriptions: Record<string, string> = {
