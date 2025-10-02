@@ -14,9 +14,9 @@ import samanthaImg from '../assets/team/samantha-margulies.jpg';
 import nickImg from '../assets/hero.jpg';
 import mishaImg from '../assets/team/misha-zaslavsky.jpg';
 import vinnyImg from '../assets/team/vinny-blendell.jpg';
-import AshtonImg from '../assets/hero.jpg';
+import AshtonImg from '../assets/team/ashton-gomes.jpg';
 import ShornImg from '../assets/hero.jpg';
-
+import WillImg from '../assets/team/william-ouzounian.jpg'
 export interface TeamMember {
   name: string;
   image: ImageMetadata;
@@ -189,14 +189,6 @@ export const teamData: TeamMember[] = [
     bio: 'insert professional bio here',
     lead: true,
     category:'SystemLead',
-  }, {
-    name: 'Richard Rennard',
-    image: AshtonImg,
-    role: 'Rickey',
-    system: 'Software',
-    bio: 'insert professional bio here',
-    lead: true,
-    category:'Member',
   },
   {
     name: 'Shorn Grant',
@@ -206,6 +198,16 @@ export const teamData: TeamMember[] = [
     bio: 'insert professional bio here',
     lead: true,
     category:'SystemLead',
+  },
+  {
+    name: 'William Ouzonian',
+    image: WillImg,
+    role: 'Leadership',
+    system: 'Powertrain',
+    bio: 'insert',
+    funBio: 'yes',
+    lead: true,
+    category:'Eboard',
   },
 
 

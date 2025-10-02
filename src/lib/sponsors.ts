@@ -87,6 +87,13 @@ export type Sponsor = {
       url: "https://www.mastercam.com/",
     },
     {
+      name:"Online Metals",
+      tier:"Silver",
+      image:"/images/sponsors/online-metals.svg",
+      alt:"Online Metals",
+      url:"https://www.onlinemetals.com/",
+    },
+    {
       name: "Kenesto",
       tier: "Silver",
       image: "/images/sponsors/kenesto.png",
