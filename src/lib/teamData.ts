@@ -202,9 +202,9 @@ export const teamData: TeamMember[] = [
   {
     name: 'William Ouzonian',
     image: WillImg,
-    role: 'Leadership',
+    role: 'Secretary/Facilities Lead',
     system: 'Powertrain',
-    bio: 'insert',
+    bio: 'insert professional bio here',
     funBio: 'yes',
     lead: true,
     category:'Eboard',

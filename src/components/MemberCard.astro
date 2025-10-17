@@ -28,5 +28,10 @@ const { member } = Astro.props as Props;
     </a>
   )}
 
-  <p class="bio" data-clicks="0" data-funbio={member.funBio ?? ''}>{member.bio}</p>
+  {/* Only render professional bio if it's non-empty and not the placeholder */}
+  {member.bio && member.bio !== "insert professional bio here" && (
+    <p class="bio" data-clicks="0" data-funbio={member.funBio ?? ''}>
+      {member.bio}
+    </p>
+  )}
 </div>
