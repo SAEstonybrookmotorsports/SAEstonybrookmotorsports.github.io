@@ -1,6 +1,8 @@
-import 'dotenv/config';
 import { v2 as cloudinary } from 'cloudinary';
-
+if (process.env.NODE_ENV !== 'production') {
+  // eslint-disable-next-line @typescript-eslint/no-var-requires
+  require('dotenv').config();
+}
 // Configure Cloudinary with environment variables (server-side)
 cloudinary.config({
   cloud_name: process.env.CLOUDINARY_CLOUD_NAME,
