@@ -103,7 +103,7 @@ This website represents the official online presence of the **Stony Brook Motors
 
 ## 📬 Contact Info
 
-* **Email**: `stonybrookbmotorsports@gmail.com`
+* **Email**: `motorsports@stonybrook.edu`
 * **Instagram**: [@stonybrookmotorsports](https://instagram.com/stonybrookmotorsports)
 
 ---
