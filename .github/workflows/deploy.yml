@@ -5,7 +5,6 @@ on:
     branches: [ main ]
   workflow_dispatch:
 
-# Minimum permissions needed for checkout + pages deploy
 permissions:
   contents: read
   pages: write
@@ -14,45 +13,29 @@ permissions:
 jobs:
   build:
     runs-on: ubuntu-latest
-    # Inject secrets into the build job so server-side code (Astro build) can read them
     env:
-      # Either supply the three separate values:
       CLOUDINARY_CLOUD_NAME: ${{ secrets.CLOUDINARY_CLOUD_NAME }}
       CLOUDINARY_API_KEY: ${{ secrets.CLOUDINARY_API_KEY }}
       CLOUDINARY_API_SECRET: ${{ secrets.CLOUDINARY_API_SECRET }}
-      # OR (instead or as a fallback) a single URL:
-      # CLOUDINARY_URL: ${{ secrets.CLOUDINARY_URL }}
     steps:
-      - name: Checkout repository
+      - name: Checkout your repository using git
         uses: actions/checkout@v4
 
-      - name: Use Node.js
-        uses: actions/setup-node@v4
-        with:
-          node-version: '20' # match your local node version
-
-      - name: Install dependencies
-        run: npm ci
-
-      - name: Confirm Cloudinary env presence (masked)
-        run: |
-          # prints "yes" if present (keeps secrets out of logs)
-          echo "CLOUDINARY_CLOUD_NAME present? ${CLOUDINARY_CLOUD_NAME:+yes}"
-          echo "CLOUDINARY_API_KEY present? ${CLOUDINARY_API_KEY:+yes}"
-          echo "CLOUDINARY_API_SECRET present? ${CLOUDINARY_API_SECRET:+yes}"
-          echo "CLOUDINARY_URL present? ${CLOUDINARY_URL:+yes}"
-
-      - name: Build site
-        run: npm run build
-
-      - name: Upload build artifact for Pages
-        uses: actions/upload-pages-artifact@v1
-        with:
-          path: ./dist # Astro's default output folder
+      - name: Build & prepare site for Pages
+        # Use the newer withastro action (v4) which avoids the deprecated artifact action
+        uses: withastro/action@v4
+        # you can still pass the same 'with:' inputs if you used them before:
+        # with:
+        #   node-version: 20
+        #   package-manager: pnpm@latest
 
   deploy:
     needs: build
     runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
     steps:
       - name: Deploy to GitHub Pages
+        id: deployment
         uses: actions/deploy-pages@v4
