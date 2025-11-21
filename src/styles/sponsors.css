@@ -1,0 +1,14 @@
+/* BACKGROUND GRADIENT */
+.sponsors {
+  background: linear-gradient(to bottom, #000 0%, #1a1a1a 50%, #000 100%);
+}
+
+.highlight-link {
+    color: #F52020;
+    text-decoration: none;
+}
+
+.highlight-link:hover {
+    color: #E65E5E;
+    text-decoration: underline;
+}

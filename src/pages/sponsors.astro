@@ -1,5 +1,7 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
+import '../styles/global.css';
+import '../styles/sponsors.css'
 import { sponsors, tierDescriptions } from '../lib/sponsors.ts';
 
 const tiers = ["Platinum", "Gold", "Silver", "Honorable Mentions"];
@@ -29,7 +31,7 @@ const tiers = ["Platinum", "Gold", "Silver", "Honorable Mentions"];
       if (!tierSponsors.length) return null;
       return (
         <div class={`sponsor-tier ${tier.toLowerCase().replace(/ /g, '-')}`}>
-          <h3>{tier}</h3>
+          <h4>{tier}</h4>
           {tierDescriptions[tier] && <p>{tierDescriptions[tier]}</p>}
           <div class={`sponsor-grid ${tier === 'Honorable Mentions' ? 'honorable-grid' : ''}`}>
             {tierSponsors.map(({ name, image, alt, url, personName }) => (
@@ -48,6 +50,18 @@ const tiers = ["Platinum", "Gold", "Silver", "Honorable Mentions"];
         </div>
       );
     })}
+  </section>
+
+    <!-- "SPONSOR PACKET" -->
+  <section class="section about" style="max-width:900px; margin:0 auto 4rem;">
+    <h2>Become A Sponsor</h2>
+    <p>
+      Support Stony Brook Motorsports and help us design, build, and compete with our BAJA SAE vehicle in future competitions. Your partnership will allow this organization to continue providing university students with hands-on engineering experience on a national level. If interested for more details, please check out this sponsorship packet and <a href="/contact" class="highlight-link">contact us</a>:
+    </p>
+    <p>
+      <a href="/Sponsorship_Packet_2425.pdf" class="btn-secondary">Sponsorship Packet</a>
+    </p>
+    <!-- or download a form? -->
   </section>
 
   <!-- LOGO REVEAL ANIMATION -->
