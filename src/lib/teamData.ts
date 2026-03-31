@@ -1,7 +1,6 @@
 // src/lib/teamData.ts
 import kushagraImg from '../assets/team/kushagra-taneja.jpg';
 import edwardImg from '../assets/team/edward-cibu.jpg';
-import brandonImg from '../assets/hero.jpg';
 import denysImg from '../assets/team/denys-tserkovniuk.jpg';
 import erikImg from '../assets/team/erik-khachatryan.jpg';
 import arthurImg from '../assets/team/arthur-siek.jpg';
@@ -11,204 +10,175 @@ import kevinImg from '../assets/team/kevin-zhuo.jpg';
 import ziqiImg from '../assets/team/ziqi-wang.jpg';
 import pashaImg from '../assets/team/pasha-kusumo.jpg';
 import samanthaImg from '../assets/team/samantha-margulies.jpg';
-import nickImg from '../assets/hero.jpg';
 import mishaImg from '../assets/team/misha-zaslavsky.jpg';
 import vinnyImg from '../assets/team/vinny-blendell.jpg';
 import AshtonImg from '../assets/team/ashton-gomes.jpg';
-import ShornImg from '../assets/hero.jpg';
-import WillImg from '../assets/team/william-ouzounian.jpg'
+import WillImg from '../assets/team/william-ouzounian.jpg';
+import eldaImg from '../assets/team/elda-berhaneyessus.jpg';
+import dianaImg from '../assets/team/diana-russo.jpg';
+import jasonImg from '../assets/team/jason-praisner.jpg';
+import samImg from '../assets/team/samuel-block.jpg';
+import brandonImg from '../assets/team/brandon-chan.jpg';
+import defaultImg from '../assets/hero.jpg';
+import type { ImageMetadata } from 'astro';
+
 export interface TeamMember {
   name: string;
   image: ImageMetadata;
-  role: string;
+  role?: string;
   system: string;
   linkedin?: string;
-  bio: string;
-  funBio?: string;
-  custom?: string;
-  lead: boolean;
-  category: 'Faculty' | 'Eboard' | 'SystemLead' | 'Grad' | 'Member';
+  bio?: string;
+  category: 'Faculty' | 'Eboard' | 'SystemLead' | 'Aboard' | 'Member';
 }
 
 export const teamData: TeamMember[] = [
-  {
-    name: 'Kushagra Taneja',
-    image: kushagraImg,
-    role: 'Software Lead',
-    system: 'Software',
-    linkedin: 'https://www.linkedin.com/in/kushagra-taneja/',
-    bio: 'Website Developer / Data Acquisition Systems / CAN Bus',
-    funBio: 'beep boop',
-    lead: true,
-    category:'Member',
-  },
-  {
-    name: 'Edward Cibu',
-    image: edwardImg,
-    role: 'Brakes Lead / Internal PR',
-    system: 'Vehicle Dynamics',
-    bio: 'insert professional bio here',
-    funBio: 'car stopper and media manager',
-    lead: true,
-    category:'Member',
-  },
-  {
-    name: 'Brandon Chan',
-    image: brandonImg,
-    role: 'Suspension Lead',
-    system: 'Vehicle Dynamics',
-    linkedin: 'https://www.linkedin.com/in/brandon-chan-0467591ab/',
-    bio: 'insert professional bio here',
-    funBio: 'Make Car Boing Boing',
-    lead: true,
-    category:'Member',
-  },
-  {
-    name: 'Denys Tserkovniuk',
-    image: denysImg,
-    role: 'Driveshaft & Axles Lead',
-    system: 'Drivetrain',
-    bio: 'insert professional bio here',
-    lead: true,
-    category:'Member',
-  },
-  {
-    name: 'Erik Khachatryan',
-    image: erikImg,
-    role: 'CVT Lead',
-    system: 'Drivetrain',
-    bio: 'insert professional bio here',
-    lead: true,
-    category:'Member',
-  },
   {
     name: 'Julianna Wehmann',
     image: juliannaImg,
     role: 'President',
     system: 'Leadership',
     linkedin: 'https://www.linkedin.com/in/julianna-wehmann/',
-    bio: 'insert professional bio here',
-    funBio: 'Past PR Manager, Driveshaft/Axles Lead and Fabrication Lead.',
-    lead: true,
-    category:'Eboard',
+    category: 'Eboard'
   },
   {
     name: 'Arthur Siek',
     image: arthurImg,
     role: 'Vice President / CNC Lead',
     system: 'CNC',
-    bio: 'insert professional bio here',
-    funBio: 'Run CNC',
-    lead: true,
-    category:'Eboard',
-  },
-  {
-    name: 'Hunter Guthy',
-    image: hunterImg,
-    role: 'Frame Lead',
-    system: 'Chassis',
-    linkedin: 'https://www.linkedin.com/in/hunterguthy/',
-    bio: 'insert professional bio here',
-    funBio: 'Partially appointed jig master',
-    custom: '3rd year frame member',
-    lead: false,
-    category:'Member',
-  },
-  {
-    name: 'Kevin Zhuo',
-    image: kevinImg,
-    role: 'Powertrain Lead / Head Machinist',
-    system: 'Powertrain',
-    linkedin: 'https://www.linkedin.com/in/kevin-zhuo43/',
-    bio: 'insert professional bio here',
-    funBio: 'Past Gearbox Lead',
-    lead: true,
-    category:'SystemLead',
-  },
-  {
-    name: 'Ziqi Wang',
-    image: ziqiImg,
-    role: 'Gearbox Lead',
-    system: 'Drivetrain',
-    bio: 'insert professional bio here',
-    lead: true,
-    category:'Member',
-  },
-  {
-    name: 'Pasha Kusumo',
-    image: pashaImg,
-    role: 'Differential Co-Lead',
-    system: 'Drivetrain',
-    linkedin: 'https://www.linkedin.com/in/pashakusumo/',
-    bio: 'insert professional bio here',
-    lead: true,
-    category:'Member',
+    category: 'Eboard'
   },
   {
     name: 'Samantha Margulies',
     image: samanthaImg,
-    role: 'Treasurer',
-    system: 'Treasurer',
+    role: 'Treasurer / Facilities Manager',
+    system: 'Leadership',
     linkedin: 'https://www.linkedin.com/in/samantha-margulies',
-    bio: 'insert professional bio here',
-    lead: false,
-    category:'Eboard',
+    category: 'Eboard'
   },
   {
-    name: 'Nick Clement',
-    image: nickImg,
-    role: 'Chassis Lead',
-    system: 'Chassis',
-    bio: 'insert professional bio here',
-    lead: true,
-    category:'SystemLead',
+    name: 'Elda Berhaneyessus',
+    image: eldaImg,
+    role: 'Secretary',
+    system: 'Suspension',
+    category: 'Eboard'
   },
   {
-    name: 'Misha Zaslavsky',
-    image: mishaImg,
-    role: 'Testing Lead',
-    system: 'Testing',
-    bio: 'insert professional bio here',
-    lead: true,
-    category:'Member',
+    name: 'Jason Praisner',
+    image: jasonImg,
+    role: 'Design Leader',
+    system: 'Vehicle Dynamics',
+    category: 'Aboard'
   },
   {
-    name: 'Vinny Blendell',
-    image: vinnyImg,
-    role: 'Composites Lead',
-    system: 'Chassis',
-    bio: 'insert professional bio here',
-    lead: true,
-    category:'Member',
+    name: 'William Ouzounian',
+    image: WillImg,
+    system: 'Powertrain',
+    category: 'Member'
+  },
+  {
+    name: 'Kevin Zhuo',
+    image: kevinImg,
+    role: 'Head Machinist / Powertrain Lead',
+    system: 'Powertrain',
+    linkedin: 'https://www.linkedin.com/in/kevin-zhuo43/',
+    category: 'Aboard',
+  },
+  {
+    name: 'Zayan Zahoori',
+    image: defaultImg,
+    role: 'Testing Manager',
+    system: 'Electrical',
+    category: 'Aboard'
   },
   {
     name: 'Ashton Gomes',
     image: AshtonImg,
     role: 'Vehicle Dynamics Lead',
     system: 'Vehicle Dynamics',
-    bio: 'insert professional bio here',
-    lead: true,
-    category:'SystemLead',
+    category: 'SystemLead'
   },
   {
-    name: 'Shorn Grant',
-    image: ShornImg,
+    name: 'Nick Clement',
+    image: defaultImg,
+    role: 'Chassis Lead',
+    system: 'Chassis',
+    category:'SystemLead'
+  },
+  {
+    name: 'Diana Russo',
+    image: dianaImg,
     role: 'Electrical Lead',
     system: 'Electrical',
-    bio: 'insert professional bio here',
-    lead: true,
-    category:'SystemLead',
+    category: 'SystemLead'
   },
   {
-    name: 'William Ouzonian',
-    image: WillImg,
-    role: 'Secretary/Facilities Lead',
+    name: 'Brandon Chan',
+    image: brandonImg,
     system: 'Powertrain',
-    bio: 'insert professional bio here',
-    funBio: 'yes',
-    lead: true,
-    category:'Eboard',
+    category: 'Member'
   },
-
-
+  {
+    name: 'Kushagra Taneja',
+    image: kushagraImg,
+    system: 'Electrical',
+    linkedin: 'https://www.linkedin.com/in/kushagra-taneja/',
+    category: 'Member'
+  },
+  {
+    name: 'Edward Cibu',
+    image: edwardImg,
+    role: 'Internal PR',
+    system: 'Vehicle Dynamics',
+    category: 'Member'
+  },
+  {
+    name: 'Denys Tserkovniuk',
+    image: denysImg,
+    system: 'Powertrain',
+    category: 'Member'
+  },
+  {
+    name: 'Erik Khachatryan',
+    image: erikImg,
+    system: 'Powertrain',
+    category: 'Member'
+  },
+  {
+    name: 'Hunter Guthy',
+    image: hunterImg,
+    system: 'Chassis',
+    category: 'Member'
+  },
+  {
+    name: 'Ziqi Wang',
+    image: ziqiImg,
+    system: 'Powertrain',
+    category: 'Member'
+  },
+  {
+    name: 'Pasha Kusumo',
+    image: pashaImg,
+    system: 'Powertrain',
+    linkedin: 'https://www.linkedin.com/in/pashakusumo/',
+    category: 'Member'
+  },
+  {
+    name: 'Misha Zaslavsky',
+    image: mishaImg,
+    system: 'Vehicle Dynamics',
+    category: 'Member'
+  },
+  {
+    name: 'Samuel Block',
+    image: samImg,
+    system: 'Chassis',
+    category: 'Member'
+  },
+  {
+    name: 'Vinny Blendell',
+    image: vinnyImg,
+    system: 'Chassis',
+    category: 'Member'
+  }
 ];

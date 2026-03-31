@@ -14,8 +14,8 @@ const mappedTeamData = teamData.map(m => ({ ...m, image: m.image ?? heroPlacehol
 // 2️⃣ Separate members by category
 const faculty = mappedTeamData.filter(m => m.category === 'Faculty');
 const eboard = mappedTeamData.filter(m => m.category === 'Eboard');
+const aboard = mappedTeamData.filter(m => m.category === 'Aboard');
 const systemLeads = mappedTeamData.filter(m => m.category === 'SystemLead');
-const grads = mappedTeamData.filter(m => m.category === 'Grad');
 const members = mappedTeamData.filter(m => m.category === 'Member');
 
 // 3️⃣ Group Member category by subsystem
@@ -24,8 +24,7 @@ members.forEach(m => (subsystems[m.system] ||= []).push(m));
 
 // 4️⃣ Define subsystem display order
 const subsystemOrder = [
-  'Powertrain','Chassis','Electrical','Software', 'Vehicle Dynamics',
-  'Testing'
+  'Chassis', 'Powertrain', 'Vehicle Dynamics'
 ];
 ---
 
@@ -42,21 +41,23 @@ const subsystemOrder = [
   <!-- Eboard -->
   {eboard.length > 0 && (
     <section class="section fade-in">
-      <h2 class="section-heading">Eboard</h2>
+      <h2 class="section-heading">Executive Board</h2>
       <div class="members-grid equal-size">
         {eboard.map(m => <MemberCard member={m} />)}
       </div>
     </section>
   )}
-<!-- Faculty -->
-  {faculty.length > 0 && (
+  
+  <!-- Aboard -->
+  {aboard.length > 0 && (
     <section class="section fade-in">
-      <h2 class="section-heading">Faculty Advisors</h2>
+      <h2 class="section-heading">Aboard</h2>
       <div class="members-grid equal-size">
-        {faculty.map(m => <MemberCard member={m} />)}
+        {aboard.map(m => <MemberCard member={m} />)}
       </div>
     </section>
   )}
+
   <!-- System Leads -->
   {systemLeads.length > 0 && (
     <section class="section fade-in">
@@ -67,29 +68,33 @@ const subsystemOrder = [
     </section>
   )}
 
-  <!-- Graduate Members -->
-  {grads.length > 0 && (
+  <!-- Faculty -->
+  {faculty.length > 0 && (
     <section class="section fade-in">
-      <h2 class="section-heading">Graduate Members</h2>
+      <h2 class="section-heading">Faculty Advisors</h2>
       <div class="members-grid equal-size">
-        {grads.map(m => <MemberCard member={m} />)}
+        {faculty.map(m => <MemberCard member={m} />)}
       </div>
     </section>
   )}
 
-  <!-- Subsystems -->
-  {subsystemOrder.map(sys => {
-    const mems = subsystems[sys];
-    if (!mems) return null;
-    return (
-      <section class="section fade-in" id={sys.toLowerCase()}>
-        <h2 class="section-heading">{sys}</h2>
-        <div class="members-grid equal-size">
-          {mems.map(m => <MemberCard member={m} />)}
-        </div>
-      </section>
-    );
-  })}
+  <!-- General Members -->
+  {members.length > 0 && (
+    <section class="section fade-in">
+      <h2 class="section-heading">General Body</h2>
+      <div class="members-grid equal-size">
+        {subsystemOrder.map(sys => {
+          const mems = subsystems[sys];
+          if (!mems) return null;
+          return (
+            <>
+              {mems.map(m => <MemberCard member={m} />)}
+            </>
+          );
+        })}
+      </div>
+    </section>
+  )}
 
   <!-- Intersection observer & fun bio -->
   <script type="module">
